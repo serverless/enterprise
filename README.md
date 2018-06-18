@@ -1,4 +1,4 @@
-![Serverless Platform Documentation](https://s3.amazonaws.com/assets.github.serverless/readme-serverless-platform-documentation.jpg)
+![Serverless Platform Documentation](https://s3.amazonaws.com/assets.github.serverless/readme-serverless-platform-documentation-2.jpg)
 
 * Platform
   * Overview
