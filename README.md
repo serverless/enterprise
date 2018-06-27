@@ -2,6 +2,7 @@
 
 * Platform
   * Overview
+  * [Getting Started](./getting-started.md)
   * Configuration
   * User Management
   * SDK
