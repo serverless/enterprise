@@ -85,8 +85,8 @@ In order to deploy a Service to your App using the Serverless Framework, you nee
 
 1. Specify the app and tenant you’d like to deploy a service to:
 ```yaml
-app: myapp-dev
-tenant: brianneisler
+app: your-app-name
+tenant: your-tenant-name
 ```
 
 This is what the new information looks like in context:
@@ -94,8 +94,8 @@ This is what the new information looks like in context:
 ```yaml
 service: my-service
 
-app: myapp-dev
-tenant: brianneisler
+app: your-app-name
+tenant: your-tenant-name
 
 provider:
   name: aws
