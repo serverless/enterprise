@@ -5,12 +5,12 @@ This guide walks you through deploying a simple service to the Serverless Platfo
 
 ## Setup
 
-A few things you will need to setup before using the Serverless Platform.
+There are a few things you will need to setup before using the Serverless Platform. This guide will walk you through each of these steps.
 * Should have node 6.x or later installed
 * Should have a new AWS IAM User with full admin privileges
-* Should have an account setup on https://serverless.com
 * Should have the Serverless Framework installed
 * Should have your AWS credentials configured with the Serverless Framework
+* Should have an account setup on https://serverless.com
 
 ### Install node JS and NPM
 * Follow instructions here https://nodejs.org/en/download/package-manager/
@@ -30,8 +30,6 @@ x.x.x
 * If you already have an access key, skip to the next task.
 * If you don't have an AWS account or access key, you can follow our guide [here to help you get an account setup](./setup-aws-account.md).
 
-### Setup a Serverless Platform account
-* Signing up for an account on the Serverless Platform is easy. Just click [here](https://dashboard.serverless.com) and follow the instructions.
 
 ### Install the Serverless Framework
 * Run this command in your terminal
@@ -44,13 +42,18 @@ $ serverless -v
 x.x.x
 ```
 
-### Login via the cli
+### Configure AWS Access Keys in Serverless Framework
+In order for the Serverless Framework to deploy your application to your AWS account, it will need to be configured with your AWS credentials. You can follow our instructions [here for configuring this](./setup-aws-account.md#using-aws-access-keys).
 
+### Login via the cli
 In order to allow the Serverless framework to access the platform you will need to provide the framework with platform credentials. To do this simply use the `login` command and the framework will download platform access keys behind the scenes.
 
 ```sh
 serverless login
 ```
+
+### Setup a Serverless Platform account
+* Signing up for an account on the Serverless Platform is easy. Just click [here](https://dashboard.serverless.com) and follow the instructions.
 
 
 ## Development
