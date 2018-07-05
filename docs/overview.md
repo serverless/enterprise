@@ -8,11 +8,17 @@ However, many teams and organizations don't know how to do serverless developmen
 
 The Serverless Platform currently contains three product areas:
 
-**Serverless Framework:**  The serverless application framework.  Use it to build, deploy and update serverless applications across vendors.
+### Serverless Framework
 
-**Serverless Dashboard:**  The serverless operations console.  Monitor, collaborate and secure your serverless applications.
+The serverless application framework.  Use it to build, deploy and update serverless applications across vendors.
 
-**Event Gateway:**  The serverless integration infrastructure.  Connect your serverless applications and functions to your existing workloads and services.
+### Serverless Dashboard
+
+The serverless operations console.  Monitor, collaborate and secure your serverless applications.
+
+### Event Gateway
+
+The serverless integration infrastructure.  Connect your serverless applications and functions to your existing workloads and services.
 
 Out-of-the box, the Serverless Platform features a hosted version of the Serverless Dashboard and a hosted version of the Event Gateway, all of which are run and operated by us, Serverless Inc.
 
