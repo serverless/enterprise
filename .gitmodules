@@ -1,0 +1,3 @@
+[submodule "examples/rest-api-event-gateway/example"]
+	path = examples/rest-api-event-gateway/example
+	url = https://github.com/serverless/event-gateway-getting-started
