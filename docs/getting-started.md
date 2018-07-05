@@ -1,6 +1,6 @@
-# Getting Started with the Serverless Platform
+# Getting Started
 
-This guide walks you through deploying a simple service to the Serverless Platform. It uses your own AWS credentials and reports the information to the platform after deployment, providing a visual interface for viewing the current state of your serverless application.
+Here's how to deploy a simple service to the Serverless Platform. It uses your own AWS credentials and reports the information to the platform after deployment, providing a visual interface for viewing the current state of your serverless application.
 
 
 ## Setup
