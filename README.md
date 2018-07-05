@@ -7,3 +7,7 @@ The [Serverless Platform](https://dashboard.serverless.com/) includes everything
 * Serverless Framework V.1
 * Serverless Dashboard
 * Event Gateway
+
+#### Maintainer Notes
+
+The examples use submodules.
