@@ -108,4 +108,14 @@ A Subscription is an instruction to call a Function when an Event is received.  
 
 ### Resource
 
-All other serverless infrastructure Resources, like databases, CDNs, caches, etc.
+A serverless Resource is any serverless infrastructure included in your Application/Service, like databases, CDNs, caches, etc.
+
+Examples of Resources:
+
+- AWS S3
+- AWS DynamoDB
+- AWS Kinesis
+- AWS AppSync
+- Auth0
+- Stripe
+- Twilio
