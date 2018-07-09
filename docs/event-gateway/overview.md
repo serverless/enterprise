@@ -1,10 +1,10 @@
 # Overview
 
+The Event Gateway is an event router which enables you to connect your existing data and workloads to serverless compute via a simple event-driven integration pattern.
+
 ## Concepts
 
 ### Subscriptions
-
-The Event Gateway is an event router which enables you to connect your existing data and workloads to serverless compute via a simple event-driven integration pattern.  
 
 You can send any data into the Event Gateway via HTTP and it will route that data to serverless functions via a configuration setting known as a Subscription.  Subscriptions are at the core of the Event Gateway's functionality and we've designed them to be  simple yet extremely powerful.  Here's how they work:
 
