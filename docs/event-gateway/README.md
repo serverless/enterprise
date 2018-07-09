@@ -1,4 +1,4 @@
-# Overview
+# Event Gateway - Overview
 
 The Event Gateway is an event router which enables you to connect your existing data and workloads to serverless compute via a simple event-driven integration pattern.
 

@@ -1,4 +1,4 @@
-# Overview
+# Serverless Platform - Overview
 
 Serverless infrastructure is a new type of cloud infrastructure that auto-scales and charges you only when it's used.  If you embrace it to build your applications, you will reduce overhead, innovate more and move incredibly fast.
 
