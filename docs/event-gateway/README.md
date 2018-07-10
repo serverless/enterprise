@@ -8,7 +8,9 @@ Serverless computing democratized computing.  We created the Event Gateway to de
 
 ## Description
 
-The Event Gateway is a new type of event router for the serverless era.  Its practical purpose is to provide an easy way to integrate your existing workloads and data with serverless compute/functions.  Its larger vision is to empower you and your organization to respond to any event that can possibly happen, with code.
+The Event Gateway is a new type of event router for the serverless era.  It does not store Events.  What it excels at is distributing them.  This enables incredible possibilities.
+
+The Event Gateway's practical purpose is to provide an easy way to integrate your existing workloads and data with serverless compute/functions.  Its larger vision is to empower you and your organization to respond to any event that can possibly happen, with code.
 
 The Event Gateway is designed to work with serverless Functions located on any provider or platform (e.g. AWS Lambda, Azure Functions, Google Cloud Functions, Kubernetes).  This enables you to process events wherever you'd like.
 
@@ -22,7 +24,7 @@ Lastly, many of our enterprise users operate their own instance of the Event Gat
 
 ## How It Works
 
-The Event Gateway is alike many event routers.  Data is sent into the Event Gateway via HTTP and it will route that data to serverless functions via a configuration setting known as a Subscription.  
+The Event Gateway is alike many event routers.  Data is sent into the Event Gateway via HTTP and it will route that data to serverless functions via a configuration setting known as a Subscription.
 
 Subscriptions are at the core of the Event Gateway's functionality and we've designed them to be simple yet extremely powerful.  Here's how they work:
 
@@ -48,7 +50,7 @@ myapp.user.button.cliked + personalizeUserExperience()
 myapp.user.product.purchased + personalizeUserExperience()
 ```
 
-You cannot have multiple Subscriptions using the same Event and Function.  The Event Gateway will throw an error if you try to create multiple Subscriptions using the same Event and Function.
+You **cannot** have multiple Subscriptions using the same Event and Function.  The Event Gateway will throw an error if you try to create multiple Subscriptions using the same Event and Function.
 
 ```
 myapp.user.created + sendWelcomeEmail()
@@ -182,7 +184,9 @@ The great thing about this pattern is that you don’t have to worry about paths
 
 Keep in mind, you can also publish Events asynchronously too from your client to do all types of user activity tracking, error logging and more.
 
-Lastly, you can combine both **synchronous** and **asynchronous** Subscriptions on a single Event.  Here's an example using Serverless Framework V.1 and the [Event Gateway plugin](https://github.com/serverless/serverless-event-gateway-plugin), which synchronously processes an HTTP request to create a user, while asynchronously processing the HTTP request for analytics purposes and storing it in an Event log:
+Lastly, you can combine both **synchronous** and **asynchronous** Subscriptions on a single Event.  
+
+Here's an example using Serverless Framework V.1 and the [Event Gateway plugin](https://github.com/serverless/serverless-event-gateway-plugin), which synchronously processes an HTTP request to create a user, while asynchronously processing the HTTP request for analytics purposes and storing it in an Event log:
 
 ```yaml
 # serverless.yml
