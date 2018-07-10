@@ -24,7 +24,9 @@ The serverless integration infrastructure.  Connect your serverless applications
 
 ## Concepts
 
-After a few years of doing serverless development, we've designed the best possible abstractions for reasoning about serverless applications.  Here's what they are and how they fit together:
+After a few years of doing serverless development, we've designed the best possible abstractions for reasoning about serverless applications while preserving the option to deep dive into the underlying infrastrucutre when necessary.
+
+Here's an overview of our concepts/abstractions and how they fit together:
 
 ```
 - Tenant / Event Gateway
@@ -38,21 +40,23 @@ After a few years of doing serverless development, we've designed the best possi
 
 ### Tenant
 
-A Tenant is a secure workspace which can contain one or many Applications.  Every Serverless Platform user gets a Tenant when they register.  They can invite others to their Tenant to collaborate on the Applications within that Tenant.
+A Tenant is a secure workspace which can contain one or many Applications.  This of it like a Github repository.
 
-Tenants are most often created for a team, or an individual's personal use.
+Every Serverless Platform user gets a Tenant when they register.  They can invite others to their Tenant to collaborate on the Applications within that Tenant.
+
+Tenants are most often created for a team, a line of business, or an individual's personal workspace.
 
 ### Event Gateway
 
 The [Event Gateway](https://www.github.com/serverless/event-gateway) is open-source pub/sub infrastructure for routing Events from any source to Functions running on any type of serverless compute (e.g. AWS Lambda, Azure Functions, containers).
 
-Every Tenant comes with a hosted version of the Event Gateway (operated by us, Serverless Inc.).  This Event Gateway is shared across all Applications in a Tenant, enabling you to share Events across Applications easily and react to them with serverless Functions.
+When you sign up for the Serverless Platform and create a Tenant, it comes with a hosted (aka "serverless") version of the Event Gateway (operated by us, Serverless Inc.).  This Event Gateway is shared across all of the Applications you have in a Tenant, enabling you to share Events across Applications easily and react to them with serverless Functions.
 
 You can also self-host the Event Gateway and plug it into the Serverless Platform, instead of using our hosted version.  If you're interested in this, message us [here](https://serverless.com/enterprise/).
 
 ### Application
 
-A serverless Application is built on serverless infrastructure, typically using Functions-as-a-Service (e.g. AWS Lambda) along with other serverless infrastructure (e.g. DynamoDB, Aurora, Kinesis).  
+A serverless Application is built on serverless infrastructure, typically using Functions-as-a-Service (e.g. AWS Lambda) along with other serverless resources (e.g. DynamoDB, Aurora, Kinesis).
 
 The Serverless Platform uses the Application concept as a unit of organization for grouping related logic and infrastructure (like any other software application).
 
@@ -83,7 +87,7 @@ Examples of Services:
 
 ### Function
 
-A serverless Function is a small amount of business logic, usually designed to perform one task.  This logic is typically run on a Functions-as-a-Service/serverless compute service, like AWS Lambda, Azure Functions or Google Cloud Functions.  It can also be in a container.
+A serverless Function is a small amount of business logic/code, usually designed to perform one task.  This logic is typically run on a Functions-as-a-Service/serverless compute service, like AWS Lambda, Azure Functions or Google Cloud Functions.  A serverless Function can also be in a container.
 
 Examples of Functions:
 
@@ -94,7 +98,18 @@ Examples of Functions:
 
 ### Event
 
-An Event is data that reports something has happened.  Events trigger serverless Functions.  The Serverless Platform describes all data in-flight as an Event, including asynchronous bits of data, as well as synchronous requests or commands, like an HTTP request.  
+Events are a central concept to serverless Applications because serverless compute/Functions-as-a-Service are largely event-driven.
+
+An Event is a data record expressing an occurrence and its context. Events are routed from the emitting source to interested parties for the purpose of notifying them about the source occurrence.
+
+The Serverless Platform uses the CNCF's [CloudEvents](https://github.com/cloudevents/spec/blob/master/spec.md) specification to describe its events, whenever possible.  The CloudEvents specification makes event data easier to handle.
+
+
+
+
+
+
+Events trigger serverless Functions.  The Serverless Platform tries to use event-driven design frequently and describes data as Events as much as possible.  This includes asynchronous bits of data, as well as synchronous requests or commands, like an HTTP request.
 
 Events on the Serverless Platform can be used with or without the Event Gateway.  Though, the Event Gateway gives you powerful abilities to dispatch, route, share and trace Events.
 
