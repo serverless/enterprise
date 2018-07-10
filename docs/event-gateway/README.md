@@ -1,7 +1,5 @@
 # Event Gateway - Overview
 
-## Intro
-
 Our applications, our lives, our world, can be considered a series of events, all awaiting a response.  But the average developer and organization has never had the capability to respond to these events at scale.  As a result, the ability to store, analyze, and act upon large amounts of data has been out of reach for those without significant resources.
 
 Serverless computing (e.g. AWS Lambda) changes that. Thanks to its auto-scaling, pay-per-execution and event-driven qualities, it has never been easier and more economical to write vast amounts of logic to do *anything*.
