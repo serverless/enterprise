@@ -98,9 +98,9 @@ Examples of Functions:
 
 ### Event
 
-An Event is a data record expressing an occurrence and its context. Events are a central concept to serverless Applications because serverless compute/Functions-as-a-Service are largely event-driven.
+An Event is a data record expressing an occurrence and its context. Events are a central concept to serverless Applications because serverless compute/Functions-as-a-Service are largely event-driven.  Events trigger serverless Functions.
 
-The Serverless Platform uses the CNCF's [CloudEvents](https://github.com/cloudevents/spec/blob/master/spec.md) specification to format its events, whenever possible.  The CloudEvents specification makes event data easier to handle.  The Event Gateway uses this specification by default.  The resulting data looks like this:
+The Serverless Platform uses the CNCF's [CloudEvents](https://github.com/cloudevents/spec/blob/master/spec.md) specification to format its events, whenever possible.  The CloudEvents specification makes event data easier to handle.  The Event Gateway uses this specification by default.  The data itself looks like this:
 
 ```json
 {
@@ -119,7 +119,7 @@ The Serverless Platform uses the CNCF's [CloudEvents](https://github.com/cloudev
 }
 ```
 
-Events trigger serverless Functions.  The Serverless Platform tries to use event-driven design frequently and describes data as Events as much as possible.  This includes asynchronous bits of data, as well as synchronous requests or commands, like an HTTP request.
+The Serverless Platform tries to use event-driven design frequently and describes data as Events as much as possible.  This includes asynchronous bits of data, as well as synchronous requests or commands, like an HTTP request.
 
 Events on the Serverless Platform can be used with or without the Event Gateway.  Though, the Event Gateway gives you powerful abilities to dispatch, route, share and trace Events.
 
