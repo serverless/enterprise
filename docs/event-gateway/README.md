@@ -1,8 +1,22 @@
 # Event Gateway - Overview
 
+Serverless computing (e.g. AWS Lambda) has democratized compute.  Thanks to its auto-scaling, pay-per-execution and event-driven qualities, it has never been easier to write vast amounts of logic to do *anything*.
+
+Our world, our lives, our applications, can be considered a series of events, awaiting a response or 
+
+
+
+How can we bridge these two themes and empower developers along the way?
+
+
+
 The Event Gateway is an event router which enables you to connect your existing data and workloads to serverless compute via a simple event-driven integration pattern.
 
 ## Concepts
+
+### Functions
+
+
 
 ### Subscriptions
 
