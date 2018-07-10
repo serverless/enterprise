@@ -1,4 +1,4 @@
-# Getting Started
+# Serverless Framework - Getting Started
 
 Here's how to deploy a simple service to the Serverless Platform. It uses your own AWS credentials and reports the information to the platform after deployment, providing a visual interface for viewing the current state of your serverless application.
 
