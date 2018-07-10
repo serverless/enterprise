@@ -38,3 +38,7 @@ serverless login
 
 ### Setup a Serverless Platform account
 * Signing up for an account on the Serverless Platform is easy. Just click [here](https://dashboard.serverless.com) and follow the instructions.
+
+## Development
+
+WIP - In the interim, there is an example project in the [examples](../../examples) which contains a real project and full tutorial.
