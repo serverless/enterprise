@@ -6,7 +6,7 @@ This repo contains technical documentation on the Serverless Platform as well as
 
 ### Table Of Contents
 
-* [Overview](./docs/overview.md)
+* [Overview](./docs/README.md)
 * [Getting Started](./docs/getting-started.md)
 * [Serverless Framework V.1](https://www.github.com/serverless/serverless)
 * Serverless Dashboard
