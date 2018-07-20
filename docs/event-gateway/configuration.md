@@ -120,6 +120,8 @@ eventGateway
   })
 ```
 
+Events that are emitted to the Event Gateway should be in [CloudEvents](https://cloudevents.io/) format. You can find the spec [here](https://github.com/cloudevents/spec/blob/master/spec.md).
+
 For full documentation on the Event Gateway SDK, check out the [GitHub repo](https://github.com/serverless/event-gateway-sdk).
 
 # Event Types
