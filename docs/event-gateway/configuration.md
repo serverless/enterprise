@@ -1,59 +1,169 @@
-# Event Gateway - Configuration
+# Event Gateway Configuration
 
-The Event Gateway is alike many event routers.  Data is sent into the Event Gateway via HTTP and it will route that data to serverless functions via a configuration setting known as a Subscription.
+This document is about configuring the various features of the Event Gateway. It is focused on the hosted Event Gateway provided by Serverless, Inc., the [Event Gateway plugin](https://github.com/serverless/serverless-event-gateway-plugin) for the Serverless Framework, and the [Event Gateway SDK](https://github.com/serverless/event-gateway-sdk) for Javascript.
 
-Subscriptions are at the core of the Event Gateway's functionality and we've designed them to be simple yet extremely powerful.  Here's how they work:
+Before reading this, it is helpful to be familiar with the [basic concepts](./basic-concepts.md) of the Event Gateway.
 
-A Subscription binds a single Event to a single serverless Function (1-to-1), like this:
+# Table of Contents
+
+- [Setup](#setup)
+  - [Platform and Event Gateway URL](#platform-and-event-gateway-url)
+  - [Event Gateway plugin](#event-gateway-plugin)
+  - [Event Gateway SDK](#event-gateway-sdk)
+- [Event Types](#event-types)
+- [Functions](#functions)
+  - [Authorizers](#authorizers)
+  - [Connector Functions](#connector-functions)
+     - [AWS SQS](#aws-sqs)
+     - [Amazon Kinesis](#amazon-kinesis)
+     - [Amazon Kinesis Firehose](#amazon-kinesis-firehose)
+- [Subscriptions](#subscriptions)
+  - [The `http.request` event type](#the-http-request-event-type)
+  - [Sync vs. async](#sync-vs-async)
+  - [CORS](#cors)
+- [Emitting events](#emitting-events)
+
+# Setup
+
+This section contains information on configuring the Event Gateway using the Event Gateway plugin for the Serverless Framework and the Event Gateway SDK for Javascript.
+
+## Platform and Event Gateway URL
+
+To use the Event Gateway provided by Serverless, Inc., you should have a Serverless Platform account. [Read the docs](../getting-started.md) on getting started with the Serverless Platform.
+
+Within the Serverless Platform, you will create an Application. Each Application is a collection of Services, and each Service is a collection of functions, subscriptions, and events. The Application is a top-level container -- events can be shared within an Application. A Service is an independently-deployable portion of your Application.
+
+Each Application in the Serverless Platform will get a unique URL for emitting events into the Event Gateway. The structure of the URL is:
 
 ```
-myapp.user.created + sendWelcomeEmail()
+https://<tenant>-<application>.slsgateway.com
 ```
 
-You can have multiple Subscriptions that use the same Event.  For example, if you want to perform multiple actions when a user signs up for your application, create multiple Subscriptions:
+For example, if your Tenant was named "Acme", and your Application was "MainApp", your Event Gateway URL would be:
 
 ```
-myapp.user.created + sendWelcomeEmail()
-myapp.user.created + addToDripCampaign()
-myapp.user.created + notifySalesTeam()
+https://acme-mainapp.slsgateway.com
 ```
 
-You can also have multiple Subscriptions that use the same Function.  For example, if you want to create a personalized experience in your application based on the user's activity, you could send those Events to a personalization Function.
+You can find your Event Gateway URL in the [Serverless Dashboard](https://dashboard.serverless.com).
 
-```
-myapp.user.page.viewed + personalizeUserExperience()
-myapp.user.button.cliked + personalizeUserExperience()
-myapp.user.product.purchased + personalizeUserExperience()
-```
+## Event Gateway plugin
 
-You **cannot** have multiple Subscriptions using the same Event and Function.  The Event Gateway will throw an error if you try to create multiple Subscriptions using the same Event and Function.
+The [Event Gateway plugin](https://github.com/serverless/serverless-event-gateway-plugin) for the Serverless Framework is the fastest way to configure the Event Gateway with Serverless functions.
 
-```
-myapp.user.created + sendWelcomeEmail()
-myapp.user.created + sendWelcomeEmail()
-myapp.user.created + sendWelcomeEmail()
+To install the Event Gateway plugin, run the following command in your Serverless service directory:
+
+```bash
+$ npm install --save-dev @serverless/serverless-event-gateway-plugin
 ```
 
-Subscriptions also offer some extra features which enable you to use them for API use-cases.  Each Subscription has a `path`, `method` and `cors` setting.
+In your `serverless.yml`, you'll need to include the following Event Gateway configuration:
 
-Subscriptions can call Functions in two ways:  **asynchronously** or **synchronously**.  
+```
+tenant: <your-tenant-name>
+app: <your-app-name>
 
-An **asynchronous** Subscription means when you send an Event to the Event Gateway and it routes it to the Function, the Event Gateway will not send the Function's response back to the origin/client that made the request.  You can have infinite asynchronous Subscriptions on a single Event.
+plugins:
+  - @serverless/serverless-event-gateway-plugin
+```
 
-Here's an example of what this looks like in Serverless Framework V.1 using the [Event Gateway plugin](https://github.com/serverless/serverless-event-gateway-plugin):
+Be sure to replace the values for `tenant` and `app` with your Tenant and App name. See the section on [Platform and Event Gateway URL](#platform-and-event-gateway-url) to get your Tenant and App name.
 
-```yaml
-# serverless.yml
+The Event Gateway plugin will configure any functions that have an `eventgateway` event subscription. For example, the following `functions` block would configure a synchronous HTTP subscription to your `createUser` function when making a `POST` request to `/users`:
 
-service: users
+```yml
+functions:
+  createUser:
+    handler: handler.createUser
+    events:
+      - eventgateway
+          type: sync
+          eventType: http.request
+          path: /users
+          method: POST
+```
 
+For more on configuring the Event Gateway with the Event Gateway plugin, see the [Event Types](#event-types), [Functions](#functions], and [Subscriptions](#subscriptions) sections below.
+
+## Event Gateway SDK
+
+If you want to emit events into the Event Gateway to trigger your serverless compute, the best way is to use the [Event Gateway SDK](https://github.com/serverless/event-gateway-sdk) for Javascript.
+
+You can install the Event Gateway SDK into your project with the following command:
+
+```bash
+$ npm install --save @serverless/event-gateway-sdk
+```
+
+To use the Event Gateway SDK in your application, first configure a client using your [Event Gateway URL](#platform-and-event-gateway-url):
+
+```javascript
+const SDK = require('@serverless/event-gateway-sdk');
+const eventGateway = new SDK({
+  url: 'https://acme-mainapp.slsgateway.com',
+})
+```
+
+Then use the Event Gateway client to emit an event into the Event Gateway:
+
+```javascript
+eventGateway
+  .emit({
+    eventID: '1',
+    eventType: 'user.created',
+    cloudEventsVersion: '0.1',
+    source: '/services/users',
+    contentType: 'application/json',
+    data: {
+      userID: 'foo'
+    }
+  })
+```
+
+For full documentation on the Event Gateway SDK, check out the [GitHub repo](https://github.com/serverless/event-gateway-sdk).
+
+# Event Types
+
+To configure a subscription to an event type, you will first need to register the event type with the Event Gateway.
+
+An event type is a string that will identify a particular event as it reaches the Event Gateway. For example, `user.created` may be your event type for an event with a payload describing a new user that was created in your application.
+
+You can register event types in the Event Gateway with the Event Gateway plugin for the Serverless Framework as follows:
+
+```yml
 custom:
-  eventgateway: # Get this @ dashboard.serverless.com
-    url: myorg-app.slsgateway.com
-    accessKey: <yourkey>
   eventTypes:
-    user.created
+    user.created:
+    http.request:
+```
 
+You may also add an authorizer function to your event type to protect your Event Gateway from unwanted events. This will require that each instance of the event that is emitted into the Event Gateway must pass the defined authorization. 
+
+You can configure authorization for your event type with the following syntax:
+
+```yml
+custom:
+  eventTypes:
+    user.created:
+      authorizer: authFunction
+    http.request:
+    
+functions:
+  authFunction:
+    handler: handler.auth
+```
+
+For more on authorizer functions, see [here](#authorizers)
+
+# Functions
+
+A function is the bit of compute logic that you use to react to a particular event. Functions are usually deployed to a Functions-as-a-Service (FaaS) provider, and then registered in the Event Gateway. When an event is routed to a function via a subscription, the Event Gateway will call out to the registered function to send the data to the compute.
+
+The Serverless Framework and the Event Gateway plugin for the Serverless Framework will help you deploy functions to AWS Lambda and register those functions with the Event Gateway.
+
+The syntax for deploying an AWS Lambda function and registering it with the Event Gateway is as follows:
+
+```yml
 functions:
   sendWelcomeEmail:
     handler: code.sendWelcomeEmail
@@ -61,147 +171,300 @@ functions:
       - eventgateway:
           type: async
           eventType: user.created
-  addToDripCampaign:
-    handler: code.addToDripCampaign
-    events:
-      - eventgateway:
-          type: async
-          eventType: user.created
-  notifySalesTeam:
-    handler: code.notifySalesTeam
-    events:
-      - eventgateway:
-          type: async
-          eventType: user.created
-
-plugins:
-  - "@serverless/serverless-event-gateway-plugin"
 ```
 
-A **synchronous** Subscription means the Event Gateway will wait for a serverless function to process an Event and then return the response to the origin/client that published the Event.  You can use this to create a traditional request/response experience, even though it’s powered by an event-driven model.
+The Event Gateway plugin for the Serverless Framework will register any function in your `serverless.yml` that either:
 
-You can use synchronous Subscriptions along with the `path` and `method` setting on the Subscription, to create a single REST API route:
+* has an `eventgateway` event subscription, or
+* is used as an `authorizer` for a registered [event type](#event-types).
 
-```
-/users/create + POST + http.request + createUser()
-```
+For more on `eventgateway` event subscriptions, see [here](#subscriptions).
 
-Here's what this looks like using Serverless Framework V.1 using the [Event Gateway plugin](https://github.com/serverless/serverless-event-gateway-plugin):
+## Authorizers
 
-```yaml
-# serverless.yml
+You may use a function as an authorizer on an event type to prevent unwanted events from entering into your Event Gateway. You can configure an authorizer on an event type as follows:
 
-service: users
-
+```yml
 custom:
-  eventgateway: # Get this @ dashboard.serverless.com
-    url: myorg-app.slsgateway.com
-    accessKey: <yourkey>
   eventTypes:
-    http.request
-
+    user.created:
+      authorizer: authFunction
+    
 functions:
-  createUser:
-    handler: code.createUser
-    events:
-      - eventgateway:
-          type: sync
-          eventType: http.request
-          path: /users/create
-          method: POST
-
-plugins:
-  - "@serverless/serverless-event-gateway-plugin"
+  authFunction:
+    handler: handler.auth
 ```
 
-What's even cooler is that you can ditch the `path`, `method` and thinking about endpoints entirely and simply use the [Event Gateway SDK](https://github.com/serverless/event-gateway-sdk) to publish synchronous Events from the client-side of your application.
+The `authFunction` is defined in the `functions` block and then referenced by the `user.created` event type as its authorizer.
 
-Here's an example of what that looks like using Serverless Framework V.1 with the [Event Gateway plugin](https://github.com/serverless/serverless-event-gateway-plugin) as well as the [Event Gateway SDK](https://github.com/serverless/event-gateway-sdk):
+Your authorizer function will be invoked prior to any subscriptions on the event type. It will receive a JSON object payload with two fields:
 
-```yaml
-# serverless.yml
+- `event`, which is the CloudEvent object received by the Event Gateway.
+- `request`, which is the full HTTP request to the Event Gateway.
 
-service: users
+You can use fields of the `event` or `request`, such as an `Authorization` header, to authorize the event. 
 
-custom:
-  eventgateway: # Get this @ dashboard.serverless.com
-    url: user.create.request
-    accessKey: <yourkey>
-  eventTypes:
-    http.request
+Your authorizer function should respond to the authorization request with a JSON object.
 
-functions:
-  createUser:
-    handler: code.createUser
-    events:
-      - eventgateway:
-          type: sync
-          eventType: user.create.request
+If the event passes authorization and you would like to pass it along to any subscribed functions, your response object should contain an `authorization` key. The value for this key is an object with two keys: `principalId`, which is a string for identifying the principal user that sent the request, and `context`, which is an object with additional metadata to be passed to downstream subscribers.
 
-plugins:
-  - "@serverless/serverless-event-gateway-plugin"
-```
+Example of a successful authorization response:
 
-```javascript
-// Event Gateway SDK running on the client side (e.g. React)
-
-eventGateway.emit({
-  eventType: ‘user.create.request’,
-  data:  {
-    email: ‘john@serverless.com’
+```json
+{
+  "authorization": {
+    "principalId": "12345",
+    "context": {
+      "username": "my-user",
+      "role": "Admin"
+    }
   }
-})
-.then((response) => {
-   // Response from the Function that was set to handle this Event synchronously
-})
+}
 ```
 
-The great thing about this pattern is that you don’t have to worry about paths, methods or the general location of the Function that’s receiving this.  The experience is utterly simple.
+If the event does not pass authorization and you would like to reject it, your response object should contain an `error` key. The value for this key is an object with a `message` field that will be returned to the user.
 
-Keep in mind, you can also publish Events asynchronously too from your client to do all types of user activity tracking, error logging and more.
+Example of an unsuccessful authorization response:
 
-Lastly, you can combine both **synchronous** and **asynchronous** Subscriptions on a single Event.  
+```json
+{
+  "error": {
+    "message": "Invalid token."
+  }
+}
+```
 
-Here's an example using Serverless Framework V.1 and the [Event Gateway plugin](https://github.com/serverless/serverless-event-gateway-plugin), which synchronously processes an HTTP request to create a user, while asynchronously processing the HTTP request for analytics purposes and storing it in an Event log:
+## Connector Functions
 
-```yaml
-# serverless.yml
+In the function examples above, we have shown AWS Lambda functions as the backing compute for your function logic. However, for certain logic tasks, you may just be piping events from one system into another. For example, you may want to send all `user.created` events into AWS SQS for integrating with your traditional queue processing infrastructure, or you may want to pipe all `http.requests` into Amazon Kinesis Firehose for internal analytics.
 
-service: users-crud
+Rather than writing the glue code yourself in AWS Lambda functions, you can use *connector functions* to pipe the events directly to these downstream systems.
 
-custom:
-  eventgateway: # Get this @ dashboard.serverless.com
-    url: myorg-app.slsgateway.com
-    accessKey: <yourkey>
-  eventTypes:
-    http.request
+You can configure connector functions with the Event Gateway plugin. The Event Gateway plugin will configure all needed IAM permissions for the Event Gateway to use the resource.
 
+Connector functions are specified in the `functions` block just like AWS Lambda functions, but they have a special `type` property to indicate which type of function they are. It also includes an `inputs` object to pass configuration for the connector function.
+
+The following is an example of configuring an AWS SQS connector function with the Event Gateway plugin for the Serverless Framework.
+
+```yml
+functions:
+  sendToQueue:
+    type: awssqs
+    inputs:
+      logicalId: myQueue
+    events:
+      - eventgateway:
+          type: async
+          eventType: "user.created"
+
+resources:
+  Resources:
+    myQueue:
+      Type: "AWS::SQS::Queue"
+      Properties:
+        QueueName: "UserCreatedEvents"
+```
+
+In this example, our function indicates it's an AWS SQS connector function by setting `type: awssqs`. In the `inputs` block, it indicates that its CloudFormation Logical ID is `myQueue`. This matches the key of the AWS SQS queue that we create in the `resources` block of `serverless.yml`. The `logicalId` key is available whenever you are creating the downstream resource directly within the same service.
+
+If you want to utilize an existing resource, you can pass the ARN and any other required properties in the `inputs` block. For AWS SQS, this means the ARN and the Queue URL of the SQS queue:
+
+```yml
+functions:
+  sendToQueue:
+    type: awssqs
+    inputs:
+      arn: "arn:aws:sqs:us-east-1:123456789012:queue1"
+      queueUrl: "https://sqs.us-east-2.amazonaws.com/123456789012/queue1"
+    events:
+      - eventgateway:
+          type: async
+          eventType: "user.created"
+```
+
+The following connector functions are available:
+
+### AWS SQS
+
+```
+type: awssqs
+```
+
+```
+inputs:
+  logicalId: <logicalId of SQS Queue in resources block>
+
+OR
+
+inputs:
+  arn: "arn:aws:sqs:us-east-1:123456789012:queue1"
+  queueUrl: "https://sqs.us-east-2.amazonaws.com/123456789012/queue1"
+```
+
+This connector function sends a message with the contents of the subscribed event to an [AWS SQS](https://aws.amazon.com/sqs/) queue.
+
+### AWS Kinesis
+
+```
+type: awskinesis
+```
+
+```
+inputs:
+  logicalId: <logicalId of Kinesis stream in resources block>
+
+OR
+
+inputs:
+  arn: "arn:aws:kinesis:us-east-1:123456789012:stream/myStream"
+  streamName: "myStream"
+```
+
+This connector function sends a message with the contents of the subscribed event to an [Amazon Kinesis stream](https://aws.amazon.com/kinesis/).
+
+### AWS Kinesis Firehose
+
+```
+type: awsfirehose
+```
+
+```
+inputs:
+  logicalId: <logicalId of Kinesis Firehose stream in resources block>
+
+OR
+
+inputs:
+  arn: "arn:aws:firehose:us-east-1:123456789012:deliverystream/myFirehose"
+  deliveryStreamName: "myFirehose"
+```
+
+This connector function sends a message with the contents of the subscribed event to an [Amazon Kinesis Firehose stream](https://aws.amazon.com/kinesis/data-firehose/).
+
+# Subscriptions
+
+Now that we've covered event types and functions above, we can cover the core abstraction of the Event Gateway -- **Subscriptions**. The Event Gateway provides a centralized router for your events, and subscriptions are how you tie your data (events) to your logic (functions).
+
+With the Event Gateway plugin for the Serverless Framework, you can add a subscription in the Event Gateway by attaching an `eventgateway` subscription to your function. 
+
+The following example shows the basic syntax:
+
+```yml
+functions:
+  sendWelcomeEmail:
+    handler: handler.sendWelcomeEmail
+    events:
+      - eventgateway
+          type: async
+          eventType: user.created
+```
+
+In the `eventgateway` subscription, you'll need to specify the type of subscription ([sync vs. async](#sync-vs-async)) and the event type to which you are subscribing.
+
+## The `http.request` event type
+
+If your subscription is to the event type of `http.request`, you can interact with the subscription by making direct HTTP requests, just as you would any other REST API.
+
+For example, you could set up a REST API endpoint to create a user with the following syntax:
+
+```yml
 functions:
   createUser:
-    handler: code.createUser
+    handler: handler.createUser
+    events:
+      - eventgateway
+          type: sync
+          eventType: http.request
+          path: /users
+          method: POST
+          cors: true
+```
+
+You could consume this endpoint by sending a `POST` request to your [Event Gateway URL](#platform-and-event-gateway-url) on the path of `/users`.
+
+## Sync vs. async
+
+There are two types of subscriptions in the Event Gateway: synchronous and asynchronous. You should choose the type of subscription based on the type of result you want to return to the client interacting with the Event Gateway.
+
+With a synchronous subscription, the client will receive a response from the Event Gateway with the results of the function that has been called. This is comparable to a typical REST API use case -- you may be calling a "GetUser" API endpoint that returns a user object. Alternatively, you may be consuming a "CreateUser" API endpoint that creates a user, and you want confirmation that the user was created successfully.
+
+With an asynchronous subscription, the client will receive a response about whether the event was successfully received by the Event Gateway, but it will not receive any details about subscriptions to the event. These subscriptions are good for building a decoupled architecture -- the producing client does not need to know or care about the downstream consumers of a particular event. This is useful for broadcasting facts that happened, such as that a new user has been created or that an IoT light was turned off.
+
+You may have infinite asynchronous subscriptions to an event type on a path, but you may only have one synchronous subscription to an event type on a path.
+
+Here is an example `serverless.yml` that sets up three subscriptions (one sync, two async) to a single event type:
+
+```
+functions:
+  createInvoice:
+    handler: code.createInvoice
     events:
       - eventgateway:
           type: sync
-          eventType: http.request
-          path: /users/create
-          method: POST
-  addToAnalytics:
-    handler: code.addToAnalytics
+          eventType: user.created
+  sendWelcomeEmail:
+    handler: code.sendWelcomeEmail
     events:
       - eventgateway:
           type: async
-          eventType: http.request
-          path: /users/create
-          method: POST
-  storeEvent:
-    handler: code.storeEvent
+          eventType: user.created
+  addToCRM:
+    handler: code.addToCRM
     events:
       - eventgateway:
           type: async
-          eventType: http.request
-          path: /users/create
-          method: POST
-
-plugins:
-  - "@serverless/serverless-event-gateway-plugin"
+          eventType: user.created
 ```
+
+## CORS
+
+If you're interacting with the Event Gateway from a browser, you'll need to configure CORS on your Event Gateway endpoints. You can do this with the Event Gateway plugin for the Serverless Framework.
+
+For standard settings, you can set `cors: true`, as in the following example:
+
+```yml
+functions:
+  createUser:
+    handler: handler.createUser
+    events:
+      - eventgateway
+          type: sync
+          eventType: http.request
+          path: /users
+          method: POST
+          cors: true
+```
+
+This will use the following default CORS properties:
+
+- `Access-Control-Allowed-Origins`: ["*"]
+- `Access-Control-Allowed-Methods`: [`HEAD`, `GET`, `POST`]
+- `Access-Control-Allowed-Headers`: [`Origin`, `Accept`, `Content-Type`]
+
+If you want to customize your CORS properties, you can provide a `cors` object in your `serverless.yml`:
+
+```yml
+functions:
+  createUser:
+    handler: handler.createUser
+    events:
+      - eventgateway
+          type: sync
+          eventType: http.request
+          path: /users
+          method: POST
+          cors:
+            origins: 
+              - "*"
+            methods:
+              - GET
+              - POST
+              - OPTIONS
+            headers:
+              - Content-Type
+              - Authorization
+            allowCredentials: true
+```
+
+
+
