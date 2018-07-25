@@ -106,6 +106,10 @@ provider:
 functions:
   hello:
     handler: handler.hello
+    events:
+      - http:
+          path: /hello
+          method: get
 ```
 
 ### Deploy the Service
