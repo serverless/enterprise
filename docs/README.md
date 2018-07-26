@@ -27,8 +27,8 @@ After a few years of doing serverless development, we've designed the best possi
 Here's an overview of our concepts/abstractions and how they fit together:
 
 ```
-- Tenant / Event Gateway
-  - Applications
+- Tenant
+  - Applications + Event Gateways
     - Services
       - Functions
       - Events
@@ -44,14 +44,6 @@ Every Serverless Platform user gets a Tenant when they register.  They can invit
 
 Tenants are most often created for a team, a line of business, or an individual's personal workspace.
 
-### Event Gateway
-
-The [Event Gateway](https://www.github.com/serverless/event-gateway) is open-source pub/sub infrastructure for routing Events from any source to Functions running on any type of serverless compute (e.g. AWS Lambda, Azure Functions, containers).
-
-When you sign up for the Serverless Platform and create a Tenant, it comes with a hosted (aka "serverless") version of the Event Gateway (operated by us, Serverless Inc.).  This Event Gateway is shared across all of the Applications you have in a Tenant, enabling you to share Events across Applications easily and react to them with serverless Functions.
-
-You can also self-host the Event Gateway and plug it into the Serverless Platform, instead of using our hosted version.  If you're interested in this, message us [here](https://serverless.com/enterprise/).
-
 ### Application
 
 A serverless Application is built on serverless infrastructure, typically using Functions-as-a-Service (e.g. AWS Lambda) along with other serverless resources (e.g. DynamoDB, Aurora, Kinesis).
@@ -63,11 +55,19 @@ Examples of Applications:
 - An entire web, mobile or IoT application
 - A single Function
 
-Each Application gets its own subdomain on the Event Gateway that is shared across the parent Tenant.
+### Event Gateway
+
+The [Event Gateway](https://www.github.com/serverless/event-gateway) is open-source pub/sub infrastructure for routing Events from any source to Functions running on any type of serverless compute (e.g. AWS Lambda, Azure Functions, containers).
+
+When you sign up for the Serverless Platform and create an Application, it comes with a hosted (aka "serverless") version of the Event Gateway operated by us, Serverless Inc.  This Event Gateway is shared across all of the Services you have in an Application, enabling you to share Events across Services within an Application easily and react to them with serverless Functions.
+
+Each Application has its own subdomain on the hosted Event Gateway, which has this format:
 
 ```
-myapp.slsgateway.com
+tenantname-appname.slsgateway.com
 ```
+
+You can also self-host the Event Gateway and plug it into the Serverless Platform, instead of using our hosted version.  If you're interested in this, message us [here](https://serverless.com/enterprise/).
 
 ### Service
 
