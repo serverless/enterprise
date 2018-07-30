@@ -36,7 +36,7 @@ If you already have these set up, you can skip to the [Development](#development
 
 * You will need an access key for an AWS IAM User with full admin privileges
 * If you already have an access key, skip to the next task.
-* If you don't have an AWS account or access key, you can follow our guide [here to help you get an account setup](./setup-aws-account.md).
+* If you don't have an AWS account or access key, you can follow our guide [here to help you get an account setup](./..//setup-aws-account.md).
 
 ### Install the Serverless Framework
 
