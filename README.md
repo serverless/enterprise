@@ -11,6 +11,7 @@ This repo contains technical documentation on the Serverless Platform as well as
 * [Serverless Framework V.1](https://www.github.com/serverless/serverless)
 * [Serverless Dashboard User Guide](./docs/dashboard-user-guide.md)
 * [Event Gateway](https://www.github.com/serverless/event-gateway)
+* [FAQ](./docs/faq.md)
 
 #### Maintainer Notes
 
