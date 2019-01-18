@@ -12,7 +12,7 @@ The Serverless Framework Enterprise contains the following features:
 
 Metrics and alerts for your serverless applications.  Serverless Insights help you monitor and optimize your serverless applications.
 
-### Serverless Safeguards
+### [Serverless Safeguards](./safeguards.md)
 
 Pre-configured operational and security best practices. Serverless Safeguards performs a series of policy checks when running the serverless deploy command.
 
