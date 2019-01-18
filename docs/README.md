@@ -8,7 +8,7 @@ However, many teams and organizations don't know how to do serverless developmen
 
 The Serverless Framework Enterprise contains the following features:
 
-### Serverless Insights
+### [Serverless Insights](./insights.md)
 
 Metrics and alerts for your serverless applications.  Serverless Insights help you monitor and optimize your serverless applications.
 
