@@ -1,18 +1,18 @@
-# Dashboard - User Guide
+# Serverless Framework Enterprise - User Guide
 
-The Dashboard is designed to be the ultimate operations console for serverless application development. Serverless application infrastructures can comprise multiple services across service providers, which is why a simple UI for interfacing with them is so crucial. Our goal with the Dashboard is to make monitoring, collaborating and securing your serverless applications just as easy as using our other products.
+The Serverless Framework Enterprise is designed to be the ultimate operations console for serverless application development. Serverless application infrastructures can comprise multiple services across service providers, which is why a simple UI for interfacing with them is so crucial. Our goal with the Serverless Framework Enterprise is to make monitoring, collaborating and securing your serverless applications just as easy as using our other products.
 
 
-We built the Dashboard so that it interfaces seamlessly with the Serverless Framework and Event Gateway, and whatever other providers and resources you include in your application. Deploy once from the CLI and immediately view your application from the Dashboard for easy management. 
+We built the Serverless Framework Enterprise so that it interfaces seamlessly with the Serverless Framework open-source CLI. Deploy once from the CLI and immediately view your application from the Serverless Framework Enterprise dasboard for easy management. 
 
 
 ## From sign up to first deploy
 
-Signing up for Dashboard is simple: either run the ```sls login``` command from the CLI and follow the prompts, or visit [dashboard.serverless.com](https://dashboard.serverless.com) directly. 
+Signing up for the Serverless Framework Enterprise is simple: either run the ```sls login``` command from the CLI and follow the prompts, or visit [dashboard.serverless.com](https://dashboard.serverless.com) directly. 
 
 ![Landing page](https://s3.amazonaws.com/assets.github.serverless/platform/dashboard-landing-page.png)
 
-Dashboard supports multiple user authentication options including GitHub, Google, and email. If you’re signing up via email we’ll need to verify your credentials with a quick verification email link.
+Serverless Framework Enterprise supports multiple user authentication options including GitHub, Google, and email. If you’re signing up via email we’ll need to verify your credentials with a quick verification email link.
 
 Once you’re in, there’s a simple 2-step onboarding process to follow: 
 
@@ -20,21 +20,21 @@ Once you’re in, there’s a simple 2-step onboarding process to follow:
 
 ![Create username](https://s3.amazonaws.com/assets.github.serverless/platform/onboarding-username.png)
 
-* **Create a default application**: The Serverless Platform uses the Application concept as a unit of organization for grouping related logic and infrastructure (like any other software application). We’ll have you create one here. Each Application gets its own subdomain on the Event Gateway that is shared across the parent Tenant,  for example ```myapp.slsgateway.com```.
+* **Create a default application**: The Serverless Framework Enterprise uses the Application concept as a unit of organization for grouping related logic and infrastructure (like any other software application). We’ll have you create one here. 
 
 ![Create default app](https://s3.amazonaws.com/assets.github.serverless/platform/onboarding-first-app-name.png)
 
-After the onboarding you’ll land on an empty Service page with instructions for how to complete your first deploy. If you’re an existing user of the Framework you’ll need to add both `application` and `tenant` fields to your `serverless.yml` to view your services in the dashboard. Follow the instructions on this page and you’ll be ready in no time!
+After the onboarding you’ll land on an empty Service page with instructions for how to complete your first deploy. If you’re an existing user of the Serverless Framework open-source CLI you’ll need to add both `application` and `tenant` fields to your `serverless.yml` to view your services in the dashboard. Follow the instructions on this page and you’ll be ready in no time!
 
 ## Create an app
 
-The Serverless Platform and Dashboard use the Application concept as a unit of organization for grouping related logic and infrastructure (like any other software application). You can easily create new Applications from the UI. 
+The Serverless Framework Enterprise uses the Application concept as a unit of organization for grouping related logic and infrastructure (like any other software application). You can easily create new Applications from the UI. 
 
 ![Create App button](https://s3.amazonaws.com/assets.github.serverless/platform/new-app-button-big.png)
 
-1. From the Develop --> Applications screen, click on the ```+ App``` button in the top right of the screen.
+1. From the View --> Applications screen, click on the ```+ App``` button in the top right of the screen.
 
-2. Name your new application and confirm the subdomain URL. 
+2. Name your new application. 
 
     ![choose app name](https://s3.amazonaws.com/assets.github.serverless/platform/new-app-choose-name.png)
 
@@ -45,7 +45,7 @@ The Serverless Platform and Dashboard use the Application concept as a unit of o
 
 ## Explore a deployed service
 
-Once you’ve deployed an Application successfully from the CLI, you’ll be able to explore the services contained within it from the Dashboard. 
+Once you’ve deployed an Application successfully from the CLI, you’ll be able to explore the services contained within it from the Serverless Framework Enterprise dashboard. 
 
 ### Service Overview
 
@@ -60,22 +60,11 @@ However, once you’ve deployed a Service you’ll see a lot more information:
 
 
 * On the left, a list of Functions, Subscriptions and Resources that were last deployed
-* On the right, a snapshot of important metadata regarding your service, including:
+* On the right, a snapshot of important data regarding your service, including:
 
-  * Total number of functions that were deployed
-  * Total number of subscriptions that were deployed
-  * Who performed the most recent deployment and when
-  * The Provider the Service is deployed to
-  * Any Readme that’s associated with the Service (i.e. from a Github repo)
-
-Services can contain a lot of information, which we’ve broken out into separate tabbed views on the Overview screen:
-
-![Overview tabs](https://s3.amazonaws.com/assets.github.serverless/platform/service+overview+-+tabs.png)
-
-* Logs: a list of logs for the service. Depending on how you configure your logs pipeline, you might see Event Gateway logs, function logs, or a mix of both. [Click here to learn more about logs](#logs).
-* The `serverless.yml` of your deployed service. This is especially useful if you’ve been invited to view a service but don’t have access to the source code repo.
-* A list of collaborators within the service. Collaborators are people who have deployed the service (performed a creation, removal or update). [Click here to see how to invite people to collaborate on your tenant](#invite-collaborators).
-* A view of the deployment history for the service. [Click here for an in-depth look at the deployments features inside Dashboard](#deployment-history).
+  * A summary of your Service
+  * An activity and insights feed that will show you deployments, failed deployments and alerts.
+  * Key metrics for your Service, like number of invocations and errors, and durations
 
 ### Function Overview
 
@@ -104,25 +93,10 @@ Drilling in you’ll see a range of information, including but not limited to:
 * A list of functions included in the subscription
 Any permissions-related metadata
 
-### Deployment history
-
-Serverless is unique in part because it shortens the development cycle by orders of magnitude. However, continuous deployment without a simple record to navigate makes it hard to keep track of things when they’re working well - or dig in when they break. Dashboard solves this by providing a historical view of deployments, including who performed it, when, and its status (successful, failed, or in-progress). Couple this with your own CI/CD pipeline tools, and you get drastically increased visibility into the health of your serverless application.
-
-![deploys](https://s3.amazonaws.com/assets.github.serverless/platform/collaboration+-+deploys+main.png)
-
-To access the deployments view, navigate into a specific Service and select the “Deploys” tab. 
-
-Coming soon: the ability to view the specific infrastructure pieces that have changed, in addition to the code diffs associated with a specific deployment.
-
-### Logs
-
-Serverless is, first and foremost, event-driven. As such, it’s useful to see the lifecycle of a function or event, and to hone in on any errors that might have arisen during a deployment. The Dashboard Logs view is designed to help you understand the flow of events through your system, and to track down any problems. 
-
-Logs are available on the Application overview screen, and are pulled from all the services inside a particular app. Logs are sorted from newest-to-oldest descending, and to see new logs you’ll need to refresh the page. 
 
 ### Invite collaborators
 
-Serverless unlocks the potential of developers to work and build more quickly and efficiently than ever before - and now, we’re extending this capability to include teams. Invited team members have access to all the applications inside a Tenant; in the future we will support more fine-grained permissions controls at the service and infrastructure level.
+Serverless unlocks the potential of developers to work and build more quickly and efficiently than ever before - and now, we’re extending this capability to include teams. Invited team members have access to all the applications inside a Tenant.
 
 Inviting team members is easy: 
 
@@ -138,7 +112,6 @@ Inviting team members is easy:
 
 ### Provision access keys
 
-Along with Dashboard and the Framework, Serverless now offers the hosted Event Gateway as a fully managed service. To setup the hosted Event Gateway you’ll need to provision Access Keys that you then set as environment variables before deploying an application. 
 
 We provide a default access key when you first sign up, but we recommend creating new ones for additional security.
 
@@ -160,4 +133,3 @@ You can remove an access key at any time by hovering over it and clicking the �
 
 ![remove key](https://s3.amazonaws.com/assets.github.serverless/platform/remove+key.png)
     
-
