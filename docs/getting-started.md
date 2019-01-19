@@ -41,12 +41,6 @@ $ serverless -v
 x.x.x
 ```
 
-### Install the Enterprise plugin
-Run this command in the terminal
-```sh
-sls plugin install -n @serverless/enterprise-plugin
-```
-
 ### Configure AWS Access Keys in Serverless Framework
 In order for the Serverless Framework to deploy your application to your AWS account, it will need to be configured with your AWS credentials. You can follow our instructions [here for configuring this](./setup-aws-account.md#using-aws-access-keys).
 
