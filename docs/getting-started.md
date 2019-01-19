@@ -91,13 +91,14 @@ This is what the new information looks like in context:
 
 ```yaml
 service: my-service
-
-app: your-app-name
-tenant: your-tenant-name
+frameworkVersion: ">=1.3.7"
 
 provider:
   name: aws
   runtime: nodejs8.10
+
+app: your-app-name
+tenant: your-tenant-name
 
 functions:
   hello:
@@ -106,6 +107,10 @@ functions:
       - http:
           path: /hello
           method: get
+
+plugins:
+  - '@serverless/enterprise-plugin'
+
 ```
 
 ### Deploy the Service
