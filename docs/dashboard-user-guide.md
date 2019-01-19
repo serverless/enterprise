@@ -10,19 +10,13 @@ We built the Serverless Framework Enterprise so that it interfaces seamlessly wi
 
 Signing up for the Serverless Framework Enterprise is simple: either run the ```sls login``` command from the CLI and follow the prompts, or visit [dashboard.serverless.com](https://dashboard.serverless.com) directly. 
 
-![Landing page](https://s3.amazonaws.com/assets.github.serverless/platform/dashboard-landing-page.png)
-
 Serverless Framework Enterprise supports multiple user authentication options including GitHub, Google, and email. If you’re signing up via email we’ll need to verify your credentials with a quick verification email link.
 
 Once you’re in, there’s a simple 2-step onboarding process to follow: 
 
 * **Choose a username**: Depending on your auth method, we will have pre-filled a username for you. However, you’re welcome to choose a new one at this step. Choose carefully, as in the background we also create a default Tenant with the same name that we associate with your user profile. A Tenant is a secure workspace which can contain one or more Applications.
 
-![Create username](https://s3.amazonaws.com/assets.github.serverless/platform/onboarding-username.png)
-
 * **Create a default application**: The Serverless Framework Enterprise uses the Application concept as a unit of organization for grouping related logic and infrastructure (like any other software application). We’ll have you create one here. 
-
-![Create default app](https://s3.amazonaws.com/assets.github.serverless/platform/onboarding-first-app-name.png)
 
 After the onboarding you’ll land on an empty Service page with instructions for how to complete your first deploy. If you’re an existing user of the Serverless Framework open-source CLI you’ll need to add both `application` and `tenant` fields to your `serverless.yml` to view your services in the dashboard. Follow the instructions on this page and you’ll be ready in no time!
 
@@ -30,18 +24,11 @@ After the onboarding you’ll land on an empty Service page with instructions fo
 
 The Serverless Framework Enterprise uses the Application concept as a unit of organization for grouping related logic and infrastructure (like any other software application). You can easily create new Applications from the UI. 
 
-![Create App button](https://s3.amazonaws.com/assets.github.serverless/platform/new-app-button-big.png)
-
 1. From the View --> Applications screen, click on the ```+ App``` button in the top right of the screen.
 
 2. Name your new application. 
 
-    ![choose app name](https://s3.amazonaws.com/assets.github.serverless/platform/new-app-choose-name.png)
-
 3. And that’s it - your application is ready to be deployed from the CLI! 
-
-    ![confirm app URL](https://s3.amazonaws.com/assets.github.serverless/platform/new-app-URL.png)
-
 
 ## Explore a deployed service
 
@@ -51,13 +38,7 @@ Once you’ve deployed an Application successfully from the CLI, you’ll be abl
 
 This view showcases the most important information about your deployed service. If you haven’t deployed a service, you’ll see instructions for how to go about doing just that:
 
-![Undeployed service](https://s3.amazonaws.com/assets.github.serverless/platform/service-undeployed.png)
-
-
 However, once you’ve deployed a Service you’ll see a lot more information: 
-
-![Service overview](https://s3.amazonaws.com/assets.github.serverless/platform/service+overview.png)
-
 
 * On the left, a list of Functions, Subscriptions and Resources that were last deployed
 * On the right, a snapshot of important data regarding your service, including:
@@ -76,13 +57,9 @@ In addition to viewing a list of deployed functions, you can drill in to a speci
 * Provider information, i.e. for AWS: the ARN, account ID, and region
 * Package information including codeSHA, code size, main URL, and the handler name
 
-![function overview](https://s3.amazonaws.com/assets.github.serverless/platform/function+overview.png)
-
 ### Subscription Overview
 
 A subscription indicates the relationship between a Function and an Event. As such, the left navigation shows the subscription type (i.e. aws.apigateway.http), metadata such as path and method (or whatever is relevant for the subscription type), and any associated function(s).
-
-![subscription overview page](https://s3.amazonaws.com/assets.github.serverless/platform/event+gateway+-+subscription+main.png)
 
 Drilling in you’ll see a range of information, including but not limited to:
 
@@ -108,8 +85,6 @@ Inviting team members is easy:
 
 4. Hit “Send Invite” and you’re done!
 
-![collaborate page screenshot](https://s3.amazonaws.com/assets.github.serverless/platform/collaboration+-+invite+main.png)
-
 ### Provision access keys
 
 
@@ -123,13 +98,7 @@ Provisioning new access keys is straightforward:
 
 3. Name your access key. We recommend a name that you’ll remember in the future.
 
-    ![name key](https://s3.amazonaws.com/assets.github.serverless/platform/create+key.png)
-
 4. Before closing out, be sure to copy the secret access key somewhere safe, as it’s the only time you’ll be able to view it.
 
-    ![secret key](https://s3.amazonaws.com/assets.github.serverless/platform/secret+key.png)
-
 You can remove an access key at any time by hovering over it and clicking the “X”. Once you do this it can’t be undone, so do keep that in mind.
-
-![remove key](https://s3.amazonaws.com/assets.github.serverless/platform/remove+key.png)
     
