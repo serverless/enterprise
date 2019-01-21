@@ -92,7 +92,7 @@ When a policy check is performed, the policy can respond with a **pass**,
 **fail** or **warning**. A fail will block and prevent the deploy from
 occurring. A warning will display a message but the deploy will continue. 
 
-If one or more of the policy checks fail the command will return a1 exit code so
+If one or more of the policy checks fail the command will return a 1 exit code so
 it can be detected from a script or CI/CD service.
 
 ## Configuring Policies
