@@ -44,13 +44,6 @@ x.x.x
 ### Configure AWS Access Keys in Serverless Framework
 In order for the Serverless Framework to deploy your application to your AWS account, it will need to be configured with your AWS credentials. You can follow our instructions [here for configuring this](./setup-aws-account.md#using-aws-access-keys).
 
-### Login via the cli
-In order to allow the Serverless Framework to access the Serverless Framework Enterprise dashboard you will need to provide the framework with platform credentials. To do this simply use the `login` command and the framework will download platform access keys behind the scenes.
-
-```sh
-serverless login
-```
-
 ## Development
 
 ### Create an application on the Serverless Framework Enterprise
@@ -74,8 +67,16 @@ $ serverless create -u https://github.com/serverless/enterprise-template
 
 # Change into the newly created directory
 $ cd my-service
-```
 
+# Install Serverless Enterprise dependencies
+$ npm install
+```
+### Login via the cli
+In order to allow the Serverless Framework to access the Serverless Framework Enterprise dashboard you will need to provide the framework with platform credentials. To do this simply use the `login` command and the framework will download platform access keys behind the scenes.
+
+```sh
+serverless login
+```
 
 ### Specify the Tenant and Application
 
@@ -91,7 +92,7 @@ This is what the new information looks like in context:
 
 ```yaml
 service: my-service
-frameworkVersion: ">=1.3.7"
+frameworkVersion: ">=1.36.2"
 
 provider:
   name: aws
