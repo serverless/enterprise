@@ -1,14 +1,14 @@
 # Serverless Framework Enterprise - Getting Started
 
-Here's how to deploy a simple service to the Serverless Framework Enterprise. It uses your own AWS credentials and reports the information to the Serverless Framework Enterprise dashboard after deployment, providing a visual interface for viewing the current state of your serverless application.
+Here's how to use the Serverless Framework open-source CLI to deploy a simple service to AWS and report deployment information and operational metrics to the Serverless Framework Enterprise, which will then proved a visual interface for viewing the current state of your serverless application.
 
 ## Setup
 
 There are a few things you will need to setup before using the Serverless Framework Enterprise. This guide will walk you through each of these steps.
 * Should have node 6.x or later installed
 * Should have a new AWS IAM User with full admin privileges
-* Should have the Serverless Framework installed
-* Should have your AWS credentials configured with the Serverless Framework
+* Should have the Serverless Framework open-source CLI installed
+* Should have your AWS credentials configured with the Serverless Framework open-source CLI
 * Should have an account setup on the [Serverless Framework Enterprise dashboard](https://dashboard.serverless.com/)
 
 ### Install node JS and NPM
@@ -30,7 +30,7 @@ x.x.x
 * If you don't have an AWS account or access key, you can follow our guide [here to help you get an account setup](./setup-aws-account.md).
 
 
-### Install the Serverless Framework
+### Install the Serverless Framework open-source CLI
 * Run this command in your terminal
 ```sh
 npm install -g serverless
@@ -41,8 +41,8 @@ $ serverless -v
 x.x.x
 ```
 
-### Configure AWS Access Keys in Serverless Framework
-In order for the Serverless Framework to deploy your application to your AWS account, it will need to be configured with your AWS credentials. You can follow our instructions [here for configuring this](./setup-aws-account.md#using-aws-access-keys).
+### Configure AWS Access Keys in your Serverless Framework open-source CLI
+In order for the Serverless Framework open-source CLI to deploy your application to your AWS account, it will need to be configured with your AWS credentials. You can follow our instructions [here for configuring this](./setup-aws-account.md#using-aws-access-keys).
 
 ## Development
 
@@ -52,14 +52,12 @@ The Serverless Framework Enterprise packages services together in a higher level
 
 To create an application on the Serverless Framework Enterprise follow these instructions
 1. Open the Serverless Framework Enterprise in a web browser https://dashboard.serverless.com
-2. Click on the `+ App` button
-3. Enter a name for your Application.
-4. Click `SAVE`
+2. Click on the `Sign Up` button and follow the prompts to create a User, Tenant and Application
 
 
 ### Create a new Service
 
-Create a new Service using the sample Enterprise template, specifying a unique name and an optional path for your Service.
+Use the Serverless Framework open-source CLI to create a new Service using the sample Enterprise template, specifying a unique name and an optional path for your Service.
 
 ```sh
 # Create a new Serverless Service/Project
@@ -72,7 +70,7 @@ $ cd my-service
 $ npm install
 ```
 ### Login via the cli
-In order to allow the Serverless Framework to access the Serverless Framework Enterprise dashboard you will need to provide the framework with platform credentials. To do this simply use the `login` command and the framework will download platform access keys behind the scenes.
+In order to allow the Serverless Framework open-source CLI to access the Serverless Framework Enterprise dashboard you will need to provide the framework with platform credentials. To do this simply use the `login` command and the framework will download platform access keys behind the scenes.
 
 ```sh
 serverless login
@@ -80,7 +78,7 @@ serverless login
 
 ### Specify the Tenant and Application
 
-In order to deploy a Service to your App using the Serverless Framework, you need to specify the App and your tenant inside your `serverless.yml` file:
+In order to deploy a Service to your App using the Serverless Framework open-source CLI, you need to specify the App and your tenant inside your `serverless.yml` file:
 
 1. Specify the app and tenant you’d like to deploy a service to:
 ```yaml
@@ -143,7 +141,7 @@ serverless logs -f hello -t
 
 ### Removing a service
 
-If at any point, you no longer need your Service, you can run the following command to remove the Functions, Events and Resources that were created, and ensure that you don't incur any unexpected charges.
+If at any point, you no longer need your Service, you can run the following command to remove the Functions, Events and Resources that were created.  This will delete the AWS resources you created and ensure that you don't incur any unexpected charges. It will also remove the Service from your Serverless Framework Enterprise dashboard.
 
 ```sh
 serverless remove
