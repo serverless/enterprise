@@ -5,8 +5,9 @@ Insights is a new feature introduced in Serverless Framework Enterprise to provi
 ## Prerequisites
 
 - Enterprise Plugin must be installed ([new app](./getting-started.md#install-the-enterprise-plugin), [updating](./update.md))
-- Serverless Framework Version 1.3.7 or greater
+- Serverless Framework version 1.3.7 or greater
 - Services must run in AWS US East
+- Functions must be using the nodejs runtime
 
 ## Installing
 
