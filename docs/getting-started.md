@@ -1,15 +1,15 @@
-# Serverless Platform - Getting Started
+# Serverless Framework Enterprise - Getting Started
 
-Here's how to deploy a simple service to the Serverless Platform. It uses your own AWS credentials and reports the information to the platform after deployment, providing a visual interface for viewing the current state of your serverless application.
+Here's how to deploy a simple service to the Serverless Framework Enterprise. It uses your own AWS credentials and reports the information to the Serverless Framework Enterprise dashboard after deployment, providing a visual interface for viewing the current state of your serverless application.
 
 ## Setup
 
-There are a few things you will need to setup before using the Serverless Platform. This guide will walk you through each of these steps.
+There are a few things you will need to setup before using the Serverless Framework Enterprise. This guide will walk you through each of these steps.
 * Should have node 6.x or later installed
 * Should have a new AWS IAM User with full admin privileges
 * Should have the Serverless Framework installed
 * Should have your AWS credentials configured with the Serverless Framework
-* Should have an account setup on https://serverless.com
+* Should have an account setup on the [Serverless Framework Enterprise dashboard](https://dashboard.serverless.com/)
 
 ### Install node JS and NPM
 * Follow instructions here https://nodejs.org/en/download/package-manager/
@@ -45,7 +45,7 @@ x.x.x
 In order for the Serverless Framework to deploy your application to your AWS account, it will need to be configured with your AWS credentials. You can follow our instructions [here for configuring this](./setup-aws-account.md#using-aws-access-keys).
 
 ### Login via the cli
-In order to allow the Serverless framework to access the platform you will need to provide the framework with platform credentials. To do this simply use the `login` command and the framework will download platform access keys behind the scenes.
+In order to allow the Serverless Framework to access the Serverless Framework Enterprise dashboard you will need to provide the framework with platform credentials. To do this simply use the `login` command and the framework will download platform access keys behind the scenes.
 
 ```sh
 serverless login
@@ -53,12 +53,12 @@ serverless login
 
 ## Development
 
-### Create an application on the platform
+### Create an application on the Serverless Framework Enterprise
 
-The Serverless Platform packages services together in a higher level application concept. Applications can contain one or more Service, each of which can be independently deployed. This abstraction is perfect for allowing more than one team to work on a single app or simply for structuring your application in such a way where parts of it are independently manageable.
+The Serverless Framework Enterprise packages services together in a higher level application concept. Applications can contain one or more Service, each of which can be independently deployed. This abstraction is perfect for allowing more than one team to work on a single application or simply for structuring your application in such a way where parts of it are independently manageable.
 
-To create an application on the Serverless Platform follow these instructions
-1. Open the Severless Dashboard in a web browser https://dashboard.serverless.com
+To create an application on the Serverless Framework Enterprise follow these instructions
+1. Open the Serverless Framework Enterprise in a web browser https://dashboard.serverless.com
 2. Click on the `+ App` button
 3. Enter a name for your Application.
 4. Click `SAVE`
@@ -66,11 +66,11 @@ To create an application on the Serverless Platform follow these instructions
 
 ### Create a new Service
 
-Create a new Service using the Node.js template, specifying a unique name and an optional path for your Service.
+Create a new Service using the sample Enterprise template, specifying a unique name and an optional path for your Service.
 
 ```sh
 # Create a new Serverless Service/Project
-$ serverless create --template aws-nodejs --path my-service
+$ serverless create -u https://github.com/serverless/enterprise-template
 
 # Change into the newly created directory
 $ cd my-service
@@ -91,13 +91,14 @@ This is what the new information looks like in context:
 
 ```yaml
 service: my-service
-
-app: your-app-name
-tenant: your-tenant-name
+frameworkVersion: ">=1.3.7"
 
 provider:
   name: aws
   runtime: nodejs8.10
+
+app: your-app-name
+tenant: your-tenant-name
 
 functions:
   hello:
@@ -106,6 +107,10 @@ functions:
       - http:
           path: /hello
           method: get
+
+plugins:
+  - '@serverless/enterprise-plugin'
+
 ```
 
 ### Deploy the Service
