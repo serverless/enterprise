@@ -1,6 +1,6 @@
 # Serverless Framework Enterprise - Getting Started
 
-Here's how to use the Serverless Framework open-source CLI to deploy a simple service to AWS and report deployment information and operational metrics to the Serverless Framework Enterprise, which will then proved a visual interface for viewing the current state of your serverless application.
+Here's how to use the Serverless Framework open-source CLI to deploy a simple service to AWS and report deployment information and operational metrics to the Serverless Framework Enterprise.
 
 ## Setup
 
