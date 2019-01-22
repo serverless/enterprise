@@ -14,7 +14,9 @@ Safeguards are enabled by default in the Enterprise plugin.
 ## Default Policies
 
 The following policies are included in the Enterprise plugin and enabled by
-default. These plugins do not require any additional configuration.
+default. These plugins do not require any additional configuration. They are all
+set to be warnings, not failures, so if the policy check fails, the `deploy`
+command will not be blocked.
 
 ### No "\*" in IAM Role statements
 
@@ -30,8 +32,7 @@ statements.
 
 Ensures that the environment variables configured on the AWS Lambda functions
 do not contain environment variables values which follow patterns of common
-credential formats. This policy has some risk of false-positives, so it returns
-a warning, not an failure.
+credential formats.
 
 ### Ensure Dead Letter Queues are attached to functions
 
@@ -54,8 +55,8 @@ zero events, have an attached [Dead Letter Queue](https://docs.aws.amazon.com/la
 ## Running Policy Checks
 
 The policy checks are performed as a part of the `serverless deploy` command.
-This will load the safeguard settings from the `serverless.yml` file to determine which policies
-to evaluate.
+This will load the safeguard settings from the `serverless.yml` file to
+determine which policies to evaluate.
 
 **Example deploy**
 ```sh
@@ -103,8 +104,8 @@ individual policies and also configure individual policies.
 
 ### Disabling Safeguards
 
-It can be disabled by adding the `safeguard: false` setting to the `custom` block
-in your `serverless.yml`.
+It can be disabled by adding the `safeguard: false` setting to the `custom`
+block in your `serverless.yml`.
 
 **serverless.yml**
 ```yaml
