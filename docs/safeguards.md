@@ -26,7 +26,9 @@ This policy performs a simple check to prevent "\*" permissions being used in
 AWS IAM Roles by checking for wildcards on Actions and Resources in grant
 statements.
 
-**Resolution**: Update the [custom IAM Roles](https://serverless.com/framework/docs/providers/aws/guide/iam#custom-iam-roles)
+#### Resolution
+
+Update the [custom IAM Roles](https://serverless.com/framework/docs/providers/aws/guide/iam#custom-iam-roles)
 in the `serverless.yml` to remove IAM Role Statements which grant access to "\*"
 on Actions and Resources. If a plugin generates IAM Role Statements, follow the
 instructions provided by the plugin developer to mitigate the issue.
@@ -35,14 +37,22 @@ instructions provided by the plugin developer to mitigate the issue.
 
 **ID: no-secret-env-vars**
 
-Ensures that the environment variables configured on the AWS Lambda functions
+Ensures that the [environment variables configured on the AWS Lambda functions](https://serverless.com/framework/docs/providers/aws/guide/functions#environment-variables)
 do not contain environment variables values which follow patterns of common
 credential formats.
 
-**Resolution**: Remove the credentials from the AWS Lambda function environment
-variables. Use [reference variables from the SSM Prameter Store](https://serverless.com/framework/docs/providers/aws/guide/variables/#reference-variables-using-the-ssm-parameter-store)
-to reference the credentials in the AWS Lambda Functions. If the policy check is
-a false positive, it may be necessary to ignore the warning on each deploy.
+#### Resolution
+
+Resovling this issue requires that the AWS Lambda function environment variables
+do not contain any plain-text credentials; however, your functions may still
+require those credentials to be passed in by other means.
+
+There are two recommended alternativves of passing in credentials to your AWS
+Lambda functions:
+
+- **SSM Parameter Store**: Use [reference variables from the SSM Prameter Store](https://serverless.com/framework/docs/providers/aws/guide/variables/#reference-variables-using-the-ssm-parameter-store)
+to reference the credentials in the AWS Lambda Functions.
+- **KMS Encryption**: Encrypt the environment variables using [KMS Keys](https://serverless.com/framework/docs/providers/aws/guide/functions#kms-keys).
 
 ### Ensure Dead Letter Queues are attached to functions
 
@@ -62,8 +72,10 @@ zero events, have an attached [Dead Letter Queue](https://docs.aws.amazon.com/la
 - cognitoUserPool
 - alexaHomeSkill
 
-**Resolution**: Configure the [Dead Letter Queue with SNS or SQS](https://serverless.com/framework/docs/providers/aws/guide/functions#dead-letter-queue-dlq) for all the functions which
-require the DLQ to be configured.
+#### Resolution
+
+Configure the [Dead Letter Queue with SNS or SQS](https://serverless.com/framework/docs/providers/aws/guide/functions#dead-letter-queue-dlq)
+for all the functions which require the DLQ to be configured.
 
 ## Running Policy Checks
 
