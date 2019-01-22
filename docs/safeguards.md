@@ -63,7 +63,7 @@ zero events, have an attached [Dead Letter Queue](https://docs.aws.amazon.com/la
 - alexaHomeSkill
 
 **Resolution**: Configure the [Dead Letter Queue with SNS or SQS](https://serverless.com/framework/docs/providers/aws/guide/functions#dead-letter-queue-dlq) for all the functions which
-require the DLG to be configured.
+require the DLQ to be configured.
 
 ## Running Policy Checks
 
