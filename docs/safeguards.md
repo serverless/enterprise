@@ -26,6 +26,11 @@ This policy performs a simple check to prevent "\*" permissions being used in
 AWS IAM Roles by checking for wildcards on Actions and Resources in grant
 statements.
 
+**Resolution**: Update the [custom IAM Roles](https://serverless.com/framework/docs/providers/aws/guide/iam#custom-iam-roles)
+in the `serverless.yml` to remove IAM Role Statements which grant access to "\*"
+on Actions and Resources. If a plugin generates IAM Role Statements, follow the
+instructions provided by the plugin developer to mitigate the issue.
+
 ### No clear-text credentials in environment variables
 
 **ID: no-secret-env-vars**
@@ -33,6 +38,11 @@ statements.
 Ensures that the environment variables configured on the AWS Lambda functions
 do not contain environment variables values which follow patterns of common
 credential formats.
+
+**Resolution**: Remove the credentials from the AWS Lambda function environment
+variables. Use [reference variables from the SSM Prameter Store](https://serverless.com/framework/docs/providers/aws/guide/variables/#reference-variables-using-the-ssm-parameter-store)
+to reference the credentials in the AWS Lambda Functions. If the policy check is
+a false positive, it may be necessary to ignore the warning on each deploy.
 
 ### Ensure Dead Letter Queues are attached to functions
 
@@ -51,6 +61,9 @@ zero events, have an attached [Dead Letter Queue](https://docs.aws.amazon.com/la
 - coudwatchLog
 - cognitoUserPool
 - alexaHomeSkill
+
+**Resolution**: Configure the [Dead Letter Queue with SNS or SQS](https://serverless.com/framework/docs/providers/aws/guide/functions#dead-letter-queue-dlq) for all the functions which
+require the DLG to be configured.
 
 ## Running Policy Checks
 
