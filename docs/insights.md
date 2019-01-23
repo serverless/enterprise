@@ -49,17 +49,17 @@ On a per function basis, the new error insight runs once per minute, tracks erro
 
 An escalated invocation count can mean good things (e.g. more traffic) or bad things (e.g. higher costs or a runaway function).  This alert helps you get out in front of both the good and the bad scenarios.
 
-The escalated invocation count insight runs once per minute and calculates the sum of invocations for a function over the prior five minutes. It then compares this most recent five minute invocaton count against the highest five minute invocation count recorded during the prior 48 hours. If the most recent five minute invocation count is 25% greater than the highest five minute invocation count over the previous 48 hours an alert will be generated.
+The escalated invocation count insight runs once per minute and calculates the sum of invocations for a function over the prior five minutes. It then compares this most recent five minute invocation count against the highest five minute invocation count recorded during the prior 48 hours. If the most recent five minute invocation count is 25% greater than the highest five minute invocation count over the previous 48 hours an alert will be generated.
 
 ### Unused memory
 
 Configured memory for a function defines memory, cpu, and I/O capacity. It is also what defines a function's price.  While there are sometimes good reasons to overprovision memory (e.g. because your workload is cpu bound), unused memomory can often represent an opportunity to save money by better optimizing your function's configured memory.
 
-The unused memory insight runs once per week at midnight UTC on Sunday.  It looks at all invocations of a function over the prior seven days and identifies the funcition invocation during that period that used the most amount of its configured memory.  If that amount is less than 80% of the function's configured mememory it will generate an alert.
+The unused memory insight runs once per week at midnight UTC on Sunday.  It looks at all invocations of a function over the prior seven days and identifies the funcition invocation during that period that used the most amount of its configured memory.  If that amount is less than 80% of the function's configured memory it will generate an alert.
 
 ## Metrics
 
-As part of the Serverless Insgights feature we also include a set of pre-configured report widgets, including the following:
+As part of the Serverless Insights feature we also include a set of pre-configured report widgets, including the following:
 
 ### Invocations
 
