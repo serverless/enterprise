@@ -50,8 +50,9 @@ require those credentials to be passed in by other means.
 There are two recommended alternativves of passing in credentials to your AWS
 Lambda functions:
 
-- **SSM Parameter Store**: Use [reference variables from the SSM Prameter Store](https://serverless.com/framework/docs/providers/aws/guide/variables/#reference-variables-using-the-ssm-parameter-store)
-to reference the credentials in the AWS Lambda Functions.
+- **SSM Parameter Store**: The article "[You should use SSM Parameter Store over Lambda env variables](https://hackernoon.com/you-should-use-ssm-parameter-store-over-lambda-env-variables-5197fc6ea45b)"
+by Yan Cui provides a detailed explanation for using the SSM Parameters in your
+Serverless Framework service to save and retrieve credentials.
 - **KMS Encryption**: Encrypt the environment variables using [KMS Keys](https://serverless.com/framework/docs/providers/aws/guide/functions#kms-keys).
 
 ### Ensure Dead Letter Queues are attached to functions
