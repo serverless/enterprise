@@ -14,7 +14,9 @@ Safeguards are enabled by default in the Enterprise plugin.
 ## Default Policies
 
 The following policies are included in the Enterprise plugin and enabled by
-default. These plugins do not require any additional configuration.
+default. These plugins do not require any additional configuration. They are all
+set to be warnings, not failures, so if the policy check fails, the `deploy`
+command will not be blocked.
 
 ### No "\*" in IAM Role statements
 
@@ -24,14 +26,34 @@ This policy performs a simple check to prevent "\*" permissions being used in
 AWS IAM Roles by checking for wildcards on Actions and Resources in grant
 statements.
 
+#### Resolution
+
+Update the [custom IAM Roles](https://serverless.com/framework/docs/providers/aws/guide/iam#custom-iam-roles)
+in the `serverless.yml` to remove IAM Role Statements which grant access to "\*"
+on Actions and Resources. If a plugin generates IAM Role Statements, follow the
+instructions provided by the plugin developer to mitigate the issue.
+
 ### No clear-text credentials in environment variables
 
 **ID: no-secret-env-vars**
 
-Ensures that the environment variables configured on the AWS Lambda functions
+Ensures that the [environment variables configured on the AWS Lambda functions](https://serverless.com/framework/docs/providers/aws/guide/functions#environment-variables)
 do not contain environment variables values which follow patterns of common
-credential formats. This policy has some risk of false-positives, so it returns
-a warning, not an failure.
+credential formats.
+
+#### Resolution
+
+Resovling this issue requires that the AWS Lambda function environment variables
+do not contain any plain-text credentials; however, your functions may still
+require those credentials to be passed in by other means.
+
+There are two recommended alternativves of passing in credentials to your AWS
+Lambda functions:
+
+- **SSM Parameter Store**: The article "[You should use SSM Parameter Store over Lambda env variables](https://hackernoon.com/you-should-use-ssm-parameter-store-over-lambda-env-variables-5197fc6ea45b)"
+by Yan Cui provides a detailed explanation for using the SSM Parameters in your
+Serverless Framework service to save and retrieve credentials.
+- **KMS Encryption**: Encrypt the environment variables using [KMS Keys](https://serverless.com/framework/docs/providers/aws/guide/functions#kms-keys).
 
 ### Ensure Dead Letter Queues are attached to functions
 
@@ -51,11 +73,16 @@ zero events, have an attached [Dead Letter Queue](https://docs.aws.amazon.com/la
 - cognitoUserPool
 - alexaHomeSkill
 
+#### Resolution
+
+Configure the [Dead Letter Queue with SNS or SQS](https://serverless.com/framework/docs/providers/aws/guide/functions#dead-letter-queue-dlq)
+for all the functions which require the DLQ to be configured.
+
 ## Running Policy Checks
 
 The policy checks are performed as a part of the `serverless deploy` command.
-This will load the safeguard settings from the `serverless.yml` file to determine which policies
-to evaluate.
+This will load the safeguard settings from the `serverless.yml` file to
+determine which policies to evaluate.
 
 **Example deploy**
 ```sh
@@ -103,8 +130,8 @@ individual policies and also configure individual policies.
 
 ### Disabling Safeguards
 
-It can be disabled by adding the `safeguard: false` setting to the `custom` block
-in your `serverless.yml`.
+It can be disabled by adding the `safeguard: false` setting to the `custom`
+block in your `serverless.yml`.
 
 **serverless.yml**
 ```yaml
