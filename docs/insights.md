@@ -1,13 +1,13 @@
 # Serverless Insights
 
-Serverless Insights help you monitor and optimize your serverless application by providing real-time metrics and alerts.
+Serverless Insights help you monitor and optimize your serverless application by providing key metrics and alerts.
 
 ## Minimum Version and Enterprise Plugin Requirements
 
-In order to take advantage of Serverless Insights you need to be running Serverless Framework open-source CLI version 1.36.2 or greater and install the Enterprise Plugin.
+In order to enable Serverless Insights for a particular Service you must deploy or redeploy that Service using Serverless Framework open-source CLI version 1.36.3 with the Enterprise Plugin installed.
 
-- If you are new to the Serverless Framework simply follow the steps in this [new user getting started guide](./getting-started.md#install-the-enterprise-plugin)
-- If you are an existing user and have a Service that you want to configure to use Serverless Insights, follow these steps to [update an existing Service](./update.md)
+- If you are an existing Serverless Framework Enterprise user and have a Service that you want to configure to use Serverless Insights, follow these steps to [update an existing Service](./update.md)
+- If you are new to the Serverless Framework open source CLI or Serverless Framework Enterprise simply follow the steps in this [new user getting started guide](./getting-started.md#install-the-enterprise-plugin) to get up and running
 
 ## Supported Runtimes and Regions
 
@@ -16,13 +16,13 @@ Currently, Serverless Insights support is limited to the following runtimes and 
 - Runtimes: Node.js
 - Regions:  AWS us-east-1
 
-Only services that are deployed to a supported region, and include one or more functions using a supported runtime, will generate metric and alert data.  If these conditions are not met Servereless Insights charts will not populate with data. 
+Only services that are deployed to a supported region, and include one or more functions using a supported runtime, will generate metric and alert data.  If these conditions are not met Servereless Insights metrics will not populate with data and Servless Insights alerts will not fire. 
 
-If we don't currently support the runtimes and regions you need let us know.  We are working hard to quickly expand our supported runtimes and regions. 
+Need unsupported runtimes and regions?  Let us know what you need.  We are working hard to quickly expand our supported runtimes and regions. 
 
 ## Installing
 
-That's it!  Insights are enabled by default in the Enterprise plugin.
+That's it!  Insights are enabled by default by including the Enterprise plugin.
 
 ### Configuration
 
@@ -43,13 +43,13 @@ As part of the Serverless Insgights feature we include a set of pre-configured a
 
 Errors happen, and the sooner you know about them after they are introduced the better equiped you are to proactively mitigate their impact.  
 
-On a per function basis, the new error insight runs once per minute, tracks error types reported during the past minute, and compares them with all error types reported over the prior 48 hours.  An alert is generated when an error type is found that was not present during the prior 48 hours.  From the activity and insights feed you are able to drill into the details of a specific occurrence of the new error type.
+On a per function basis, the new error insight runs every five minutes, tracks error types reported during the past five minutes, and compares them with all error types reported over the prior 48 hours.  An alert is generated when an error type is found that was not present during the prior 48 hours.  From the activity and insights feed you are able to drill into the details of a specific occurrence of the new error type.
 
 ### Escalated Invocation Count
 
 An escalated invocation count can mean good things (e.g. more traffic) or bad things (e.g. higher costs or a runaway function).  This alert helps you get out in front of both the good and the bad scenarios.
 
-The escalated invocation count insight runs once per minute and calculates the sum of invocations for a function over the prior five minutes. It then compares this most recent five minute invocaton count against the highest five minute invocation count recorded during the prior 48 hours. If the most recent five minute invocation count is 25% greater than the highest five minute invocation count over the previous 48 hours an alert will be generated.
+The escalated invocation count insight runs every five minutes and calculates the sum of invocations for a function over the prior five minutes. It then compares this most recent five minute invocaton count against the highest five minute invocation count recorded during the prior 48 hours. If the most recent five minute invocation count is 25% greater than the highest five minute invocation count over the previous 48 hours an alert will be generated.
 
 ### Unused memory
 
@@ -59,18 +59,18 @@ The unused memory insight runs once per week at midnight UTC on Sunday.  It look
 
 ## Metrics
 
-As part of the Serverless Insgights feature we also include a set of pre-configured report widgets, including the following:
+As part of the Serverless Insgights feature we also include a set of pre-configured charts, including the following:
 
 ### Invocations
 
-The invociations report widget shows the aggregate number of invocations for a particular service for a selected time period.  Click into any bar on the chart to see function specific metrics.  
+The invociations chart shows the aggregate number of invocations for a particular service for a selected time period.  Click into any bar on the chart to see function specific metrics.  
 
 ### Errors
 
-The errors report widget shows error count trends for a service.  Click into a point on the chart to see error counts and error types by function.  Click on an error type to see an occurrence of an error.
+The errors chart shows error count trends for a service.  Click into a point on the chart to see error counts and error types by function.  Click on an error type to see an occurrence of an error.
 
 ### Durations
 
-The durations report widget shows the aggregate duration times for all functions in a particular Service for a selected time period.  Click into any point on the chart to see function specific metrics, including maximum, average, and minimum durations.
+The durations chart shows the aggregate duration times for all functions in a particular Service for a selected time period.  Click into any point on the chart to see function specific metrics, including maximum, average, and minimum durations.
 
 
