@@ -61,7 +61,7 @@ Use the Serverless Framework open-source CLI to create a new Service using the s
 
 ```sh
 # Create a new Serverless Service/Project
-$ serverless create -u https://github.com/serverless/enterprise-template
+$ serverless create -n my-service -u https://github.com/serverless/enterprise-template
 
 # Change into the newly created directory
 $ cd my-service
