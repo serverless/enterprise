@@ -1,17 +1,20 @@
 # Serverless Framework Enterprise - Getting Started
 
-Here's how to use the Serverless Framework open-source CLI to deploy a simple service to AWS and report deployment information and operational metrics to the Serverless Framework Enterprise.
+Complete the steps in this guide to install the Serverless Framework open-source CLI and deploy a sample Service on AWS that reports deployment information and operational metrics to your Serverless Framework Enterprise dashboard.
 
-## Setup
+## Initial Setup
 
-There are a few things you will need to setup before using the Serverless Framework Enterprise. This guide will walk you through each of these steps.
-* Should have node 6.x or later installed
-* Should have a new AWS IAM User with full admin privileges
-* Should have the Serverless Framework open-source CLI installed
-* Should have your AWS credentials configured with the Serverless Framework open-source CLI
-* Should have an account setup on the [Serverless Framework Enterprise dashboard](https://dashboard.serverless.com/)
+To take advantage of Serverless Framework Enterprise features like Serverless Safeguards and Serverless Insights, there are a few prerequisites you need to install and configure. This section will walk you through each of the following:
 
-### Install node JS and NPM
+* [Installing Node.js 6.x or later on your local machine](#install-nodejs-and-npm)
+* [Creating an AWS account and IAM User](#setup-an-aws-account)
+* [Installing the Serverless Framework open-source CLI version 1.36.3 or later](#install-the-serverless-framework-open-source-cli)
+* [Configuring your AWS credentials to work with your Serverless Framework CLI](#configure-aws-access-keys-in-your-serverless-framework-open-source-cli)
+* [Creating an account on the Serverless Framework Enterprise dashboard](#create-a-serverless-framework-enterprise-account)
+
+If you already have these prerequisites setup you can skip ahead to deploy an example Service.
+
+### Install Node.js and NPM
 * Follow instructions here https://nodejs.org/en/download/package-manager/
 * At the end, you should be able to run `node -v` from your command line and get a result like this...
 ```sh
@@ -44,20 +47,21 @@ x.x.x
 ### Configure AWS Access Keys in your Serverless Framework open-source CLI
 In order for the Serverless Framework open-source CLI to deploy your application to your AWS account, it will need to be configured with your AWS credentials. You can follow our instructions [here for configuring this](./setup-aws-account.md#using-aws-access-keys).
 
-## Development
 
-### Create an application on the Serverless Framework Enterprise
+### Create a Serverless Framework Enterprise account
 
 The Serverless Framework Enterprise packages services together in a higher level application concept. Applications can contain one or more Service, each of which can be independently deployed. This abstraction is perfect for allowing more than one team to work on a single application or simply for structuring your application in such a way where parts of it are independently manageable.
 
-To create an application on the Serverless Framework Enterprise follow these instructions
 1. Open the Serverless Framework Enterprise in a web browser https://dashboard.serverless.com
 2. Click on the `Sign Up` button and follow the prompts to create a User, Tenant and Application
 
+## Deploy an example Service
 
-### Create a new Service
+Now that you’ve completed your setup, let’s deploy a serverless Service.
 
-Use the Serverless Framework open-source CLI to create a new Service using the sample Enterprise template, specifying a unique name and an optional path for your Service.
+### Create a new Service from a Template
+
+Use the Serverless Framework open-source CLI to create a new Service using the Enterprise Template we’ve created, specifying a unique name and an optional path for your Service.
 
 ```sh
 # Create a new Serverless Service/Project
@@ -69,35 +73,32 @@ $ cd my-service
 # Install Serverless Enterprise dependencies
 $ npm install
 ```
-### Login via the cli
-In order to allow the Serverless Framework open-source CLI to access the Serverless Framework Enterprise dashboard you will need to provide the framework with platform credentials. To do this simply use the `login` command and the framework will download platform access keys behind the scenes.
-
-```sh
-serverless login
-```
 
 ### Specify the Tenant and Application
 
-In order to deploy a Service to your App using the Serverless Framework open-source CLI, you need to specify the App and your tenant inside your `serverless.yml` file:
+In order to deploy a Service to your App using the Serverless Framework open-source CLI, you need to specify the App and your Tenant inside your `serverless.yml` file:
 
 1. Specify the app and tenant you’d like to deploy a service to:
 ```yaml
-app: your-app-name
 tenant: your-tenant-name
+app: your-app-name
 ```
 
 This is what the new information looks like in context:
 
 ```yaml
-service: my-service
+tenant: your-tenant-name
+app: your-app-name
+service: your-service-name
+
 frameworkVersion: ">=1.36.2"
 
 provider:
   name: aws
   runtime: nodejs8.10
 
-app: your-app-name
-tenant: your-tenant-name
+plugins:
+  - '@serverless/enterprise-plugin'
 
 functions:
   hello:
@@ -107,9 +108,13 @@ functions:
           path: /hello
           method: get
 
-plugins:
-  - '@serverless/enterprise-plugin'
+```
 
+### Login via the CLI
+In order to allow the Serverless Framework open-source CLI to access the Serverless Framework Enterprise dashboard you will need to provide the framework with platform credentials. To do this simply use the `login` command and the framework will download platform access keys behind the scenes.
+
+```sh
+serverless login
 ```
 
 ### Deploy the Service
@@ -120,7 +125,15 @@ Use this when you have made changes to your Functions, Events or Resources in `s
 serverless deploy -v
 ```
 
-### Invoke your Service's function
+### Test your example Service
+
+Replace the the URL in the following curl command with your returned endpoint URL, which you can find in the `sls deploy` output, to hit your URL endpoint.
+
+```bash
+$ curl https://xxxxxxxxxx.execute-api.us-east-1.amazonaws.com/dev/hello 
+```
+
+### Invoke your example Service's function
 
 Invokes a Function and returns logs.
 
@@ -136,13 +149,63 @@ Open up a separate tab in your console and stream all logs for a specific Functi
 serverless logs -f hello -t
 ```
 
+### See how Serverless Insights work
+
+Use either of the two commands below to generate mock errors that you will then be able to visualize in the the Serverless Framework Enterprise dashboard.  If you use the curl command remember to replace the the URL in the command with your returned endpoint URL, which you can find in your `sls deploy` output.
+
+```bash
+serverless invoke -f hello -d '{"body": "not a json string"}' # causes a JSON parsing error so error Insights will populate
+```
+
+```bash
+$ curl https://xxxxxxxxxx.execute-api.us-east-1.amazonaws.com/dev/hello --data-binary 'not a json string' # causes a JSON parsing error so error Insights will populate
+```
 
 ## Cleanup
 
-### Removing a service
+### Removing your example Service
 
 If at any point, you no longer need your Service, you can run the following command to remove the Functions, Events and Resources that were created.  This will delete the AWS resources you created and ensure that you don't incur any unexpected charges. It will also remove the Service from your Serverless Framework Enterprise dashboard.
 
 ```sh
 serverless remove
 ```
+
+
+## Deploy more Services!
+
+Now you are ready to leverage the hundreds of Service Examples available to you from Serverless, Inc. and our large and growing community to build your own Services.
+
+### Create a new Service from an Example
+
+Clone a Service from the Serverless Inc. repository of [Examples](https://serverless.com/examples/)
+```sh
+# replace folder-name below with the folder name of the example you want to use
+$ serverless install -u https://github.com/serverless/examples/tree/master/folder-name -n my-project
+```
+Or, clone a Service example from the Serverless open-source community
+```sh
+$ serverless install -u https://github.com/author/project -n my-project
+```
+### Remember to configure your new Service to work the Serverless Framework Enterprise
+
+Install the Serverless Framework Enterprise Plugin
+```sh
+$ sls plugin install -n @serverless/enterprise-plugin
+```
+Include your Tenant and App name in your sls yaml file
+```sh
+tenant: your-tenant-name 
+app: your-app-name
+```
+Login to your Serverless Framework Enterprise account from your Framework CLI
+```sh
+$ sls login
+```
+Redeploy your service
+```sh
+$ sls deploy
+```
+## Next steps
+
+Learn more about the features and benefits of [Serverless Framework Enterprise](https://github.com/serverless/enterprise/blob/master/README.md)
