@@ -34,7 +34,7 @@ You can also explore Insights and Safeguards by deploying our Enterprise Templat
 
 Create a new Serverless Service/Project
 ```sh
-$ serverless create -u https://github.com/serverless/enterprise-template
+$ serverless create -n my-service -u https://github.com/serverless/enterprise-template
 ```
 
 Change into the newly created directory
