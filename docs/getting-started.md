@@ -6,11 +6,11 @@ Complete the steps in this guide to install the Serverless Framework open-source
 
 To take advantage of Serverless Framework Enterprise features like Serverless Safeguards and Serverless Insights, there are a few prerequisites you need to install and configure. This section will walk you through each of the following:
 
-* Installing Node.js 6.x or later on your local machine
-* Creating an AWS account and IAM User
-* Installing the Serverless Framework open-source CLI version 1.36.3 or later
-* Configuring your AWS credentials to work with your Serverless Framework CLI
-* Creating an account on the Serverless Framework Enterprise dashboard
+* [Installing Node.js 6.x or later on your local machine](#install-nodejs-and-npm)
+* [Creating an AWS account and IAM User](#setup-an-aws-account)
+* [Installing the Serverless Framework open-source CLI version 1.36.3 or later](#install-the-serverless-framework-open-source-cli)
+* [Configuring your AWS credentials to work with your Serverless Framework CLI](#configure-aws-access-keys-in-your-serverless-framework-open-source-cli)
+* [Creating an account on the Serverless Framework Enterprise dashboard](#create-a-serverless-framework-enterprise-account)
 
 If you already have these prerequisites setup you can skip ahead to deploy an example Service.
 
