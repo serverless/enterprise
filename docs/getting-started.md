@@ -202,7 +202,7 @@ Login to your Serverless Framework Enterprise account from your Framework CLI
 ```sh
 $ sls login
 ```
-Redeploy your service
+Deploy your service
 ```sh
 $ sls deploy
 ```
