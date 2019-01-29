@@ -155,9 +155,10 @@ select the set of policies to enable, list the individual policy IDs in the
 
 **serverless.yml**
 ```yaml
-safeguards:
-  policies:
-    - require-dlq
+custom:
+  safeguards:
+    policies:
+      - require-dlq
 ```
 
 ### Configuring Policies
@@ -166,11 +167,12 @@ Policies also may accept parameters. The parameters are set in the
 `serverless.yml` file by adding the parameters as an object on the policy ID.
 
 ```yaml
-safeguards:
-  policies:
-    - limit-ddb-capacity:
-        readCapacityMax: 2
-        writeCapacityMax: 1
+custom:
+  safeguards:
+    policies:
+      - limit-ddb-capacity:
+          readCapacityMax: 2
+          writeCapacityMax: 1
 ```
 
 ## Custom Policies
@@ -214,10 +216,11 @@ add it to the list of policies.
 
 **serverless.yml**
 ```yaml
-safeguards:
-  location: ./policies
-  policies:
-    - stage-in-table-name
+custom:
+  safeguards:
+    location: ./policies
+    policies:
+      - stage-in-table-name
 ```
 
 ### Adding settings to your policy
@@ -236,9 +239,10 @@ module.exports = function myCustomPolicy(policy, service, options) {
 
 **serverless.yml**
 ```yaml
-safeguards:
-  location: ./policies
-  policies:
-    - my-custom-policy:
-        max: 2
+custom:
+  safeguards:
+    location: ./policies
+    policies:
+      - my-custom-policy:
+          max: 2
 ```
