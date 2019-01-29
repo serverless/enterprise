@@ -7,9 +7,16 @@ deploy` command. There are [three policies](#default-policies) included and
 enabled by default. Additionally [custom policies](#custom-policies) can be
 added as well.
 
+## Minimum Version and Enterprise Plugin Requirements
+
+In order to enable Serverless Safeguards for a particular Service you must deploy or redeploy that Service using Serverless Framework open-source CLI version 1.36.3 with the Enterprise Plugin installed.
+
+- If you are an existing Serverless Framework Enterprise user and have a Service that you want to configure to use Serverless Insights, follow these steps to [update an existing Service](./update.md)
+- If you are new to the Serverless Framework open source CLI or Serverless Framework Enterprise simply follow the steps in this [new user getting started guide](./getting-started.md#install-the-enterprise-plugin) to get up and running
+
 ## Installing
 
-Safeguards are enabled by default in the Enterprise plugin.
+That's it!  Safeguards are enabled by default in the Enterprise plugin.
 
 ## Default Policies
 
