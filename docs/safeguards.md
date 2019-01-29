@@ -189,9 +189,14 @@ module.exports = function myCustomPolicy(policy, service) {
 }
 ```
 
-The policy object includes two methods, `warn()`, and `approve()` which can be
-called with a string to return the policy test results. The `Failure()` method
-can be called to create an error response which can be thrown.
+There are three primary methods you can use to control the behavior of the policy checks
+when running the `deploy` command.
+
+- `warn` - Call this method with a string to display a warning in the CLI output.
+- `approve` - Approve the policy to allow the deploy to continue. If the `approve` method
+is not called and the policy method returns, the deployment will be stopped.
+- `Failure` - This method can be called to create an error response which can be thrown.
+If the policy check throws an error the deployment will be stopped.
 
 To define the policy method you’ll need to inspect the configuration. The entire
 configuration is made available in the service object. Use the [default policies](https://github.com/serverless/enterprise-plugin/tree/master/src/lib/safeguards/policies)
