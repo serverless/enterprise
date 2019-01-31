@@ -130,7 +130,7 @@ serverless deploy -v
 Replace the the URL in the following curl command with your returned endpoint URL, which you can find in the `sls deploy` output, to hit your URL endpoint.
 
 ```bash
-$ curl https://xxxxxxxxxx.execute-api.us-east-1.amazonaws.com/dev/hello 
+$ curl -X POST https://xxxxxxxxxx.execute-api.us-east-1.amazonaws.com/dev/hello 
 ```
 
 ### Invoke your example Service's function
@@ -155,6 +155,10 @@ Use either of the two commands below to generate mock errors that you will then 
 
 ```bash
 serverless invoke -f hello -d '{"body": "not a json string"}' # causes a JSON parsing error so error Insights will populate
+```
+
+```bash
+$ curl https://xxxxxxxxxx.execute-api.us-east-1.amazonaws.com/dev/hello --data-binary 'not a json string' # causes a JSON parsing error so error Insights will populate
 ```
 
 ## Cleanup
