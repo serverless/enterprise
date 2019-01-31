@@ -157,10 +157,6 @@ Use either of the two commands below to generate mock errors that you will then 
 serverless invoke -f hello -d '{"body": "not a json string"}' # causes a JSON parsing error so error Insights will populate
 ```
 
-```bash
-$ curl https://xxxxxxxxxx.execute-api.us-east-1.amazonaws.com/dev/hello --data-binary 'not a json string' # causes a JSON parsing error so error Insights will populate
-```
-
 ## Cleanup
 
 ### Removing your example Service
