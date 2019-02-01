@@ -65,7 +65,7 @@ $ sls deploy
 
 Test your service by hitting the returned endpoint.  Find the endpoint URL in the `sls deploy` output and use that instead of the URLs below:
 ```sh
-$ curl https://xxxxxxxxxx.execute-api.us-east-1.amazonaws.com/dev/hello # no error
+$ curl -X POST https://xxxxxxxxxx.execute-api.us-east-1.amazonaws.com/dev/hello # no error
 ```
 
 If you want to see how Serverless Insights reports errors in the Serverless Framework dashboard use this command instead:
