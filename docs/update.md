@@ -39,7 +39,7 @@ $ serverless create -n my-service -u https://github.com/serverless/enterprise-te
 
 Change into the newly created directory
 ```sh
-$ cd enterprise-template
+$ cd my-service
 ```
 
 Install Serverless Enterprise dependencies
