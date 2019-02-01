@@ -106,7 +106,7 @@ functions:
     events:
       - http:
           path: /hello
-          method: get
+          method: post
 
 ```
 
