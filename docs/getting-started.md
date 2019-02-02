@@ -161,6 +161,10 @@ serverless invoke -f hello -d '{"body": "not a json string"}' # causes a JSON pa
 $ curl https://xxxxxxxxxx.execute-api.us-east-1.amazonaws.com/dev/hello --data-binary 'not a json string' # causes a JSON parsing error so error Insights will populate
 ```
 
+**Note**: It may take up to 5 minutes for the [new error alert](https://github.com/serverless/enterprise/blob/master/docs/insights.md#new-error) to appear in the dashboard.
+
+Check out the [Insights documentation](https://github.com/serverless/enterprise/blob/master/docs/insights.md#alerts) for more on details on the available alerts.
+
 ## Cleanup
 
 ### Removing your example Service
