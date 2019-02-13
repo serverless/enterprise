@@ -28,7 +28,7 @@ In order to enable Serverless Secrets for a Service you must update your Service
 13. Switch back to the Serverless Enterprise tab, and paste the copied ARN into the ARN blank for step 3 of the modal.
 14. For step 4 of the modal, provide a descriptive name for your key (e.g. `sls-api-services`).
 15. Click "**create secret**".
-16. Under the "**Add Applications**" keep “_Allow any application in this tenant to deploy to this account_.” selected.
+16. Under the "**Add Applications**" select the individual apps or keep “_Allow any application in this tenant to deploy to this account_.” selected. Only selected applications will be able to generate the AWS Access Keys.
 17. Once the application is ticked, click "**save changes**".
 
 ### Set up the service
