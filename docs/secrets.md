@@ -8,10 +8,7 @@ A Serverless Framework service without the Enterprise Plugin uses the AWS Access
 
 In order to enable Serverless Secrets for a Service you must update your Service configuration to use Serverless Framework open-source CLI version 1.37.1 or later, and Enterprise Plugin 0.2.0 or later.
 
-## Installing
-
-
-### Link your AWS Account
+## Link your AWS Account
 
 1. Open https://dashboard.serverless.com/
 2. Once logged in, click "**secure**" near the top of the page.
@@ -31,7 +28,7 @@ In order to enable Serverless Secrets for a Service you must update your Service
 16. Under the "**Add Applications**" select the individual apps or keep “_Allow any application in this tenant to deploy to this account_.” selected. Only selected applications will be able to generate the AWS Access Keys.
 17. Once the application is ticked, click "**save changes**".
 
-### Set up the service
+## Set up the service
 
 In the `serverless.yml` file add the `credentials` setting to the `aws` provider and use the new `secrets` variable.  Replace `sls-api-services` with the name provided in step 14 in the previous section. 
 
@@ -42,7 +39,7 @@ provider:
   credentials: ${secrets:sls-api-services}
 ```
 
-### Test your configuration
+## Test your configuration
 
 Before you run `serverless deploy` ensure that the Serverless Framework open-source CLI is resolving the new AWS Access Keys from Enterprise.
 
@@ -62,7 +59,7 @@ provider:
       FQoGZXIvYXdzEHIaDJNjSW4JAsUNWcnpzCKNAqEPjj75DyALiUg5yonFhE9o6rLV3VgH+dg4tZ9WuZBvS1V6Cf8/Tk8cpf7vE3cDrpEDXpNm1Q51bwJnQk7L1S+E5hFK9CFIE/ICyv5HLmxyWqtDHgyyExYljwnovlQz5azmvKJLCjeMF
 ```
 
-### Deploy using Secrets
+## Deploy using Secrets
 
 That’s it! You are now ready to deploy using the new Serverless Framework Enterprise Secrets.
 
