@@ -26,20 +26,20 @@ In order to enable Serverless Secrets for a Service you must update your Service
 11. Locate the role you just created in the list, and click its name.
 12. On the summary page, next to the "**Role ARN**", click the copy icon.
 13. Switch back to the Serverless Enterprise tab, and paste the copied ARN into the ARN blank for step 3 of the modal.
-14. For step 4 of the modal, enter `my-secret` as the secret name.
+14. For step 4 of the modal, provide a descriptive name for your key (e.g. `sls-api-services`).
 15. Click "**create secret**".
 16. Under the "**Add Applications**" keep “_Allow any application in this tenant to deploy to this account_.” selected.
 17. Once the application is ticked, click "**save changes**".
 
 ### Set up the service
 
-In the `serverless.yml` file add the `credentials` setting to the `aws` provider and use the new `secrets` variable.  Replace `my-secret` with the name provided in step 14 in the previous section. 
+In the `serverless.yml` file add the `credentials` setting to the `aws` provider and use the new `secrets` variable.  Replace `sls-api-services` with the name provided in step 14 in the previous section. 
 
 **serverless.yml**
 ```yaml
 provider:
   name: aws
-  credentials: ${secrets:my-secret}
+  credentials: ${secrets:sls-api-services}
 ```
 
 ### Test your configuration
