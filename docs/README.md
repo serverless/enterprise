@@ -16,6 +16,10 @@ Metrics and alerts for your serverless applications.  Serverless Insights help y
 
 Pre-configured operational and security best practices. Serverless Safeguards performs a series of policy checks when running the serverless deploy command.
 
+### [Serverless Secrets](./secrets.md)
+
+Secure serverless application deployments. Serverless Secrets help you secure serverless application lifecycle operations by issuing temporary access keys to deploy your services to cloud platforms.
+
 ## Concepts
 
 After a few years of doing serverless development, we've designed the best possible abstractions for reasoning about serverless applications while preserving the option to deep dive into the underlying infrastructure when necessary.
