@@ -14,7 +14,7 @@ In order to enable Serverless Secrets for a Service you must update your Service
 2. Once logged in, click "**secure**" near the top of the page.
 3. Click the "**+ add**" button on the right, and choose "**aws**".
 4. In the modal that appears, click "**Click here to add a role**".
-5. Login to **your AWS account** if prompted. Otherwise, verify that you are already logged into a personal account, and not a Serverless infrastructure account.
+5. Login to **your AWS account** if prompted, and you should arrive at AWS's role creation wizard.
 6. Click "**Next: Permissions**" to proceed to the permissions page.
 7. Tick the box next to the **AdministratorAccess** policy.
 8. Click "**Next**" two more times to proceed to the Review page.
@@ -26,7 +26,7 @@ In order to enable Serverless Secrets for a Service you must update your Service
 14. For step 4 of the modal, provide a descriptive name for your key (e.g. `sls-api-services`).
 15. Click "**create secret**".
 16. Under the "**Add Applications**" select the individual apps or keep “_Allow any application in this tenant to deploy to this account_.” selected. Only selected applications will be able to generate the AWS Access Keys.
-17. Once the application is ticked, click "**save changes**".
+17. Once you've made your selection, click "**save changes**".
 
 ## Set up the service
 
