@@ -212,4 +212,8 @@ $ sls deploy
 ```
 ## Next steps
 
-Learn more about the features and benefits of [Serverless Framework Enterprise](https://github.com/serverless/enterprise/blob/master/README.md) and how to [run Serverless Framework Enterprise in your CI/CD pipeline](./running-in-cicd.md).
+Learn more about the features and benefits of [Serverless Framework Enterprise](https://github.com/serverless/enterprise/blob/master/README.md) and how to...
+
+- [Run Serverless Framework Enterprise in your CI/CD pipeline](./running-in-cicd.md).
+- [Use Serverless Framework Enterprise Secrets to generate temporary AWS Access Keys](./secrets.md)
+
