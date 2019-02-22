@@ -85,7 +85,7 @@ for all the functions which require the DLQ to be configured.
 
 ### Allowed Runtimes
 
-**ID: allowed-runtimes
+**ID: allowed-runtimes**
 
 This limits the runtimes that can be used in services. It is configurable with a list of allowed
 runtimes or a regular expression.
@@ -104,7 +104,7 @@ allowed runtimes.
 
 ### Allowed stages
 
-**ID: allowed-stages
+**ID: allowed-stages**
 
 This limits the stages that can be used in services. It is configurable with a list of allowed
 stages or a regular expression.
