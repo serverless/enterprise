@@ -18,12 +18,10 @@ In order to enable Serverless Safeguards for a particular Service you must deplo
 
 That's it!  Safeguards are enabled by default in the Enterprise plugin.
 
-## Default Policies
+## Available Policies
 
-The following policies are included in the Enterprise plugin and enabled by
-default. These plugins do not require any additional configuration. They are all
-set to be warnings, not failures, so if the policy check fails, the `deploy`
-command will not be blocked.
+The following policies are included in the Enterprise plugin and configurable in the [Serverless
+Enterprise Dashboard](https://dashboard.serverless.com/).
 
 ### No "\*" in IAM Role statements
 
@@ -84,6 +82,84 @@ zero events, have an attached [Dead Letter Queue](https://docs.aws.amazon.com/la
 
 Configure the [Dead Letter Queue with SNS or SQS](https://serverless.com/framework/docs/providers/aws/guide/functions#dead-letter-queue-dlq)
 for all the functions which require the DLQ to be configured.
+
+### Allowed Runtimes
+
+**ID: allowed-runtimes
+
+This limits the runtimes that can be used in services. It is configurable with a list of allowed
+runtimes or a regular expression.
+```yaml
+allowed-runtimes:
+  - nodejs8.10
+  - python3.7
+# or:
+allowed-runtimes: node.*
+```
+
+#### Resolution
+
+Ensure you are using a runtime that is in the list of allowed runtimes or matches the regex of
+allowed runtimes.
+
+### Allowed stages
+
+**ID: allowed-stages
+
+This limits the stages that can be used in services. It is configurable with a list of allowed
+stages or a regular expression.
+```yaml
+allowed-stages:
+  - prod
+  - dev
+# or:
+allowed-stages: '(prod|qa|dev-.*)'
+```
+
+#### Resolution
+
+Ensure you are using a runtime that is in the list of allowed stages or matches the regex of
+allowed stages.
+
+### Framework Version
+
+**ID: framework-version**
+
+This policy limits which versions of the Serverless Framework can be used. It is configured with a
+[semver](https://semver.org/) expression.
+
+```yaml
+framework-version: >=1.38.0 <2.0.0
+```
+
+#### Resolution
+Install an allowed version of the framework: `npm i -g serverless@$ALLOWED_VERSION`
+
+### Require Cloudformation Deployment Role
+
+**ID: require-cfn-role**
+
+This rule requires you to specify the
+[`cfnRole` option](https://serverless.com/framework/docs/providers/aws/guide/serverless.yml/)
+in your `serverless.yml`. It has no
+configuration options.
+
+#### Resolution
+Add `cfnRole` to your `serverless.yml`.
+
+### Requried stack tags
+
+**ID: required-stack-tags**
+
+This rule requires you to specify certain tags in the
+[`stackTags` option](https://serverless.com/framework/docs/providers/aws/guide/serverless.yml/)
+in your `serverless.yml`. It is configured with a mapping of keys to regexes. All the keys must be
+present and value must match the regex.
+
+```yaml
+required-stack-tags:
+  someTagName: '.*'
+```
 
 ## Running Policy Checks
 
