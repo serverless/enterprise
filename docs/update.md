@@ -53,7 +53,7 @@ tenant: tenantname # NOTE: change this to your tenant name
 app: appname # NOTE: change this to your app name
 ```
 
-Login to your Serverless Framework Enterprise account from your Framweork CLI
+Login to your Serverless Framework Enterprise account from your Framework CLI
 ```sh
 $ sls login
 ```
