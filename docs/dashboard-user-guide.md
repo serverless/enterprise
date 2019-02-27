@@ -3,7 +3,7 @@
 The Serverless Framework Enterprise is designed to be the ultimate operations console for serverless application development. Serverless application infrastructures can comprise multiple services across service providers, which is why a simple UI for interfacing with them is so crucial. Our goal with the Serverless Framework Enterprise is to make monitoring, collaborating and securing your serverless applications just as easy as using our other products.
 
 
-We built the Serverless Framework Enterprise so that it interfaces seamlessly with the Serverless Framework open-source CLI. Deploy once from the CLI and immediately view your application from the Serverless Framework Enterprise dasboard for easy management. 
+We built the Serverless Framework Enterprise so that it interfaces seamlessly with the Serverless Framework open-source CLI. Deploy once from the CLI and immediately view your application from the Serverless Framework Enterprise dashboard for easy management. 
 
 
 ## From sign up to first deploy

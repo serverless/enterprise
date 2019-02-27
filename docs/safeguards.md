@@ -50,11 +50,11 @@ credential formats.
 
 #### Resolution
 
-Resovling this issue requires that the AWS Lambda function environment variables
+Resolving this issue requires that the AWS Lambda function environment variables
 do not contain any plain-text credentials; however, your functions may still
 require those credentials to be passed in by other means.
 
-There are two recommended alternativves of passing in credentials to your AWS
+There are two recommended alternatives of passing in credentials to your AWS
 Lambda functions:
 
 - **SSM Parameter Store**: The article "[You should use SSM Parameter Store over Lambda env variables](https://hackernoon.com/you-should-use-ssm-parameter-store-over-lambda-env-variables-5197fc6ea45b)"
