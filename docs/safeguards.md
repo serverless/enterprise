@@ -207,54 +207,12 @@ it can be detected from a script or CI/CD service.
 
 ## Configuring Policies
 
-The default policies are enabled by default and do not require additional
-configuration. However, you can disable safeguards completely, disable
-individual policies and also configure individual policies. 
-
-### Disabling Safeguards
-
-It can be disabled by adding the `safeguard: false` setting to the `custom`
-block in your `serverless.yml`.
-
-**serverless.yml**
-```yaml
-custom:
-  safeguards:  false
-```
-
-### Disabling Policies
-
-While all the default policies are enabled by default, you can disable
-individual policies by selecting only a subset of policies to be enforced. To
-select the set of policies to enable, list the individual policy IDs in the
-`serverless.yml` file.
-
-**serverless.yml**
-```yaml
-custom:
-  safeguards:
-    policies:
-      - require-dlq
-```
-
-### Configuring Policies
-
-Policies also may accept parameters. The parameters are set in the
-`serverless.yml` file by adding the parameters as an object on the policy ID.
-
-```yaml
-custom:
-  safeguards:
-    policies:
-      - limit-ddb-capacity:
-          readCapacityMax: 2
-          writeCapacityMax: 1
-```
+Policies are managed with in the [Serverless Enterprise Dashboard](https://dashboard.serverless.com)
 
 ## Custom Policies
 
-In addition to the default policies you can add custom policies to your
-application.
+In addition to built-in policies configurable in the Enterprise Dashboard, you can add custom
+policies to your application.
 
 ### Creating a custom policy
 
