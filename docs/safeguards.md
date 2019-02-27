@@ -147,7 +147,7 @@ configuration options.
 #### Resolution
 Add `cfnRole` to your `serverless.yml`.
 
-### Requried stack tags
+### Required stack tags
 
 **ID: required-stack-tags**
 
