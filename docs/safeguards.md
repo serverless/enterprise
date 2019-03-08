@@ -262,6 +262,59 @@ interval: P1W
 Wait! You're not supposed to be deploying!
 
 
+### Forbid S3 HTTP Access
+
+** ID: forbid-s3-http-access **
+
+This policy requires that you have a `BucketPolicy` forbidding access over HTTP for each bucket.
+There are no configuration options.
+
+#### Resolution
+For a bucket without a name such as the `ServerlessDeploymentBucket` ensure that the `resources`
+section of your serverless yaml contains a policy like the following using `Ref`s. 
+If using a different bucket, update the logical name in the `Ref`.
+```yaml
+resources:
+  Resources:
+    ServerlessDeploymentBucketPolicy:
+      Type: "AWS::S3::BucketPolicy"
+      Properties: 
+        Bucket: {Ref: ServerlessDeploymentBucket}
+        PolicyDocument:
+          Statement:
+            - Action: "s3:*"
+              Effect: "Deny"
+              Principal: "*"
+              Resource:
+                Fn::Join:
+                  - ''
+                  - - 'arn:aws:s3:::'
+                    - Ref: ServerlessDeploymentBucket
+                    - '/*'
+              Condition:
+                Bool:
+                  aws:SecureTransport: false
+```
+If using a bucket with a name, say configured in the `custom` section of your config, use a policy
+like this:
+```yaml
+resources:
+  Resources:
+    NamedBucketPolicy:
+      Type: "AWS::S3::BucketPolicy"
+      Properties: 
+        Bucket: ${self:custom.bucketName}
+        PolicyDocument:
+          Statement:
+            - Action: "s3:*"
+              Effect: "Deny"
+              Principal: "*"
+              Resource: 'arn:aws:s3:::${self:custom.bucketName}/*'
+              Condition:
+                Bool:
+                  aws:SecureTransport: false
+```
+
 
 ## Running Policy Checks
 
