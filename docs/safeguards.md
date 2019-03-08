@@ -90,11 +90,10 @@ for all the functions which require the DLQ to be configured.
 This limits the runtimes that can be used in services. It is configurable with a list of allowed
 runtimes or a regular expression.
 ```yaml
-allowed-runtimes:
-  - nodejs8.10
-  - python3.7
+- nodejs8.10
+- python3.7
 # or:
-allowed-runtimes: node.*
+node.*
 ```
 
 #### Resolution
@@ -109,11 +108,10 @@ allowed runtimes.
 This limits the stages that can be used in services. It is configurable with a list of allowed
 stages or a regular expression.
 ```yaml
-allowed-stages:
-  - prod
-  - dev
+- prod
+- dev
 # or:
-allowed-stages: '(prod|qa|dev-.*)'
+'(prod|qa|dev-.*)'
 ```
 
 #### Resolution
@@ -129,7 +127,7 @@ This policy limits which versions of the Serverless Framework can be used. It is
 [semver](https://semver.org/) expression.
 
 ```yaml
-framework-version: >=1.38.0 <2.0.0
+>=1.38.0 <2.0.0
 ```
 
 #### Resolution
@@ -157,9 +155,114 @@ in your `serverless.yml`. It is configured with a mapping of keys to regexes. Al
 present and value must match the regex.
 
 ```yaml
-required-stack-tags:
-  someTagName: '.*'
+someTagName: '.*'
 ```
+
+### Require Global VPC
+
+**ID: require-global-vpc**
+
+This rule requires all your functions to be configured with a VPC. By default they are required to
+have at least two subnet IDs to allow for AZ failover. It is configurable with a `minNumSubnets`
+option:
+
+```yaml
+minNumSubnets: 1 # if you don't want to require 2 and AZ support
+```
+
+#### Resolution
+Add a global VPC configuration to your config:
+https://serverless.com/framework/docs/providers/aws/guide/functions/#vpc-configuration
+
+
+### Allowed function names
+
+**ID: allowed-function-names**
+
+This rule allows you enforce naming conventions functions deployed to AWS lambda.
+It is confgured with a regular expression. It features one extra addition: variables for stage,
+service and function(the key in the serverless yaml) names. See below for some examples.
+
+Require using Serverless's standard naming scheme:
+
+```
+${SERVICE}-${STAGE}-${FUNCTION}
+```
+
+Or, if you want custom names starting with the stage, but don't care about service name or function
+name with respect to the name in the serverless yaml:
+```
+${STAGE}-\w+
+```
+
+
+#### Resolution
+Use the `name:` config option on the function object to customize the deployed function name to
+match the regex: https://serverless.com/framework/docs/providers/aws/guide/functions/#configuration
+
+
+### Require Description
+
+**ID: require-description**
+
+This rule requires that all functions have a description of minimum or maximum length. By default
+it requires a minimum length of 30 and the lambda maximum of 256. Both these values are
+configurable however. Here is a config that requires a slightly longer config but doesn't allow as
+long a maximum:
+```yaml
+minLength: 50
+maxLength: 100
+```
+
+#### Resolution
+Add a function description to all your lambdas that is with in the minimum and maximum required
+lengths.
+
+### Allowed Regions
+
+**ID: allowed-regions**
+
+This rule allows you to restrict the regions to which a service may be deployed. It is configured
+with a list of regions:
+```yaml
+# eg, us-east-1 and us-west-2 only
+- us-east-1
+- us-west-2
+```
+
+### Restricted deploy times
+
+** ID: restricted-deploy-times **
+
+This policy blocks deploys at certain times. It is configured with a list of objects containing a
+time, duration and optional interval.
+
+```yaml
+# no deploy specific holidiays, eg Rosh Hashanah 2019
+- time: 2019-09-29T18:20 # ISO8601 date or datetime
+  duration: P2D30M # IS8601 duration
+# no deploy a specific day but repeating, eg all future Christmases
+- time: 2019-12-25
+  duration: P1D
+  interval: P1Y
+# no deploy fri noon - monday 6AM
+- time: 2019-03-08T12:00:00
+  duration: P2D18H
+  interval: P1W
+```
+
+If you only need to specify one interval you can also directly use that object, eg:
+```yaml
+# no deployments on friday, saturday, sunday
+time: 2019-03-08
+duration: P3D
+interval: P1W
+```
+
+#### Resolution
+Wait! You're not supposed to be deploying!
+
+
 
 ## Running Policy Checks
 
