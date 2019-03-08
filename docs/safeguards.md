@@ -189,10 +189,9 @@ Require using Serverless's standard naming scheme:
 ${SERVICE}-${STAGE}-${FUNCTION}
 ```
 
-Or, if you want custom names starting with the stage, but don't care about service name or function
-name with respect to the name in the serverless yaml:
+Or, if you want custom names with stage first and underscores instead of dashes:
 ```
-${STAGE}-\w+
+${STAGE}_${SERVICE}_${FUNCTION}
 ```
 
 
