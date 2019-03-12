@@ -38,7 +38,7 @@ In the previous step you obtained an access token from the Serverless Framework 
 
 Set the following environment variables in your CI/CD environment:
 
-- `SERVERLESS_ACCESS_KEY’: Your Serverless Enterprise access token from previous step.
+- `SERVERLESS_ACCESS_KEY`: Your Serverless Enterprise access token from previous step.
 - `AWS_ACCESS_KEY_ID`: Your AWS account access key
 - `AWS_SECRET_ACCESS_KEY`:  Your AWS account secret access key
 ## Configure the build step
