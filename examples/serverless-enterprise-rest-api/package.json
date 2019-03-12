@@ -1,15 +1,17 @@
 {
-  "name": "event-gateway-auth",
+  "name": "sfe-restapi",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Serverless.com",
+  "license": "MIT",
+  "dependencies": {
+    "moment": "^2.24.0"
+  },
   "devDependencies": {
-    "@serverless/serverless-event-gateway-plugin": "^0.7.8"
+    "@serverless/enterprise-plugin": "latest"
   }
 }
