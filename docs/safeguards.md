@@ -231,7 +231,7 @@ with a list of regions:
 
 ### Restricted deploy times
 
-** ID: restricted-deploy-times **
+**ID: restricted-deploy-times**
 
 This policy blocks deploys at certain times. It is configured with a list of objects containing a
 time, duration and optional interval.
@@ -264,7 +264,7 @@ Wait! You're not supposed to be deploying!
 
 ### Forbid S3 HTTP Access
 
-** ID: forbid-s3-http-access **
+**ID: forbid-s3-http-access**
 
 This policy requires that you have a `BucketPolicy` forbidding access over HTTP for each bucket.
 There are no configuration options.
