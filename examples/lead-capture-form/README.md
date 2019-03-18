@@ -1,8 +1,8 @@
-# Demo – Serverless Lead Capture
+# Example – Serverless Lead Capture
 
 This demo application helps you test Serverless Framework Enterprise's main features: ***Monitoring***, ***Secrets*** & ***Safeguards***
 
-## Install
+## Installation
 
 #### Clone the repository
 

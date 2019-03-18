@@ -418,7 +418,7 @@ class DemoApp extends Component {
             </form>
 
             <div className='success animated fadeInUp' style={{ display: `${ this.state.visible.success ? 'flex': 'none' }`}}>
-              Thank you for submission!
+              Thank you for your submission!
             </div>
 
           </div>
