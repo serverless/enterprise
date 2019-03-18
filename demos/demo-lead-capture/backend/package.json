@@ -1,15 +1,13 @@
 {
-  "name": "sfe-restapi",
+  "name": "sfe-demo-leadcapture",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "scripts": {},
   "author": "Serverless.com",
   "license": "MIT",
   "dependencies": {
-    "moment": "^2.24.0"
+    "serverless-finch": "^2.3.2"
   },
   "devDependencies": {
     "@serverless/enterprise-plugin": "latest"
