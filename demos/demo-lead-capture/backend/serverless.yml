@@ -19,7 +19,7 @@ functions:
 
 custom:
   client:
-    bucketName: sfe-demo-lead-capture # Change this to a universally unique AWS S3 bucket name
+    bucketName: sfe-demo-lead-capture # If you want to deploy the front-end, change this to a universally unique AWS S3 bucket name
     distributionFolder: ../frontend/build
 
 plugins:

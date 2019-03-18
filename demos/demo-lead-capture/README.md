@@ -1,12 +1,39 @@
 # Demo – Serverless Lead Capture
 
-## Set-Up
+This demo application helps you test Serverless Framework Enterprise's main features: ***Monitoring***, ***Secrets*** & ***Safeguards***
+
+## Install
 
 #### Clone the repository
 
 ```
-$ git clone
-
+$ git clone https://github.com/serverless/enterprise.git
 ```
 
-#### Deploy the front-end application to AWS S3
+#### Install Front-End & Back-End Dependencies
+
+```
+# location - enterprise/frontend
+$ npm i
+```
+
+```
+# location - enterprise/backend
+$ npm i
+```
+
+#### Deploy the back-end
+
+```shell
+# location - enterprise/backend
+$ serverless deploy
+```
+
+#### Run the front-end
+
+```
+# location - enterprise/backend
+$ npm run start
+```
+
+## Testing Serverless Insights - Monitoring
