@@ -6,20 +6,29 @@ This demo application helps you test Serverless Framework Enterprise's main feat
 
 #### Clone the repository
 
-```
+```shell
 $ git clone https://github.com/serverless/enterprise.git
 ```
 
 #### Install Front-End & Back-End Dependencies
 
-```
+```shell
 # location - enterprise/frontend
 $ npm i
 ```
 
-```
+```shell
 # location - enterprise/backend
 $ npm i
+```
+
+#### Log into Serverless Framework Enterprise
+
+The Serverless Enterprise Plugin adds a `login` command to the Serverless Framework, use it like this...
+
+```shell
+# location - enterprise/backend
+$ serverless login
 ```
 
 #### Deploy the back-end
@@ -31,7 +40,7 @@ $ serverless deploy
 
 #### Run the front-end
 
-```
+```shell
 # location - enterprise/backend
 $ npm run start
 ```
