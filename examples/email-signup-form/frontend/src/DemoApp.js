@@ -390,7 +390,7 @@ class DemoApp extends Component {
           <div className='container animated zoomIn'>
 
             <div className='form-header' style={{ display: `${ this.state.visible.success ? 'none': 'flex' }`}}>
-              Serverless Lead Capture Form
+              Serverless Email Sign-Up Form
             </div>
 
             <form className='form' style={{ display: `${ this.state.visible.success ? 'none': 'flex' }`}}>
