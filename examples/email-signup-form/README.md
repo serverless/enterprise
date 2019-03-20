@@ -61,12 +61,32 @@ $ npm run start
 
 ## Testing Serverless Insights
 
-The front-end of the application comes with a UI to help you test out the Serverless Insights.
+The user interface of this example application has a fwe utilities you can use to test out Serverless Framework Enterprise.
+
+Click on "Demo Utilities" in the top right.
+
+Use the panel to invoke the example application's Function several times, to fill Serverless Framework Enterprise with invocation data.
+
+Use the panel to generate a random Function code error that will appear in Serverless Framework Enterprise.
+
+Read more about [Insights](https://github.com/serverless/enterprise/blob/master/docs/insights.md) here:
 
 ## Testing Serverless Secrets
 
-Currently, secrets allow you to reference a temporary IAM role
+The goal of our Secrets feature is to support storing and using any generic secret as a [Serverless Variable](https://serverless.com/framework/docs/providers/aws/guide/variables/).  This will be supported in upcoming weeks.
 
-https://github.com/serverless/enterprise/blob/master/docs/secrets.md
+What Secrets supports now is creating a secific type of secret: AWS Access Keys.
+
+You can use Secrets to reference temporary AWS Access Keys that last for 1 hour, used for the purpose of deploying your Serverless Framework project to the underlying AWS account.
+
+Since these are temporary credentials, they mitigate the risk of developers leaving long-term credentials anywhere (e.g. Github) and are perfect for CI/CD.
+
+Read more about Secrets here: https://github.com/serverless/enterprise/blob/master/docs/secrets.md
 
 ## Testing Serverless Safeguards
+
+The goal of our Safeguards feature is to be alike a linter for serverless architectures.  Safeguards are best practices and organizational policies that are enforced upon deployment.  When a deployment happens, Framework Enterprise scans your `serverless.yml` and CloudFormation file before deployment and looks for issues.
+
+Safeguards are immediately applied, out-of-the-box, when you add the Serverless Enterprise Plugin.
+
+Read more about Safeguards here:  https://github.com/serverless/enterprise/blob/master/docs/safeguards.md
