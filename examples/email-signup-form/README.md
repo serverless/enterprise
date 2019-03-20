@@ -61,15 +61,13 @@ $ npm run start
 
 ## Testing Serverless Insights
 
-The user interface of this example application has a fwe utilities you can use to test out Serverless Framework Enterprise.
+The user interface of this example application has a few utilities you can use to test out Serverless Framework Enterprise.
 
-Click on "Demo Utilities" in the top right.
+Click on "Demo Utilities" in the top right.  A side panel will expand which you can use to invoke the example application's Function several times, to fill Serverless Framework Enterprise with invocation data.
 
-Use the panel to invoke the example application's Function several times, to fill Serverless Framework Enterprise with invocation data.
+You can also use the panel to generate a random Function code error that will appear in Serverless Framework Enterprise.
 
-Use the panel to generate a random Function code error that will appear in Serverless Framework Enterprise.
-
-Read more about [Insights](https://github.com/serverless/enterprise/blob/master/docs/insights.md) here:
+Read more about [Insights here](https://github.com/serverless/enterprise/blob/master/docs/insights.md).
 
 ## Testing Serverless Secrets
 
@@ -81,7 +79,7 @@ You can use Secrets to reference temporary AWS Access Keys that last for 1 hour,
 
 Since these are temporary credentials, they mitigate the risk of developers leaving long-term credentials anywhere (e.g. Github) and are perfect for CI/CD.
 
-Read more about Secrets here: https://github.com/serverless/enterprise/blob/master/docs/secrets.md
+Read more about [Secrets here](https://github.com/serverless/enterprise/blob/master/docs/secrets.md).
 
 ## Testing Serverless Safeguards
 
@@ -89,4 +87,4 @@ The goal of our Safeguards feature is to be alike a linter for serverless archit
 
 Safeguards are immediately applied, out-of-the-box, when you add the Serverless Enterprise Plugin.
 
-Read more about Safeguards here:  https://github.com/serverless/enterprise/blob/master/docs/safeguards.md
+Read more about [Safeguards here](https://github.com/serverless/enterprise/blob/master/docs/safeguards.md).
