@@ -63,6 +63,16 @@ $ npm run start
 
 The front-end of the application comes with a UI to help you test out the Serverless Insights.
 
+## Testing Serverless Secrets
+
+Currently, secrets allow you to reference a temporary IAM role 
+
+https://github.com/serverless/enterprise/blob/master/docs/secrets.md
+
+## Testing Serverless Safeguards
+
+
+
 
 
 
