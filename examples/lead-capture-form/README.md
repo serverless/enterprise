@@ -6,6 +6,8 @@ This demo application helps you test Serverless Framework Enterprise's main feat
 * **Safeguards** - Best practice policies that run before you perform a deployment.
 * **Secrets** - Store sensitive credentials in the Serverless Enterprise Dashboard and reference them in your Serverless Framework Project.
 
+![Serverless Framework Enterprise Email Sign-Up Form Example](https://s3.amazonaws.com/assets.sales.serverless/github/enterprise-examples/email_form_preview.gif)
+
 ## Installation
 
 #### Clone this repository
@@ -41,7 +43,7 @@ Make sure to follow the prompts and create your Tenant (it's like a Github Org) 
 
 #### Add the Tenant and Application to this project's `serverless.yml`
 
-
+![App and Tenant](https://s3.amazonaws.com/assets.sales.serverless/github/enterprise-examples/email_form_appandtenant.png)
 
 #### Deploy the back-end
 
@@ -57,4 +59,10 @@ $ serverless deploy
 $ npm run start
 ```
 
-## Testing Serverless Insights - Monitoring
+## Testing Serverless Insights
+
+The front-end of the application comes with a UI to help you test out the Serverless Insights.
+
+
+
+
