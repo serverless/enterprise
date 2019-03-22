@@ -46,7 +46,7 @@ This view provides an overview of the applications, services and service instanc
   - last deployment status
   - last deployment timestamp
 
-**Note**: the stage and regions are only available for services deployed using the Enterprise Plugin version 0.2.2 or higher. If the service was deployed with a previous version you’ll see "info n/a"
+**Note**: the stage and regions are only available for services deployed using the Enterprise Plugin version 0.3.0 or higher. If the service was deployed with a previous version you’ll see "info n/a"
 
 ### Service Overview
 
