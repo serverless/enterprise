@@ -34,6 +34,20 @@ The Serverless Framework Enterprise uses the Application concept as a unit of or
 
 Once you’ve deployed an Application successfully from the CLI, you’ll be able to explore the services contained within it from the Serverless Framework Enterprise dashboard. 
 
+
+### Applications Overview
+This view provides an overview of the applications, services and service instances and a way to dive into more details, it includes:
+
+- All the applications in your tenant in the tile view. The summary includes the number of services and the lastest deployments status and timestamp.
+- Each application tile shows the list of services deployed in that application.
+- Once you expand the Service you’ll see the Service Instances, which includes:
+  - stage
+  - region
+  - last deployment status
+  - last deployment timestamp
+
+**Note**: the stage and regions are only available for services deployed using the Enterprise Plugin version 0.2.2 or higher. If the service was deployed with a previous version you’ll see "info n/a"
+
 ### Service Overview
 
 This view showcases the most important information about your deployed service. If you haven’t deployed a service, you’ll see instructions for how to go about doing just that:
