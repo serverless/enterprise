@@ -69,7 +69,7 @@ The URL should resemble this.
 https://bpcn36m16a.execute-api.us-east-1.amazonaws.com/dev/submit
 ```
 
-In the front-end, click "Demo Utilities" and paste this URL into the `FORM API` field.
+In the front-end, click "Demo Utilities" and paste this URL into the `FORM API` field.  The form should now work, as well as the testing features in the Utilites panel.
 
 
 ## Testing Serverless Insights
