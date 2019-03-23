@@ -59,6 +59,19 @@ $ serverless deploy
 $ npm run start
 ```
 
+#### Add the back-end URL in the front-end
+
+The front-end form is not directed at the API endpoint out of the box.  You must copy the POST URL that is returned on `serverless deploy` of the `backend` into the front-end.
+
+The URL should resemble this.
+
+```
+https://bpcn36m16a.execute-api.us-east-1.amazonaws.com/dev/submit
+```
+
+In the front-end, click "Demo Utilities" and paste this URL into the `FORM API` field.
+
+
 ## Testing Serverless Insights
 
 The user interface of this example application has a few utilities you can use to test out Serverless Framework Enterprise.
