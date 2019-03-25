@@ -11,10 +11,11 @@ In order to enable Serverless Insights for a particular Service you must deploy 
 
 ## Supported Runtimes and Regions
 
-Currently, Serverless Insights support is limited to the following runtimes and regions.  
+Currently, Serverless Insights support is limited to the following providers, runtimes and regions.  
 
+- Provider: AWS
 - Runtimes: Node.js
-- Regions:  AWS us-east-1
+- Regions: us-east-1, us-east-2, us-west-2, eu-west-1, eu-west-2, ap-northeast-1, ap-southeast-1, ap-southeast-2
 
 Only services that are deployed to a supported region, and include one or more functions using a supported runtime, will generate metric and alert data.  If these conditions are not met Servereless Insights metrics will not populate with data and Serverless Insights alerts will not fire. 
 
