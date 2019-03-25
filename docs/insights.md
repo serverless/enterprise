@@ -72,8 +72,31 @@ The invociations chart shows the aggregate number of invocations for a particula
 
 The errors chart shows error count trends for a service.  Click into a point on the chart to see error counts and error types by function.  Click on an error type to see an occurrence of an error.
 
+#### Uploading Source Map
+The occurrence of an error also includes the stacktrace. Tools like Webpack and Typescript generate the packaged code and therefore may obfuscate the stack trace. The Serverless Framework Enterprise Plugin and SDK support sourcemaps to properly generate the stack trace.
+
+To use a sourcemap, ensure that your packaging directory includes the compiled source, original source, and the source maps.
+
+For example, if your directory structure is:
+
+```
+$ ls -l dist/* src/*
+-rw-r--r--  1 dschep  staff   576B Mar 21 17:21 dist/handler.js
+-rw-r--r--  1 dschep  staff   911B Mar 21 17:21 dist/handler.js.map
+-rw-r--r--  1 dschep  staff   451B Mar 22 12:13 src/handler.js
+```
+
+Then you should have a packaging directory that includes all the files above:
+
+```yaml
+package:
+  include:
+    - src/*.js
+    - dist/*.js
+    - dist/*.js.map
+```
+
+
 ### Durations
 
 The durations chart shows the aggregate duration times for all functions in a particular Service for a selected time period.  Click into any point on the chart to see function specific metrics, including maximum, average, and minimum durations.
-
-
