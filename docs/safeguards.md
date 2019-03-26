@@ -9,7 +9,7 @@ added as well.
 
 ## Minimum Version and Enterprise Plugin Requirements
 
-In order to enable Serverless Safeguards for a particular Service you must deploy or redeploy that Service using Serverless Framework open-source CLI version 1.36.3 with the Enterprise Plugin installed.
+In order to enable Serverless Safeguards for a particular Service you must deploy or redeploy that Service using Serverless Framework open-source CLI with the Enterprise Plugin version 0.3.0 or later.
 
 - If you are an existing Serverless Framework Enterprise user and have a Service that you want to configure to use Serverless Insights, follow these steps to [update an existing Service](./update.md)
 - If you are new to the Serverless Framework open source CLI or Serverless Framework Enterprise simply follow the steps in this [new user getting started guide](./getting-started.md#install-the-enterprise-plugin) to get up and running
