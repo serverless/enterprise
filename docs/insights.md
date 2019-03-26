@@ -4,7 +4,7 @@ Serverless Insights help you monitor and optimize your serverless application by
 
 ## Minimum Version and Enterprise Plugin Requirements
 
-In order to enable Serverless Insights for a particular Service you must deploy or redeploy that Service, using Serverless Framework open-source CLI version 1.36.3 or later, with the Enterprise Plugin installed.
+In order to enable Serverless Insights for a particular Service you must deploy or redeploy that Service, using Serverless Framework open-source CLI with the Enterprise Plugin version 0.3.0 or later installed.
 
 - If you are an existing Serverless Framework Enterprise dashboard user and have a previously deployed a Service that you now want to configure to use Serverless Insights, follow these steps to [update an existing Service](./update.md)
 - If you are new to the Serverless Framework open source CLI or Serverless Framework Enterprise simply follow the steps in this [new user getting started guide](./getting-started.md#install-the-enterprise-plugin) to get up and running
