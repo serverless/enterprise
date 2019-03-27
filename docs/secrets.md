@@ -8,7 +8,7 @@ With Serverless Framework Enterprise Secrets the AWS Access Keys are generated b
 
 ## Minimum Version and Enterprise Plugin Requirements
 
-In order to enable Serverless Secrets for a Service you must update your Service configuration to use Serverless Framework open-source CLI version 1.37.1 or later, and Enterprise Plugin 0.2.0 or later.
+In order to enable Serverless Secrets for a Service you must update your Service configuration to use Serverless Framework open-source CLI with the Enterprise Plugin version 0.3.0 or later.
 
 ## Link your AWS Account
 

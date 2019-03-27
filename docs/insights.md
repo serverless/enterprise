@@ -4,7 +4,7 @@ Serverless Insights help you monitor and optimize your serverless application by
 
 ## Minimum Version and Enterprise Plugin Requirements
 
-In order to enable Serverless Insights for a particular Service you must deploy or redeploy that Service, using Serverless Framework open-source CLI version 1.39.1 or later, with the Enterprise Plugin installed.
+In order to enable Serverless Insights for a particular Service you must deploy or redeploy that Service, using Serverless Framework open-source CLI with the Enterprise Plugin version 0.3.0 or later installed.
 
 - If you are an existing Serverless Framework Enterprise dashboard user and have a previously deployed a Service that you now want to configure to use Serverless Insights, follow these steps to [update an existing Service](./update.md)
 - If you are new to the Serverless Framework open source CLI or Serverless Framework Enterprise simply follow the steps in this [new user getting started guide](./getting-started.md#install-the-enterprise-plugin) to get up and running
@@ -76,4 +76,28 @@ The errors chart shows error count trends for a service.  Click into a point on 
 
 The durations chart shows the aggregate duration times for all functions in a particular Service for a selected time period.  Click into any point on the chart to see function specific metrics, including maximum, average, and minimum durations.
 
+## Advanced Configuration Options
 
+### Uploading Source Map
+The [New Error Alert](#new-error) and the [Error Metrics](#errors) can be used to view the stack trace for the occurance of an error. Tools like Webpack and Typescript generate the packaged code and therefore may obfuscate the stack trace. The Serverless Framework Enterprise Plugin and SDK support sourcemaps to properly generate the stack trace.
+
+To use a sourcemap, ensure that your packaging directory includes the compiled source, original source, and the source maps.
+
+For example, if your directory structure is:
+
+```
+$ ls -l dist/* src/*
+-rw-r--r--  1 dschep  staff   576B Mar 21 17:21 dist/handler.js
+-rw-r--r--  1 dschep  staff   911B Mar 21 17:21 dist/handler.js.map
+-rw-r--r--  1 dschep  staff   451B Mar 22 12:13 src/handler.js
+```
+
+Then you should have a packaging directory that includes all the files above:
+
+```yaml
+package:
+  include:
+    - src/*.js
+    - dist/*.js
+    - dist/*.js.map
+```
