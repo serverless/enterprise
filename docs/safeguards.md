@@ -384,20 +384,16 @@ policies directory.
 **./policies/my-custom-policy.js**
 ```javascript
 module.exports = function myCustomPolicy(policy, service) {
-  // throw new policy.Failure(“Configuration is not compliant with policy”)
-  // policy.warn(“Configuration has a warning”)
+  // policy.fail(“Configuration is not compliant with policy”)
   policy.approve()
 }
 ```
 
-There are three primary methods you can use to control the behavior of the policy checks
+There are two primary methods you can use to control the behavior of the policy checks
 when running the `deploy` command.
 
-- `warn` - Call this method with a string to display a warning in the CLI output.
-- `approve` - Approve the policy to allow the deploy to continue. If the `approve` method
-is not called and the policy method returns, the deployment will be stopped.
-- `Failure` - This method can be called to create an error response which can be thrown.
-If the policy check throws an error the deployment will be stopped.
+- `approve()` - Passes the policy to allow the deploy to continue.
+- `fail(message)` - Fails the policy check and returns an failure message. 
 
 To define the policy method you’ll need to inspect the configuration. The entire
 configuration is made available in the service object. Use the [default policies](https://github.com/serverless/enterprise-plugin/tree/master/src/lib/safeguards/policies)
