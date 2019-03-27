@@ -327,28 +327,12 @@ determine which policies to evaluate.
 $ sls deploy
 Serverless: Packaging service...
 Serverless: Excluding development dependencies...
-Serverless Enterprise: (🛡️ Safeguards) Loading 3 policies.
-Serverless Enterprise: (🛡️ Safeguards) Running policy "require-dlq"...
-Serverless Enterprise: (🛡️ Safeguards) ❌ Policy "require-dlq" prevented the deployment — Function "hello" doesn't have a Dead Letter Queue configured.
-Serverless Enterprise: (🛡️ Safeguards) Running policy "no-secret-env-vars"...
-Serverless Enterprise: (🛡️ Safeguards) Running policy "no-wild-iam-role-statements"...
-
-  Error --------------------------------------------------
-
-  (🛡️ Safeguards) 1 policies reported irregular conditions. For details, see the logs above.
-      ❌ require-dlq: Requirements not satisfied. Deployment halted.
-
-     For debugging logs, run again after setting the "SLS_DEBUG=*" environment variable.
-
-  Get Support --------------------------------------------
-     Docs:          docs.serverless.com
-     Bugs:          github.com/serverless/serverless/issues
-     Issues:        forum.serverless.com
-
-  Your Environment Information -----------------------------
-     OS:                     darwin
-     Node Version:           8.15.0
-     Serverless Version:     1.36.1
+Serverless Enterprise: 🛡️  Safeguards
+    Must use the latest stable runtimes: ✅ passed
+    Require DLQ: ✅ passed
+    No deploy on Friday, go have a beer instead: ✅ passed
+    No wildcard IAM roles: ✅ passed
+...
 ```
 
 ### Policy check results
