@@ -345,8 +345,27 @@ If one or more of the policy checks fail the command will return a 1 exit code s
 it can be detected from a script or CI/CD service.
 
 ## Configuring Policies
+Safeguard policies are managed in the [Serverless Framework Enterprise Dashboard](https://dashboard.serverless.com/). When you run `serverless deploy`, the CLI obtains the latest list of Safeguard policies and performs the checks before any resources are provisioned or deployed.
 
-Policies are managed with in the [Serverless Enterprise Dashboard](https://dashboard.serverless.com)
+The list of available Safeguards can be found in the top navigation under “safeguards”. All Safeguard policies are checked at deployment time for all services in the tenant.
+
+When creating a new Safeguard policy you must specify each of the following fields:
+
+### name
+This is a user-readable name for the Safeguard policy. When the policy check is run in the CLI, the Safeguard policy name is used in the output. 
+
+### description
+The description should explain the intent of the policy. When the Safeguard policy check runs in the CLI this description will be displayed if the policy check fails. It is recommended that the description provides instructions on how to resolve an issue if the service is not compliant with the policy. 
+
+### safeguard
+The safeguard dropdown lists all of the [available policies](#available-policies). Select the Safeguard you want to enforce. When you select the Safeguard the description and the settings will be populated for you with default values.
+
+### enforcement level
+The enforcement level can be set to either `warning` or `error`.  When the Safeguard policy check runs in the CLI and the policy check passes, then enforcement level will have no impact on the deployment. However, if the policy check fails, then the enforcement level will control if the deployment can continue. If the enforcement level is set to `warning`, then the CLI will return a warning message but the deployment will continue. If the enforcement level is set to `error`, then the CLI will return an error message and the deployment will be blocked from continuing.
+
+### settings
+Some of the [available safeguards](#available-safeguards) may allow or require configurations. For example, the [Allowed Runtimes (allowed-runtimes)](#allowed-runtimes) Safeguard requires a list of allowed AWS Lambda Runtimes for functions. This field allows you to customize the settings for the Safeguard policy.
+
 
 ## Custom Policies
 
