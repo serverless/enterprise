@@ -374,7 +374,7 @@ policies to your application.
 
 ### Creating a custom policy
 
-A policy is simple a Javascript packaged in a module export. To start with a
+A policy is simply a Javascript packaged in a module export. To start with a
 custom policy first create a directory in your working directory
 (e.g. `./policies`) to store the policy files.
 
