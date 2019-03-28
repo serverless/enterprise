@@ -327,28 +327,12 @@ determine which policies to evaluate.
 $ sls deploy
 Serverless: Packaging service...
 Serverless: Excluding development dependencies...
-Serverless Enterprise: (🛡️ Safeguards) Loading 3 policies.
-Serverless Enterprise: (🛡️ Safeguards) Running policy "require-dlq"...
-Serverless Enterprise: (🛡️ Safeguards) ❌ Policy "require-dlq" prevented the deployment — Function "hello" doesn't have a Dead Letter Queue configured.
-Serverless Enterprise: (🛡️ Safeguards) Running policy "no-secret-env-vars"...
-Serverless Enterprise: (🛡️ Safeguards) Running policy "no-wild-iam-role-statements"...
-
-  Error --------------------------------------------------
-
-  (🛡️ Safeguards) 1 policies reported irregular conditions. For details, see the logs above.
-      ❌ require-dlq: Requirements not satisfied. Deployment halted.
-
-     For debugging logs, run again after setting the "SLS_DEBUG=*" environment variable.
-
-  Get Support --------------------------------------------
-     Docs:          docs.serverless.com
-     Bugs:          github.com/serverless/serverless/issues
-     Issues:        forum.serverless.com
-
-  Your Environment Information -----------------------------
-     OS:                     darwin
-     Node Version:           8.15.0
-     Serverless Version:     1.36.1
+Serverless Enterprise: 🛡️  Safeguards
+    Must use the latest stable runtimes: ✅ passed
+    Require DLQ: ✅ passed
+    No deploy on Friday, go have a beer instead: ✅ passed
+    No wildcard IAM roles: ✅ passed
+...
 ```
 
 ### Policy check results
@@ -361,8 +345,27 @@ If one or more of the policy checks fail the command will return a 1 exit code s
 it can be detected from a script or CI/CD service.
 
 ## Configuring Policies
+Safeguard policies are managed in the [Serverless Framework Enterprise Dashboard](https://dashboard.serverless.com/). When you run `serverless deploy`, the CLI obtains the latest list of Safeguard policies and performs the checks before any resources are provisioned or deployed.
 
-Policies are managed with in the [Serverless Enterprise Dashboard](https://dashboard.serverless.com)
+The list of available Safeguards can be found in the top navigation under “safeguards”. All Safeguard policies are checked at deployment time for all services in the tenant.
+
+When creating a new Safeguard policy you must specify each of the following fields:
+
+### name
+This is a user-readable name for the Safeguard policy. When the policy check is run in the CLI, the Safeguard policy name is used in the output. 
+
+### description
+The description should explain the intent of the policy. When the Safeguard policy check runs in the CLI this description will be displayed if the policy check fails. It is recommended that the description provides instructions on how to resolve an issue if the service is not compliant with the policy. 
+
+### safeguard
+The safeguard dropdown lists all of the [available policies](#available-policies). Select the Safeguard you want to enforce. When you select the Safeguard the description and the settings will be populated for you with default values.
+
+### enforcement level
+The enforcement level can be set to either `warning` or `error`.  When the Safeguard policy check runs in the CLI and the policy check passes, then enforcement level will have no impact on the deployment. However, if the policy check fails, then the enforcement level will control if the deployment can continue. If the enforcement level is set to `warning`, then the CLI will return a warning message but the deployment will continue. If the enforcement level is set to `error`, then the CLI will return an error message and the deployment will be blocked from continuing.
+
+### settings
+Some of the [available safeguards](#available-safeguards) may allow or require configurations. For example, the [Allowed Runtimes (allowed-runtimes)](#allowed-runtimes) Safeguard requires a list of allowed AWS Lambda Runtimes for functions. This field allows you to customize the settings for the Safeguard policy.
+
 
 ## Custom Policies
 
@@ -371,7 +374,7 @@ policies to your application.
 
 ### Creating a custom policy
 
-A policy is simple a Javascript packaged in a module export. To start with a
+A policy is simply a Javascript packaged in a module export. To start with a
 custom policy first create a directory in your working directory
 (e.g. `./policies`) to store the policy files.
 
@@ -381,20 +384,16 @@ policies directory.
 **./policies/my-custom-policy.js**
 ```javascript
 module.exports = function myCustomPolicy(policy, service) {
-  // throw new policy.Failure(“Configuration is not compliant with policy”)
-  // policy.warn(“Configuration has a warning”)
+  // policy.fail(“Configuration is not compliant with policy”)
   policy.approve()
 }
 ```
 
-There are three primary methods you can use to control the behavior of the policy checks
+There are two primary methods you can use to control the behavior of the policy checks
 when running the `deploy` command.
 
-- `warn` - Call this method with a string to display a warning in the CLI output.
-- `approve` - Approve the policy to allow the deploy to continue. If the `approve` method
-is not called and the policy method returns, the deployment will be stopped.
-- `Failure` - This method can be called to create an error response which can be thrown.
-If the policy check throws an error the deployment will be stopped.
+- `approve()` - Passes the policy to allow the deploy to continue.
+- `fail(message)` - Fails the policy check and returns an failure message. 
 
 To define the policy method you’ll need to inspect the configuration. The entire
 configuration is made available in the service object. Use the [default policies](https://github.com/serverless/enterprise-plugin/tree/master/src/lib/safeguards/policies)

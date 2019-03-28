@@ -63,6 +63,10 @@ Deploy the Enterprise Template service
 $ sls deploy
 ```
 
+As the deploy is executing, you can expect to see a series of Serverless Safeguard policy checks run and return the status under `Serverless Enterprise: 🛡️  Safeguards` in the terminal output. These Safeguard policies can be [configured in the dashboard](./safeguards.md#configuring-policies).
+
+Next, lets test out Serverless Insights.
+
 Test your service by hitting the returned endpoint.  Find the endpoint URL in the `sls deploy` output and use that instead of the URLs below:
 ```sh
 $ curl -X POST https://xxxxxxxxxx.execute-api.us-east-1.amazonaws.com/dev/hello # no error
