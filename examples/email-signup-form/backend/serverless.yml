@@ -7,7 +7,7 @@ frameworkVersion: '>=1.38.0 <2.0.0'
 provider:
   name: aws
   runtime: nodejs6.10
-  # credentials: ${secrets:aws-enterprise} # Add this secret in the Dashboard to use configure temporary access credentials.
+  # credentials: ${secrets:aws-enterprise} # Enter an AWS Secret like this, after you create it in the Dashboard.
 
 functions:
   formSubmit:
@@ -18,11 +18,11 @@ functions:
           method: post
           cors: true
 
-custom:
-  client:
-    bucketName: sfe-demo-email-form # If you want to deploy the front-end, change this to a universally unique AWS S3 bucket name
-    distributionFolder: ../frontend/build
-
 plugins:
   - '@serverless/enterprise-plugin'
-  - serverless-finch
+  # - serverless-finch # If you want to deploy the front-end uncomment this and the "custom" object below
+
+# custom:
+  # client:
+    # bucketName: sfe-demo-email-form # If you want to deploy the front-end, change this to a universally unique AWS S3 bucket name
+    # distributionFolder: ../frontend/build

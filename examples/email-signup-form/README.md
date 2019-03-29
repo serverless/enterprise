@@ -86,7 +86,7 @@ Read more about [Insights here](https://github.com/serverless/enterprise/blob/ma
 
 The goal of our Secrets feature is to support storing and using any generic secret as a [Serverless Variable](https://serverless.com/framework/docs/providers/aws/guide/variables/).  This will be supported in upcoming weeks.
 
-What Secrets supports now is creating a secific type of secret: AWS Access Keys.
+What Secrets supports now is creating a specific type of secret: AWS Access Keys.
 
 You can use Secrets to reference temporary AWS Access Keys that last for 1 hour, used for the purpose of deploying your Serverless Framework project to the underlying AWS account.
 
