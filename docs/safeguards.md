@@ -217,6 +217,20 @@ maxLength: 100
 Add a function description to all your lambdas that is with in the minimum and maximum required
 lengths.
 
+### Generic
+
+**ID: generic**
+
+This rule provides a way to define custom policies using a query language. 
+
+```yaml
+- 
+```
+
+#### Resolution
+Add a function description to all your lambdas that is with in the minimum and maximum required
+lengths.
+
 ### Allowed Regions
 
 **ID: allowed-regions**
