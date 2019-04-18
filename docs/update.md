@@ -11,6 +11,7 @@ Install the Serverless Framework Enterprise Plugin
 ```sh
 $ sls plugin install -n @serverless/enterprise-plugin
 ```
+**Note**: Make sure the enterprise-plugin is first in the list of plugins as it must be loaded before other plugins.
 
 Include your Tenant and App name in your sls yaml file
 ```sh
