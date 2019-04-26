@@ -29,6 +29,8 @@ Redeploy your service
 $ sls deploy
 ```
 
+If you are running `sls deploy` in a CI/CD Pipeline, then you'll also need to [configure your CI/CD Pipeline to work without needing to interactively login](./running-in-cicd.md)
+
 # Explore Serverless Safeguards and Serverless Insights by deploying a sample Service Template
 
 You can also explore Insights and Safeguards by deploying our Enterprise Template.
