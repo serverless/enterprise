@@ -3,9 +3,10 @@
 Safeguards is a new feature introduced in Serverless Framework Enterprise to
 validate the Serverless configuration for operational safety and security.
 Safeguards performs a series of policy checks when running the `serverless
-deploy` command. There are [three policies](#default-policies) included and
-enabled by default. Additionally [custom policies](#custom-policies) can be
-added as well.
+deploy` command. There are [fourteen policies](#default-policies) included
+which you can [configure in the dashboard](#configuring-policies). Additionally
+[custom policies](#custom-policies) can be created and added to your serverless
+project.
 
 ## Minimum Version and Enterprise Plugin Requirements
 
