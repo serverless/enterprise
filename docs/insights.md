@@ -27,7 +27,13 @@ That's it!  Insights are enabled by default by including the Enterprise plugin.
 
 ### Configuration
 
-Serverless Framework Enterprise will automatically enable log collection. If you wish to disable log collection, set the following options:
+Serverless Framework Enterprise will automatically enable log collection.
+
+Serverless Framework will add a CloudWatch Logs Subscription to send logs that match a particular pattern to our infrastructure for processing. This is used for generating the alerts and metrics.
+
+When deploying, Serverless Framework will also create an IAM role in your account that allows the Serverless Framework Enterprise backend to call FilterLogEvents on the CloudWatch Log Groups that are created in that service being deployed. This is used to display the CloudWatch logs in the error details views alongside the stack trace.
+
+If you wish to disable log collection, set the following options:
 
 **serverless.yml**
 ```yaml
