@@ -324,15 +324,35 @@ This will load the safeguard settings from the `serverless.yml` file to
 determine which policies to evaluate.
 
 **Example deploy**
-```sh
+```
 $ sls deploy
-Serverless: Packaging service...
-Serverless: Excluding development dependencies...
-Serverless Enterprise: 🛡️  Safeguards
-    Must use the latest stable runtimes: ✅ passed
-    Require DLQ: ✅ passed
-    No deploy on Friday, go have a beer instead: ✅ passed
-    No wildcard IAM roles: ✅ passed
+...
+Serverless Enterprise: Safeguards Results:
+
+   Summary --------------------------------------------------
+
+   passed - require-dlq
+   passed - allowed-runtimes
+   passed - no-secret-env-vars
+   passed - allowed-stages
+   failed - require-cfn-role
+   passed - allowed-regions
+   passed - framework-version
+   failed - no-wild-iam-role-statements
+
+   Details --------------------------------------------------
+
+   1) Failed - no cfnRole set
+      details: https://git.io/fhpFZ
+      Require the cfnRole option, which specifies a particular role for CloudFormation to assume while deploying.
+
+
+   2) Failed - iamRoleStatement granting Resource='*'. Wildcard resources in iamRoleStatements are not permitted.
+      details: https://git.io/fjfk7
+      Prevent "*" permissions being used in AWS IAM Roles by checking for wildcards on Actions and Resources in grant statements.
+
+
+Serverless Enterprise: Safeguards Summary: 6 passed, 0 warnings, 2 errors
 ...
 ```
 
