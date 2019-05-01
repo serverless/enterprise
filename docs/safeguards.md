@@ -460,3 +460,30 @@ custom:
       - my-custom-policy:
           max: 2
 ```
+
+### Creating a custom remote policy
+
+The custom local policies allow you to define policies as a part of your service’s working directory, but if you need to define a new custom policy across all of your applications and services, then you need to create a custom remote policy. The custom remote policies are defined as a special type of safeguard policy in the Serverless Framework Enterprise dashboard and apply to all applications and services in that tenant.
+
+**Create a new javascript safeguard policy in the dashboard**
+
+In the dashboard go to `safeguards` > `+ add`.
+
+On the `add a safeguard policy` page, set the name, description, enforcement level fields and from the `safeguards` dropdown select `javascript`.
+
+Selecting `javascript` as the `safeguard` will enable a IDE-like text area labeled `safeguard configuration`  where you define custom javascript policies.
+
+
+**Defining the safeguard policy**
+
+In the IDE-like text area, `safeguard configuration`, write the javascript code for the custom safeguard.
+
+The javascript code must return `true` to pass the policy check, or `false` to fail the policy check. If the code doesn’t explicitly `return`, then the response from the last line will be used as the policy check response.
+
+To define the policy method you’ll need to inspect the configuration. The entire
+configuration is made available in the service object. Use the [default policies](https://github.com/serverless/enterprise-plugin/tree/master/src/lib/safeguards/policies) as reference to the content of the service object.
+
+**Enabling the custom safeguard policy**
+
+Since this safeguard policy is defined in the dashboard, no further action is needed to enable it for all services. It will be evaluated across all services when running `sls deploy`.
+
