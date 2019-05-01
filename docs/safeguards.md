@@ -324,15 +324,35 @@ This will load the safeguard settings from the `serverless.yml` file to
 determine which policies to evaluate.
 
 **Example deploy**
-```sh
+```
 $ sls deploy
-Serverless: Packaging service...
-Serverless: Excluding development dependencies...
-Serverless Enterprise: 🛡️  Safeguards
-    Must use the latest stable runtimes: ✅ passed
-    Require DLQ: ✅ passed
-    No deploy on Friday, go have a beer instead: ✅ passed
-    No wildcard IAM roles: ✅ passed
+...
+Serverless Enterprise: Safeguards Results:
+
+   Summary --------------------------------------------------
+
+   passed - require-dlq
+   passed - allowed-runtimes
+   passed - no-secret-env-vars
+   passed - allowed-stages
+   failed - require-cfn-role
+   passed - allowed-regions
+   passed - framework-version
+   failed - no-wild-iam-role-statements
+
+   Details --------------------------------------------------
+
+   1) Failed - no cfnRole set
+      details: https://git.io/fhpFZ
+      Require the cfnRole option, which specifies a particular role for CloudFormation to assume while deploying.
+
+
+   2) Failed - iamRoleStatement granting Resource='*'. Wildcard resources in iamRoleStatements are not permitted.
+      details: https://git.io/fjfk7
+      Prevent "*" permissions being used in AWS IAM Roles by checking for wildcards on Actions and Resources in grant statements.
+
+
+Serverless Enterprise: Safeguards Summary: 6 passed, 0 warnings, 2 errors
 ...
 ```
 
@@ -440,3 +460,30 @@ custom:
       - my-custom-policy:
           max: 2
 ```
+
+### Creating a custom remote policy
+
+The custom local policies allow you to define policies as a part of your service’s working directory, but if you need to define a new custom policy across all of your applications and services, then you need to create a custom remote policy. The custom remote policies are defined as a special type of safeguard policy in the Serverless Framework Enterprise dashboard and apply to all applications and services in that tenant.
+
+**Create a new javascript safeguard policy in the dashboard**
+
+In the dashboard go to `safeguards` > `+ add`.
+
+On the `add a safeguard policy` page, set the name, description, enforcement level fields and from the `safeguards` dropdown select `javascript`.
+
+Selecting `javascript` as the `safeguard` will enable a IDE-like text area labeled `safeguard configuration`  where you define custom javascript policies.
+
+
+**Defining the safeguard policy**
+
+In the IDE-like text area, `safeguard configuration`, write the javascript code for the custom safeguard.
+
+The javascript code must return `true` to pass the policy check, or `false` to fail the policy check. If the code doesn’t explicitly `return`, then the response from the last line will be used as the policy check response.
+
+To define the policy method you’ll need to inspect the configuration. The entire
+configuration is made available in the service object. Use the [default policies](https://github.com/serverless/enterprise-plugin/tree/master/src/lib/safeguards/policies) as reference to the content of the service object.
+
+**Enabling the custom safeguard policy**
+
+Since this safeguard policy is defined in the dashboard, no further action is needed to enable it for all services. It will be evaluated across all services when running `sls deploy`.
+
