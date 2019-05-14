@@ -39,11 +39,6 @@ Change into the newly created directory
 $ cd my-service
 ```
 
-Install Serverless Enterprise dependencies
-```sh
-$ npm install
-```
-
 Include your Tenant and App name in your sls yaml file
 ```sh
 tenant: tenantname # NOTE: change this to your tenant name
