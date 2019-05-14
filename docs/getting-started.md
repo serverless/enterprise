@@ -8,7 +8,7 @@ To take advantage of Serverless Framework Enterprise features like Serverless Sa
 
 * [Installing Node.js 6.x or later on your local machine](#install-nodejs-and-npm)
 * [Creating an AWS account and IAM User](#setup-an-aws-account)
-* [Installing the Serverless Framework open-source CLI version 1.39.1 or later](#install-the-serverless-framework-open-source-cli)
+* [Installing the Serverless Framework open-source CLI version 1.43.0 or later](#install-the-serverless-framework-open-source-cli)
 * [Configuring your AWS credentials to work with your Serverless Framework CLI](#configure-aws-access-keys-in-your-serverless-framework-open-source-cli)
 * [Creating an account on the Serverless Framework Enterprise dashboard](#create-a-serverless-framework-enterprise-account)
 
@@ -69,9 +69,6 @@ $ serverless create -n my-service -u https://github.com/serverless/enterprise-te
 
 # Change into the newly created directory
 $ cd my-service
-
-# Install Serverless Enterprise dependencies
-$ npm install
 ```
 
 ### Specify the Tenant and Application
@@ -96,9 +93,6 @@ frameworkVersion: ">=1.39.1"
 provider:
   name: aws
   runtime: nodejs8.10
-
-plugins:
-  - '@serverless/enterprise-plugin'
 
 functions:
   hello:
