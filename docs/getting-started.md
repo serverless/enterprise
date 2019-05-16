@@ -8,13 +8,14 @@ To take advantage of Serverless Framework Enterprise features like Serverless Sa
 
 * [Installing Node.js 6.x or later on your local machine](#install-nodejs-and-npm)
 * [Creating an AWS account and IAM User](#setup-an-aws-account)
-* [Installing the Serverless Framework open-source CLI version 1.39.1 or later](#install-the-serverless-framework-open-source-cli)
+* [Installing the Serverless Framework open-source CLI version 1.43.0 or later](#install-the-serverless-framework-open-source-cli)
 * [Configuring your AWS credentials to work with your Serverless Framework CLI](#configure-aws-access-keys-in-your-serverless-framework-open-source-cli)
 * [Creating an account on the Serverless Framework Enterprise dashboard](#create-a-serverless-framework-enterprise-account)
 
 If you already have these prerequisites setup you can skip ahead to deploy an example Service.
 
 ### Install Node.js and NPM
+
 * Follow instructions here https://nodejs.org/en/download/package-manager/
 * At the end, you should be able to run `node -v` from your command line and get a result like this...
 ```sh
@@ -28,12 +29,14 @@ x.x.x
 ```
 
 ### Setup an AWS account
+
 * You will need an access key for an AWS IAM User with full admin privileges
 * If you already have an access key, skip to the next task.
 * If you don't have an AWS account or access key, you can follow our guide [here to help you get an account setup](./setup-aws-account.md).
 
 
 ### Install the Serverless Framework open-source CLI
+
 * Run this command in your terminal
 ```sh
 npm install -g serverless
@@ -45,6 +48,7 @@ x.x.x
 ```
 
 ### Configure AWS Access Keys in your Serverless Framework open-source CLI
+
 In order for the Serverless Framework open-source CLI to deploy your application to your AWS account, it will need to be configured with your AWS credentials. You can follow our instructions [here for configuring this](./setup-aws-account.md#using-aws-access-keys).
 
 
@@ -91,14 +95,11 @@ tenant: your-tenant-name
 app: your-app-name
 service: your-service-name
 
-frameworkVersion: ">=1.39.1"
+frameworkVersion: ">=1.43.0"
 
 provider:
   name: aws
   runtime: nodejs8.10
-
-plugins:
-  - '@serverless/enterprise-plugin'
 
 functions:
   hello:
@@ -111,6 +112,7 @@ functions:
 ```
 
 ### Login via the CLI
+
 In order to allow the Serverless Framework open-source CLI to access the Serverless Framework Enterprise dashboard you will need to provide the framework with platform credentials. To do this simply use the `login` command and the framework will download platform access keys behind the scenes.
 
 ```sh
@@ -215,5 +217,6 @@ $ sls deploy
 Learn more about the features and benefits of [Serverless Framework Enterprise](https://github.com/serverless/enterprise/blob/master/README.md) and how to...
 
 - [Run Serverless Framework Enterprise in your CI/CD pipeline](./running-in-cicd.md).
-- [Use Serverless Framework Enterprise Secrets to generate temporary AWS Access Keys](./secrets.md)
+- [Use Serverless Framework Enterprise AWS Access Roles to generate temporary AWS Access Keys](./aws-access-role.md)
+- [Use Serverless Framework Enterprise Secrets to secure and store your secrets](./secrets.md)
 
