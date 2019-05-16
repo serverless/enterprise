@@ -4,7 +4,7 @@ Serverless Framework Enterprise Secrets is a new feature which helps you secure 
 
 ## Minimum Version Requirements
 
-In order to enable Serverless Deployment Profiles for a particular Service you must deploy or redeploy that Service using Serverless Framework version 1.43.0 or later.
+In order to enable Serverless Secrets for a particular Service you must deploy or redeploy that Service using Serverless Framework version 1.43.0 or later.
 
 ## Creating a new Secret
 
