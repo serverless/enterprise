@@ -8,17 +8,13 @@ which you can [configure in the dashboard](#configuring-policies). Additionally
 [custom policies](#custom-policies) can be created and added to your serverless
 project.
 
-## Minimum Version and Enterprise Plugin Requirements
+## Minimum Version Requirements
 
 In order to enable Serverless Safeguards for a particular Service you must deploy or redeploy that Service using Serverless Framework version 1.43.0 or later.
 
-## Installing
-
-That's it!  Safeguards are enabled by default in the Enterprise plugin.
-
 ## Available Policies
 
-The following policies are included in the Enterprise plugin and configurable in the [Serverless
+The following policies are included and configurable in the [Serverless
 Enterprise Dashboard](https://dashboard.serverless.com/).
 
 ### No "\*" in IAM Role statements
