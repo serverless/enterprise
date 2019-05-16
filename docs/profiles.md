@@ -30,7 +30,7 @@ AWS Credential Access Roles, Secrets and Safeguards have individual configuratio
 - [safeguard policies](./safeguards.md#configuring-policies)
 - [secrets](./secrets.md)
 
-### Adding a deployment profile to your application and stage
+### Add a deployment profile to your application and stage
 
 Create a new stage by navigating to **applications** in the [Serverless Framework Enterprise Dashboard](https://dashboard.serverless.com).
 
