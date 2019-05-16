@@ -1,15 +1,13 @@
 # Secrets
 
-Serverless Framework Enterprise Secrets is a new feature which helps you secure your services by securely storing secrets used by your Serverless Framework services. The [Serverless Framework Enterprise Dashboard](https://dashboard.serverless.com/) provides an interface to store and encrypt secrets and manage access to those secrets from your services. The Serverless Framework Enterprise Plugin loads the secrets when the service is deployed.
+Serverless Framework Enterprise Secrets is a new feature which helps you secure your services by securely storing secrets used by your Serverless Framework services. The [Serverless Framework Enterprise Dashboard](https://dashboard.serverless.com/) provides an interface to store and encrypt secrets and manage access to those secrets from your services. The Serverless Framework loads the secrets when the service is deployed.
 
-## Minimum Version and Enterprise Plugin Requirements
+## Minimum Version Requirements
 
-In order to enable Serverless Deployment Profiles for a particular Service you must deploy or redeploy that Service using Serverless Framework open-source CLI with the Enterprise Plugin version 0.6.0 or later.
-## Installing
-
-That’s it! Secrets are enabled by default in the Enterprise plugin.
+In order to enable Serverless Deployment Profiles for a particular Service you must deploy or redeploy that Service using Serverless Framework version 1.43.0 or later.
 
 ## Creating a new Secret
+
 Create a new secret by navigating to **profiles** in the [Serverless Framework Enterprise Dashboard](https://dashboard.serverless.com).
 
 1. Navigate into the profile you would like to use for the Secret.
@@ -17,7 +15,9 @@ Create a new secret by navigating to **profiles** in the [Serverless Framework E
 3. Set a **key** and **value** and click **add**.
 4. Repeat Step 3 for each secret you would like to add.
 5. When done, click **save changes**.
+
 ## Using a Secret to deploy
+
 To use a secret, first make sure that the profile containing that secret is configured as the **default deployment profile** for your application, or it is configured as the **profile** on the stage and application you are using. 
 
 In your `serverless.yml` file add the variable `${secrets:<key>}` anywhere you would like to use the secret. The `<key>` references the Secret Key configured in the Profile. 
