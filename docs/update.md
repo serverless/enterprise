@@ -1,17 +1,17 @@
 # Updating an existing Service to use Serverless Safeguards and generate Serverless Insights
 
-In order to take advantage of all Serverless Framework Enterprise features you will need to be running Serverless Framework open source CLI version 1.39.1 or later and have installed the Enterprise Plugin version 0.6.0 or later.  If you already have a Serverless Framework Enterprise dashboard account with at least one configured Tenant and App, and have successfully deployed a Service into that App, follow these steps:
+In order to take advantage of all Serverless Framework Enterprise features you will need to be running Serverless Framework open source CLI version 1.43.0 or later.  If you already have a Serverless Framework Enterprise dashboard account with at least one configured Tenant and App, and have successfully deployed a Service into that App, follow these steps:
 
-Update to Serverless Framework 1.39.1 or later
+Update to Serverless Framework 1.43.0 or later
 ```sh
 $ npm i -g serverless
 ```
 
-Install the Serverless Framework Enterprise Plugin
-```sh
-$ sls plugin install -n @serverless/enterprise-plugin
+Remove the Enterprise Plugin from the `serverless.yml` file. As of version 1.43.0 of Serverless Framework, the Enterprise Plugin is integrated into the framework.
+```yaml
+plugins:
+  - '@serverless/enterprise-plugin'
 ```
-**Note**: Make sure the enterprise-plugin is first in the list of plugins as it must be loaded before other plugins.
 
 Include your Tenant and App name in your sls yaml file
 ```sh
@@ -66,7 +66,7 @@ Deploy the Enterprise Template service
 $ sls deploy
 ```
 
-As the deploy is executing, you can expect to see a series of Serverless Safeguard policy checks run and return the status under `Serverless Enterprise: 🛡️  Safeguards` in the terminal output. These Safeguard policies can be [configured in the dashboard](./safeguards.md#configuring-policies).
+As the deploy is executing, you can expect to see a series of Serverless Safeguard policy checks run and return the status under `Serverless Enterprise: Safeguards Results:` in the terminal output. These Safeguard policies can be [configured in the dashboard](./safeguards.md#configuring-policies).
 
 Next, lets test out Serverless Insights.
 
