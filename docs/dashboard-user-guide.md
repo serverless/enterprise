@@ -106,13 +106,12 @@ We provide a default access key when you first sign up, but we recommend creatin
 
 Provisioning new access keys is straightforward: 
 
-1. Navigate to the “Secure” page within Dashboard.
-
-2. Click on the “+ Access Key” button.
-
-3. Name your access key. We recommend a name that you’ll remember in the future.
-
-4. Before closing out, be sure to copy the secret access key somewhere safe, as it’s the only time you’ll be able to view it.
+1. Login to the dashboard at https://dashboard.serverless.com/
+2. Open the username dropdown in the upper-right corner.
+3. Select "personal access keys" from the dropdown.
+4. Click “+ add” button.
+5. Name your access key. We recommend a name that you’ll remember in the future.
+6. Before closing out, be sure to copy the secret access key somewhere safe, as it’s the only time you’ll be able to view it.
 
 You can remove an access key at any time by hovering over it and clicking the “X”. Once you do this it can’t be undone, so do keep that in mind.
     
