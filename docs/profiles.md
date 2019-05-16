@@ -26,7 +26,7 @@ The description helps provide additional context when listing the deployment pro
 
 AWS Credential Access Roles, Secrets and Safeguards have individual configuration guides:
 
-- [AWS Access Roles](./aws-access-role.md#set-up-the-service)
+- [AWS credential access roles](./aws-access-role.md#link-your-aws-account)
 - [safeguard policies](./safeguards.md#configuring-policies)
 - [secrets](./secrets.md)
 
