@@ -12,24 +12,24 @@ In order to enable Serverless Secrets for a Service you must update your Service
 
 ## Upgrading
 
-If you are upgrading from a previous version of the enterprise plugin (<=0.5.1) and you were using the secrets feature then you may have the `${secrets:}` variable in your `serverless.yml` to load the AWS credentials in `credentials:`. This is no longer required in 0.6.0 and it will error when you run `sls deploy`. To fix this, remove the line containing `credentials: ${secrets:<key>}` from the `serverless.yml` file.
+
+If you were using the AWS Access Role feature in Serverless Framework Enterprise with the enterprise plugin version 0.5.1 or earlier, then you will need to make a few updates:
+
+1. [Update the Serverless Framework to version 0.6.0 or later](./update.md)
+2. Find the line in `serverless.yml` containing `credentials: ${secrets:<secret-id>}`. You will need the Role ARN associated with the `<secret-id>`. If you do not know it, you can go to the [AWS Console for IAM Roles](https://console.aws.amazon.com/iam/home#/roles) and copy the Role ARN for the role.
+3. Follow the instructions in [Link your AWS Account](#link-your-aws-account); however, use the Role ARN from the previous step instead of generating  new one.
+4. Delete the line in `serverless.yml` containing `credentials: ${secrets:<secret-id>}`.
 
 ## Link your AWS Account
 
 1. Open https://dashboard.serverless.com/
 2. Once logged in, click "**profiles**" near the top of the page.
 3. Navigate to the profile you would like to configure with the AWS Access Role.
-4. In the "AWS credential access role" tab, expand the "how to add a role".
+4. In the **AWS credential access role** tab, expand the "_how to add a role_".
 5. Follow the directions which will take you through creating an IAM Role for Serverless Framework Enterprise.
 6. Click "**save changes**" in the deployment profile to save the IAM Role ARN to the profile.
 
-## Set up the service
-
-To use the generated AWS Access Keys in your service you need to associate the application containing your service with the deployment profile containing the AWS Access Role. You can do this one of two ways.
-
-**Using the AWS Access Role in an application** - Set the `default deployment profile` setting on the application to the profile containing the AWS Access Role. When you run `sls deploy`, the Serverless Framework will use the AWS Access Role in the default deployment profile to generate the AWS Access Keys
-
-**Using the AWS Access Role for in a stage** - In the Application add a new stage (e.g. `prod`) and select the deployment profile containg the AWS Access Role. When you run `sls deploy --stage prod`, the Serverless Framework will use the AWS Access Role from the profile configured on the stage (e.g. `prod`) in that application.
+## Use the generated AWS Access Keys in your service
 
 You don't have to do anything in your `serverless.yml` file. When you run `sls deploy` the Enterprise Plugin will identify the deployment profile associated with the application or stage and it will generate the AWS Access Keys using the associated AWS Access Role automatically.
 
