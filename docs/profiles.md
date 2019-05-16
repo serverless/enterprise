@@ -2,13 +2,9 @@
 
 Deployment Profiles is a new feature introduced in Serverless Framework Enterprise to enable each stage of your Serverless application to use a unique set of [Safeguards](./safeguards.md), [Secrets](./secrets.md) and [AWS Access Roles](./aws-access-roles.md). 
 
-## Minimum Version and Enterprise Plugin Requirements
+## Minimum Version Requirements
 
-In order to enable Serverless Deployment Profiles for a particular Service you must deploy or redeploy that Service using Serverless Framework open-source CLI with the Enterprise Plugin version 0.6.0 or later.
-
-## Installing
-
-That’s it! Deployment profiles are enabled by default in the Enterprise plugin.
+In order to enable Serverless Deployment Profiles for a particular Service you must deploy or redeploy that Service using Serverless Framework version 1.43.0 or later.
 
 ## Use Deployment Profiles
 
