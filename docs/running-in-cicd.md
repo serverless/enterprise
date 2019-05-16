@@ -27,8 +27,9 @@ When using the the Serverless Framework open-source CLI with Serverless Framewor
 Follow these steps to create an access token:
 
 1. Login to the dashboard at https://dashboard.serverless.com/
-2. Navigate to “Secure”
-3. Click “+ access key” button.
+2. Open the username dropdown in the upper-right corner.
+3. Select "personal access keys" from the dropdown.
+3. Click “+ add” button.
 4. Provide a name and press “Create”
 5. You will be presented with the access key on the new page. 
 
@@ -43,7 +44,9 @@ Set the following environment variables in your CI/CD environment:
 - `SERVERLESS_ACCESS_KEY`: Your Serverless Enterprise access token from previous step.
 - `AWS_ACCESS_KEY_ID`: Your AWS account access key
 - `AWS_SECRET_ACCESS_KEY`:  Your AWS account secret access key
+
 ## Configure the build step
+
 Your CI/CD pipeline is now ready to deploy the service. This step should be configured to run on every deploy.
 
 ```sh
