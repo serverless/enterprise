@@ -21,12 +21,12 @@ $ git clone https://github.com/serverless/enterprise.git
 Navigate into this example project and install dependencies on the frontend and backend.
 
 ```shell
-# location - enterprise/frontend
+# location - enterprise/examples/email-signup-form/frontend
 $ npm i
 ```
 
 ```shell
-# location - enterprise/backend
+# location - enterprise/examples/email-signup-form/frontend/backend
 $ npm i
 ```
 
