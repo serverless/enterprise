@@ -33,26 +33,6 @@ If you were using the AWS Access Role feature in Serverless Framework Enterprise
 
 You don't have to do anything in your `serverless.yml` file. When you run `sls deploy` the Enterprise Plugin will identify the deployment profile associated with the application or stage and it will generate the AWS Access Keys using the associated AWS Access Role automatically.
 
-## Test your configuration
-
-Before you run `serverless deploy` ensure that the Serverless Framework open-source CLI is resolving the new AWS Access Keys from Enterprise.
-
-```
-serverless print
-```
-
-You should expect to see output similar to this one, which includes values for the `accessKeyId`, `secretAccessKey` and `sessionToken` under `credentials` for the `aws` provider.
-
-```yaml
-provider:
-  name: aws
-  credentials:
-    accessKeyId: ASOAQ5RKZXALPDISYS34
-    secretAccessKey: D3DRPdC9m6vrKOHIPTHw/+8xyl/c62h4gw0xrzlV
-    sessionToken: >-
-      FQoGZXIvYXdzEHIaDJNjSW4JAsUNWcnpzCKNAqEPjj75DyALiUg5yonFhE9o6rLV3VgH+dg4tZ9WuZBvS1V6Cf8/Tk8cpf7vE3cDrpEDXpNm1Q51bwJnQk7L1S+E5hFK9CFIE/ICyv5HLmxyWqtDHgyyExYljwnovlQz5azmvKJLCjeMF
-```
-
 ## Deploy using AWS Access Roles
 
 That’s it! You are now ready to deploy using the new Serverless Framework Enterprise AWS Access Roles.
