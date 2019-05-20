@@ -1,10 +1,10 @@
 # Secrets
 
-Serverless Framework Enterprise Secrets is a new feature which helps you secure your services by securely storing secrets used by your Serverless Framework services. The [Serverless Framework Enterprise Dashboard](https://dashboard.serverless.com/) provides an interface to store and encrypt secrets and manage access to those secrets from your services. The Serverless Framework loads the secrets when the service is deployed.
+Serverless Framework Enterprise Secrets is a new feature which helps you secure your services by securely storing secrets used by your Serverless Framework services. The [Serverless Framework Enterprise Dashboard](https://dashboard.serverless.com/) provides an interface to store and encrypt secrets and manage access to those secrets from your services. The Serverless Framework Enterprise Plugin loads the secrets when the service is deployed.
 
 ## Minimum Version Requirements
 
-In order to enable Serverless Secrets for a particular Service you must deploy or redeploy that Service using Serverless Framework version 1.43.0 or later.
+You must deploy or redeploy that Service using Serverless Framework open-source CLI version 1.43.0 or later with the Enterprise Plugin version 1.0.0 or later.
 
 ## Creating a new Secret
 

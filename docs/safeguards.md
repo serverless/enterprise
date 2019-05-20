@@ -10,7 +10,7 @@ project.
 
 ## Minimum Version Requirements
 
-In order to enable Serverless Safeguards for a particular Service you must deploy or redeploy that Service using Serverless Framework version 1.43.0 or later.
+You must deploy or redeploy that Service using Serverless Framework open-source CLI version 1.43.0 or later with the Enterprise Plugin version 1.0.0 or later.
 
 ## Available Policies
 
