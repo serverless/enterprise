@@ -361,7 +361,7 @@ it can be detected from a script or CI/CD service.
 ## Configuring Policies
 Safeguard policies are managed in the [Serverless Framework Enterprise Dashboard](https://dashboard.serverless.com/). When you run `serverless deploy`, the CLI obtains the latest list of Safeguard policies and performs the checks before any resources are provisioned or deployed.
 
-The list of available Safeguards can be found by navigating to the "profiles" page, selecting the individaul profile and opening the "safeguards" tab. The guide on [using deployment profiles to deploy](/profiles.md#using-a-deployment-profile-to-deploy) provides instructions to identify the profile used by your application and stage.
+The list of available Safeguards can be found by navigating to the "profiles" page, selecting the individual profile and opening the "safeguards" tab. The guide on [using deployment profiles to deploy](./profiles.md#using-a-deployment-profile-to-deploy) provides instructions to identify the profile used by your application and stage.
 
 When creating a new Safeguard policy you must specify each of the following fields:
 
