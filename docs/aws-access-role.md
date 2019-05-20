@@ -15,7 +15,7 @@ You must deploy or redeploy that Service using Serverless Framework open-source 
 
 If you were using the AWS Access Role feature in Serverless Framework Enterprise with the enterprise plugin version 0.5.1 or earlier, then you will need to make a few updates:
 
-1. [Update the Serverless Framework to version 0.6.0 or later](./update.md)
+1. [Update the Serverless Framework to version 1.43.0 or later](./update.md)
 2. Find the line in `serverless.yml` containing `credentials: ${secrets:<secret-id>}`. You will need the Role ARN associated with the `<secret-id>`. If you do not know it, you can go to the [AWS Console for IAM Roles](https://console.aws.amazon.com/iam/home#/roles) and copy the Role ARN for the role.
 3. Follow the instructions in [Link your AWS Account](#link-your-aws-account); however, use the Role ARN from the previous step instead of generating  new one.
 4. Delete the line in `serverless.yml` containing `credentials: ${secrets:<secret-id>}`.
