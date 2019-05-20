@@ -13,11 +13,11 @@ You must deploy or redeploy that Service using Serverless Framework open-source 
 ## Upgrading
 
 
-The Enterprise Plugin version 0.5.1 and earlier used the `${secrets}` variable to load the AWS from the list of available AWS Access Roles in the AWS Tenant. As of version 1.0.0 of the Enterprise Plugin, the credentials are loaded automatically based on the deployment profile associated with the application or stage. If you were using the AWS Access Role feature in Serverless Framework Enterprise with the enterprise plugin version 0.5.1 or earlier, then you will need to make a few updates:
+The Enterprise Plugin version 0.5.1 and earlier used the `${secrets}` variable to load the AWS credenials from the list of available AWS Access Roles in the AWS Tenant. As of version 1.0.0 of the Enterprise Plugin, the credentials are loaded automatically based on the deployment profile associated with the application or stage. If you were using the AWS Access Role feature in Serverless Framework Enterprise with the enterprise plugin version 0.5.1 or earlier, then you will need to make a few updates to upgrade:
 
 1. [Update the Serverless Framework to version 1.43.0 or later](./update.md)
 2. Find the line in `serverless.yml` containing `credentials: ${secrets:<secret-id>}`. You will need the Role ARN associated with the `<secret-id>`. If you do not know it, you can go to the [AWS Console for IAM Roles](https://console.aws.amazon.com/iam/home#/roles) and copy the Role ARN for the role.
-3. Follow the instructions in [Link your AWS Account](#link-your-aws-account); however, use the Role ARN from the previous step instead of generating  new one.
+3. Follow the instructions in [Link your AWS Account](#link-your-aws-account); however, use the Role ARN from the previous step instead of generating a new one.
 4. Delete the line in `serverless.yml` containing `credentials: ${secrets:<secret-id>}`.
 
 ## Link your AWS Account
