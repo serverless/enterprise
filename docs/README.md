@@ -18,7 +18,11 @@ Pre-configured operational and security best practices. Serverless Safeguards pe
 
 ### [Serverless Secrets](./secrets.md)
 
-Secure serverless application deployments. Serverless Secrets help you secure serverless application lifecycle operations by issuing temporary access keys to deploy your services to cloud platforms.
+Serverless Secrets help you secure serverless applications by providing a central store to encrypt and save secure string parameters for your applications.
+
+### [Serverless AWS Access Roles](./aws-access-role.md)
+
+Serverless AWS Access Roles help you secure serverless application lifecycle operations by issuing temporary access keys to deploy your services to cloud platforms.
 
 ## Concepts
 

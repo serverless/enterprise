@@ -8,20 +8,13 @@ which you can [configure in the dashboard](#configuring-policies). Additionally
 [custom policies](#custom-policies) can be created and added to your serverless
 project.
 
-## Minimum Version and Enterprise Plugin Requirements
+## Minimum Version Requirements
 
-In order to enable Serverless Safeguards for a particular Service you must deploy or redeploy that Service using Serverless Framework open-source CLI with the Enterprise Plugin version 0.3.0 or later.
-
-- If you are an existing Serverless Framework Enterprise user and have a Service that you want to configure to use Serverless Insights, follow these steps to [update an existing Service](./update.md)
-- If you are new to the Serverless Framework open source CLI or Serverless Framework Enterprise simply follow the steps in this [new user getting started guide](./getting-started.md#install-the-enterprise-plugin) to get up and running
-
-## Installing
-
-That's it!  Safeguards are enabled by default in the Enterprise plugin.
+You must deploy or redeploy that Service using Serverless Framework open-source CLI version 1.43.0 or later with the Enterprise Plugin version 1.0.0 or later.
 
 ## Available Policies
 
-The following policies are included in the Enterprise plugin and configurable in the [Serverless
+The following policies are included and configurable in the [Serverless
 Enterprise Dashboard](https://dashboard.serverless.com/).
 
 ### No "\*" in IAM Role statements
@@ -368,7 +361,7 @@ it can be detected from a script or CI/CD service.
 ## Configuring Policies
 Safeguard policies are managed in the [Serverless Framework Enterprise Dashboard](https://dashboard.serverless.com/). When you run `serverless deploy`, the CLI obtains the latest list of Safeguard policies and performs the checks before any resources are provisioned or deployed.
 
-The list of available Safeguards can be found in the top navigation under “safeguards”. All Safeguard policies are checked at deployment time for all services in the tenant.
+The list of available Safeguards can be found by navigating to the "profiles" page, selecting the individaul profile and opening the "safeguards" tab. The guide on [using deployment profiles to deploy](/profiles.md#using-a-deployment-profile-to-deploy) provides instructions to identify the profile used by your application and stage.
 
 When creating a new Safeguard policy you must specify each of the following fields:
 
