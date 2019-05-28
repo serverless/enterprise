@@ -26,7 +26,7 @@ $ npm i
 ```
 
 ```shell
-# location - enterprise/examples/email-signup-form/frontend/backend
+# location - enterprise/examples/email-signup-form/backend
 $ npm i
 ```
 
