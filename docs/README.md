@@ -24,6 +24,10 @@ Serverless Secrets help you secure serverless applications by providing a centra
 
 Serverless AWS Access Roles help you secure serverless application lifecycle operations by issuing temporary access keys to deploy your services to cloud platforms.
 
+### [Serverless Output Variables](./output-variables.md)
+
+Serverless Output Variables helps you refactor large serverless applications by decoupling the shared services from the dependent services.
+
 ## Concepts
 
 After a few years of doing serverless development, we've designed the best possible abstractions for reasoning about serverless applications while preserving the option to deep dive into the underlying infrastructure when necessary.
