@@ -22,11 +22,11 @@ The values will be interpolated and saved when the service is deployed. The valu
 
 ## Use output variables in dependent services
 
-Output variables can be consumed from other services with they `${state()}` variable. The reference must be formatted as `<service-id>.<key>`, where the `<service-id>` references another service in the same application, stage and region and the `<key>` references the dictionary key from the `outputs:`. The `<key>` can also be nested to reference nested values from the dictionary.
+Output variables can be consumed from other services with they `${state}` variable. The reference must be formatted as `<service-id>.<key>`, where the `<service-id>` references another service in the same application, stage and region and the `<key>` references the dictionary key from the `outputs:`. The `<key>` can also be nested to reference nested values from the dictionary.
 
 **serverless.yml**
 ```yaml
-${state(my-service.var-key)}
+${state:my-service.var-key}
 ```
 
 ## View output variables in the dashboard
