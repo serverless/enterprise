@@ -4,7 +4,7 @@ Deployment Profiles is a new feature introduced in Serverless Framework Enterpri
 
 ## Minimum Version Requirements
 
-You must deploy or redeploy that Service using Serverless Framework open-source CLI version 1.43.0 or later with the Enterprise Plugin version 1.0.0 or later.
+You must deploy or redeploy that Service using Serverless Framework open-source CLI version 1.44.0 or later.
 
 ## Use Deployment Profiles
 
