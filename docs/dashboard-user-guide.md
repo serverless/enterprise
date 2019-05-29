@@ -99,10 +99,10 @@ Inviting team members is easy:
 
 4. Hit “Send Invite” and you’re done!
 
-### Provision access keys
+### Provision Personal Access Keys
 
 
-We provide a default access key when you first sign up, but we recommend creating new ones for additional security.
+We provide a default Personal Access Key when you first sign up, but we recommend creating new ones for additional security.
 
 Provisioning new access keys is straightforward: 
 

@@ -10,7 +10,7 @@ project.
 
 ## Minimum Version Requirements
 
-You must deploy or redeploy that Service using Serverless Framework open-source CLI version 1.43.0 or later with the Enterprise Plugin version 1.0.0 or later.
+You must deploy or redeploy that Service using Serverless Framework open-source CLI version 1.44.0 or later.
 
 ## Available Policies
 
@@ -121,7 +121,7 @@ This policy limits which versions of the Serverless Framework can be used. It is
 [semver](https://semver.org/) expression.
 
 ```yaml
->=1.38.0 <2.0.0
+>=1.44.0 <2.0.0
 ```
 
 #### Resolution
