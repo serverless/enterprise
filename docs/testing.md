@@ -80,5 +80,5 @@ Here is a config file that uses all the options:
 
 ## Options
 There are 2 options to allow you to avoid running your entire test suite:
-  - `--function` - only run tests for the function specified. This requires that you've set `endpint.function`
+  - `--function` - only run tests for the function specified. This requires that you've set `endpoint.function`
   - `--name` - only run the test with the specified name
