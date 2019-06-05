@@ -1,3 +1,9 @@
+<!--
+title: Serverless Framework Enterprise
+menuText: framework enterprise
+layout: Doc
+-->
+
 ![Serverless Framework Enterprise Documentation](https://s3.amazonaws.com/assets.github.serverless/readme-serverless-enterprise-documentation-3.png)
 
 The [Serverless Framework Enterprise](https://dashboard.serverless.com/) console is a SaaS solution that augments the Serverless Framework CLI with everything you need to operate and run your serverless applications. It provides out-of-the-box monitoring, alerts, secrets, policy enforcement and more. 
