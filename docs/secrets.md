@@ -1,3 +1,9 @@
+<!--
+title: Secrets - Serverless Framework Enterprise
+menuText: secrets
+layout: Doc
+-->
+
 # Secrets
 
 Serverless Framework Enterprise Secrets is a new feature which helps you secure your services by securely storing secrets used by your Serverless Framework services. The [Serverless Framework Enterprise Dashboard](https://dashboard.serverless.com/) provides an interface to store and encrypt secrets and manage access to those secrets from your services. The Serverless Framework Enterprise loads the secrets when the service is deployed.

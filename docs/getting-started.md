@@ -1,3 +1,9 @@
+<!--
+title: Getting Started - Serverless Framework Enterprise
+menuText: getting started
+layout: Doc
+-->
+
 # Serverless Framework Enterprise - Getting Started
 
 Complete the steps in this guide to install the Serverless Framework open-source CLI and deploy a sample Service on AWS that reports deployment information and operational metrics to your Serverless Framework Enterprise dashboard.

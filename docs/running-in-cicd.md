@@ -1,3 +1,9 @@
+<!--
+title: Running in CI/CD - Serverless Framework Enterprise
+menuText: ci/cd
+layout: Doc
+-->
+
 # Serverless Framework Enterprise - Running in CI/CD
 
 For teams that use Serverless Framework Enterprise to develop services it might be desirable to deploy the services from a CI/CD pipeline instead of the local CLI. Configuring your CI/CD pipeline is split between configuring the environment and the build step. Configuring the environment only needs to be performed once across all service deployments while the build step must be configured to run on each deploy.

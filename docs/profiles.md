@@ -1,3 +1,9 @@
+<!--
+title: Deployment Profiles - Serverless Framework Enterprise
+menuText: profiles
+layout: Doc
+-->
+
 # Deployment Profiles
 
 Deployment Profiles is a new feature introduced in Serverless Framework Enterprise to enable each stage of your Serverless application to use a unique set of [Safeguards](./safeguards.md), [Secrets](./secrets.md) and [AWS Access Roles](./aws-access-roles.md). 

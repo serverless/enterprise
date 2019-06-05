@@ -1,3 +1,9 @@
+<!--
+title: Insights - Serverless Framework Enterprise
+menuText: insights
+layout: Doc
+-->
+
 # Serverless Insights
 
 Serverless Insights help you monitor and optimize your serverless application by providing key metrics and alerts.

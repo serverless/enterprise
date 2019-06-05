@@ -1,3 +1,9 @@
+<!--
+title: Update - Serverless Framework Enterprise
+menuText: update
+layout: Doc
+-->
+
 # Updating an existing Service to use Serverless Framework Enterprise
 
 In order to take advantage of all Serverless Framework Enterprise features you will need to be running Serverless Framework open source CLI version 1.44.0 or later.  If you already have a Serverless Framework Enterprise dashboard account with at least one configured Tenant and App, and have successfully deployed a Service into that App, follow these steps:

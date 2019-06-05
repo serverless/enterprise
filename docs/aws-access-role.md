@@ -1,3 +1,9 @@
+<!--
+title: AWS Access Role - Serverless Framework Enterprise
+menuText: AWS access role
+layout: Doc
+-->
+
 # Serverless Framework Enterprise - AWS Access Role
 
 Using Serverless Framework Enterprise to set up an AWS Access Role helps you secure your service deployments by enabling Serverless Framework Enterprise to issue temporary AWS Access Keys to deploy your services to AWS.

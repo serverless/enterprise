@@ -1,3 +1,9 @@
+<!--
+title: Safeguards - Serverless Framework Enterprise
+menuText: safeguards
+layout: Doc
+-->
+
 # Safeguards
 
 Safeguards is a new feature introduced in Serverless Framework Enterprise to

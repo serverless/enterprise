@@ -1,3 +1,9 @@
+<!--
+title: Dashboard User Guide - Serverless Framework Enterprise
+menuText: user guide
+layout: Doc
+-->
+
 # Serverless Framework Enterprise - User Guide
 
 The Serverless Framework Enterprise is designed to be the ultimate operations console for serverless application development. Serverless application infrastructures can comprise multiple services across service providers, which is why a simple UI for interfacing with them is so crucial. Our goal with the Serverless Framework Enterprise is to make monitoring, collaborating and securing your serverless applications just as easy as using our other products.

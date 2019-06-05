@@ -1,3 +1,9 @@
+<!--
+title: Setup an AWS Account - Serverless Framework Enterprise
+menuText: AWS account setup
+layout: Doc
+-->
+
 # Setup an AWS Account for use with Serverless
 
 The Serverless Framework needs access to your cloud provider's account so that it can create and manage resources on your behalf.

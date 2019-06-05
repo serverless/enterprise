@@ -1,3 +1,9 @@
+<!--
+title: FAQ - Serverless Framework Enterprise
+menuText: faq
+layout: Doc
+-->
+
 # Serverless Framework Enterprise FAQ
 
 Commonly asked questions about the Serverless Framework Enterprise.
