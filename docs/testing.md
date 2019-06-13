@@ -1,3 +1,9 @@
+<!--
+title: Testing - Serverless Framework Enterprise
+menuText: testing
+layout: Doc
+-->
+
 # Testing
 Serverless Framework Enterprise supports definig and running integration tests against lambdas
 with HTTP integrations. To get started, assuming we have the default configuration in from the
