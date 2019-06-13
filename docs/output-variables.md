@@ -1,3 +1,9 @@
+<!--
+title: Output Variables - Serverless Framework Enterprise
+menuText: output variables
+layout: Doc
+-->
+
 # Output Variables
 
 Serverless Framework Enterprise helps you refactor large serverless applications by decoupling the shared services from the dependent services. The new output variables feature allows you to define output variables in a `serverless.yml` and then reference those variables in other `serverless.yml` file. The values are published to Serverless Framework Enterprise when you deploy, and they are loaded in other services when they are deployed.
