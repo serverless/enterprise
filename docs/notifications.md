@@ -1,8 +1,8 @@
 # Notifications
 
 Serverless Framework Enterprise can notify you in **Slack**, **Email**, **SNS Topics**, or
-**webhooks** about any[alerts](./insights.md#alerts) on your application. Multiple notfications can
-be added to an application and each can be configured for different types and scoped to individual
+**webhooks** about any [alerts](./insights.md#alerts) on your application. Multiple notifications can
+be added to an applicationm and each can be configured for different types and scoped to individual
 alerts, stages or services.
 
 ## Add a notification to an application
@@ -52,8 +52,9 @@ your `serverless.yml` file. The following snippet performs the following:
 
 - Creates a new SNS Topic "AlarmTopic".
 - Creates a new SNS Topic Policy "AlarmTopicPolicy" and grants the Serverless Framework Enterprise
-AWS Account (account id: 377024778620) permission to publish to the SNS Topic "AlarmTopic".
+AWS Account (account id: 802587217904) permission to publish to the SNS Topic "AlarmTopic".
 - Configures the function and event to accept notifications from the SNS Topic "AlermTopic".
+- Exports the ARN of the SNS Topic so that it's easily available for you to paste into the Serverless Framework Enterprise console
 
 Once the service, SNS Topic and SNS Topic Policies are deployed via `serverless deploy`, go to
 [SNS in the AWS Console](https://console.aws.amazon.com/sns/v3/home) and identify the SNS Topic ARN
@@ -95,10 +96,17 @@ resources:
             - Sid: AllowServerlessFrameworkEnterpriseToPublish
               Effect: Allow
               Principal:
-                AWS: "arn:aws:iam::377024778620:root"
+                AWS: "arn:aws:iam::802587217904:root"
               Action: "sns:Publish"
               Resource:
                 Ref: AlarmTopic
         Topics:
           - Ref: AlarmTopic
+  Outputs:
+    SnsTopicArn:
+      Description: ARN for the SNS Alarm Topic
+      Value:
+        Ref: AlarmTopic
 ```
+
+After your deploy is complete, run `sls info -v` to show the information about your service. At the bottom, in the **Stack Outputs** section, the ARN for your SNS Topic will be displayed as the `SnsTopicArn` output.
