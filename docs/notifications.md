@@ -1,3 +1,9 @@
+<!--
+title: Notifications - Serverless Framework Enterprise
+menuText: notifications
+layout: Doc
+-->
+
 # Notifications
 
 Serverless Framework Enterprise can notify you in **Slack**, **Email**, **SNS Topics**, or
