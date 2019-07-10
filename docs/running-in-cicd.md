@@ -43,13 +43,11 @@ Follow these steps to create an access token:
 
 ### Configure environment variables
 
-In the previous step you obtained an access token from the Serverless Framework Enterprise dashboard which you will now set in your CI/CD environment such that the Serverless Framework open-source CLI can authenticate with the Serverless Framework Enterprise dashboard. You should have already completed the [getting started](https://github.com/serverless/enterprise/blob/master/docs/getting-started.md) guide and created an AWS Account.
+In the previous step you obtained an access token from the Serverless Framework Enterprise dashboard which you will now set in your CI/CD environment such that the Serverless Framework open-source CLI can authenticate with the Serverless Framework Enterprise dashboard.
 
-Set the following environment variables in your CI/CD environment:
+Set the following environment variable in your CI/CD environment:
 
 - `SERVERLESS_ACCESS_KEY`: Your Serverless Enterprise access token from previous step.
-- `AWS_ACCESS_KEY_ID`: Your AWS account access key
-- `AWS_SECRET_ACCESS_KEY`:  Your AWS account secret access key
 
 ## Configure the build step
 
