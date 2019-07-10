@@ -20,7 +20,7 @@ it as follows with a  `serverless.test.yml` file:
 
 Then, when you run `sls test` (your function must already have been deployed) it will mak an HTTP
 request against the `hello` function and pass if the response has a status code of 200:
-![screenshot of tests succeeding](./images/test-success.png)
+![screenshot of tests succeeding](https://s3.amazonaws.com/assets.docs.serverless.com/enterprise/test-success.png)
 
 If we add a test like this which requires the body to be JSON encoded and contain a key called
 `foo` with the value `bar`.
@@ -36,7 +36,7 @@ If we add a test like this which requires the body to be JSON encoded and contai
 ```
 
 Then when we run `sls test` we get the details of the faiulre:
-![screenshot of one test failing](./images/test-failure.png)
+![screenshot of one test failing](https://s3.amazonaws.com/assets.docs.serverless.com/enterprise/test-failure.png)
 
 
 ## `serverless.test.yml` specification
