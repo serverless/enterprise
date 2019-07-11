@@ -19,7 +19,7 @@ module.exports.hello = async (event, context) => {
     context.captureError(error)
   }
   return {
-    statusCode: 600,
+    statusCode: 500,
     body: JSON.stringify({ name: 'bob' }),
   };
 };
