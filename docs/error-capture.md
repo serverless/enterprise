@@ -1,8 +1,8 @@
 # Capturing non-fatal errors in the Enterprise Dashboard
-
-Sometimes, your lambda will "fail" but actually can't really fail. One very common example is
-functions tied to HTTP endpoints. Those usually should still return JSON, even if there is an error
-since the API GW integration will fail rather than returning a meaningful error.
+Your lambda function may throw an exception, but your function handles it in order to respond to the
+requestor without throwing the error. One very common example is functions tied to HTTP endpoints.
+Those usually should still return JSON, even if there is an error since the API Gateway integration
+will fail rather than returning a meaningful error.
 
 For this case, we provide a `captureError` function available on either the `context` or on the
 module imported from `'./serverless-sdk'`. This will cause the invocation to still display as an
