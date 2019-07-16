@@ -28,3 +28,19 @@ module.exports.hello = async (event, context) => {
 And to import it instead, import with `const { captureError } = require('./serverless-sdk')` then
 call `captureError` instead of `context.captureError`.
 
+```javascript
+const { captureError } = require('./serverless-sdk')
+
+module.exports.hello = async (event) => {
+  try {
+    // do some real stuff but it throws an error, oh no!
+    throw new Error('aa')
+  } catch (error) {
+    captureError(error)
+  }
+  return {
+    statusCode: 500,
+    body: JSON.stringify({ name: 'bob' }),
+  };
+};
+```
