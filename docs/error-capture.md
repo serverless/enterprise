@@ -29,7 +29,7 @@ And to import it instead, import with `const { captureError } = require('./serve
 call `captureError` instead of `context.captureError`.
 
 ```javascript
-const { captureError } = require('./serverless-sdk')
+const { captureError } = require('./serverless_sdk')
 
 module.exports.hello = async (event) => {
   try {
