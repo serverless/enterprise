@@ -55,7 +55,7 @@ Deploy the Enterprise Template service
 $ sls deploy
 ```
 
-As the deploy is executing, you can expect to see a series of Serverless Safeguard policy checks run and return the status under `Serverless Enterprise: Safeguards Results:` in the terminal output. These Safeguard policies can be [configured in the dashboard](./safeguards.md#configuring-policies).
+As the deploy is executing, you can expect to see a series of Serverless Safeguard policy checks run and return the status under `Serverless: Safeguards Results:` in the terminal output. These Safeguard policies can be [configured in the dashboard](./safeguards.md#configuring-policies).
 
 Next, lets test out Serverless Insights.
 
