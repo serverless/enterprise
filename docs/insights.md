@@ -57,6 +57,8 @@ Errors happen, and the sooner you know about them after they are introduced the 
 
 On a per function basis, the new error insight runs every five minutes, tracks error types reported during the past five minutes, and compares them with all error types reported over the prior 48 hours.  An alert is generated when an error type is found that was not present during the prior 48 hours.  From the activity and insights feed you are able to drill into the details of a specific occurrence of the new error type.
 
+By default only fatal errors, those not handled by your service function, are captured and identified by the New Error alert. You must [instrument your code with `captureError`](./error-capture.md) to enable alerting on non fatal errors handled by your function.
+
 ### Escalated Invocation Count
 
 An escalated invocation count can mean good things (e.g. more traffic) or bad things (e.g. higher costs or a runaway function).  This alert helps you get out in front of both the good and the bad scenarios.
@@ -82,6 +84,8 @@ The invociations chart shows the aggregate number of invocations for a particula
 ### Errors
 
 The errors chart shows error count trends for a service.  Click into a point on the chart to see error counts and error types by function.  Click on an error type to see an occurrence of an error.
+
+By default only fatal errors, those not handled by your service function, are captured and identified by the the Error metrics. You must [instrument your code with `captureError`](./error-capture.md) to enable metrics on non fatal errors handled by your function.
 
 ### Durations
 
