@@ -2,7 +2,7 @@
 
 The Serverless Framework needs access to your cloud provider's account so that it can create and manage resources on your behalf.
 
-This guide is for the Amazon Web Services (AWS), so we'll step through the process of setting up credential for AWS and using them with Serverless.
+This guide is for the Amazon Web Services (AWS), so we'll step through the process of setting up a credential for AWS and using them with Serverless.
 
 
 ### Sign up for AWS
@@ -10,7 +10,7 @@ This guide is for the Amazon Web Services (AWS), so we'll step through the proce
 If you already have an AWS account, skip to the next task. If you don't have an AWS account, use the following procedure to create one.
 
 To create an AWS account
-1. Open https://aws.amazon.com/, and then choose Create an AWS Account.  
+1. Open https://aws.amazon.com/, and then choose to Create an AWS Account.  
 2. Follow the online instructions.
   + Part of the sign-up procedure involves receiving a phone call and entering a PIN using the phone keypad.
 
@@ -41,18 +41,18 @@ If you signed up for AWS, but you haven't created an IAM user for yourself, you 
   1. Sign in to the Identity and Access Management (IAM) console at https://console.aws.amazon.com/iam/.
   2. In the navigation pane, choose `Users`, and then choose `Add user`.
   3. For `User name`, type a user name, `adminuser`.
-  4. Select the check boxes next to `Programmatic access` and `AWS Management Console access`
+  4. Select the checkboxes next to `Programmatic access` and `AWS Management Console access`
   5. Select Custom password, and then type the new user's password in the text box.
     + Note down your username and password for later use.
-  6. Unselect the check box next to `Require password reset`.
+  6. Unselect the checkbox next to `Require password reset`.
   7. Choose `Next: Permissions`.
   8. On the `Set permissions for user` page, choose `Add user to group`.
   9. Choose `Create group.`
   10. In the `Create group` dialog box, type the name `admins` for the new group.
   11. For `Filter`, choose `Job function`.  
-  12. In the policy list, select the check box for `AdministratorAccess`.
+  12. In the policy list, select the checkbox for `AdministratorAccess`.
   13. Now choose `Create group`.
-  14. Back in the list of groups, ensure the check box is selected for your new group. Choose `Refresh` if necessary to see the group in the list.
+  14. Back in the list of groups, ensure the checkbox is selected for your new group. Choose `Refresh` if necessary to see the group in the list.
   15. Choose `Next: Review` to see the list of group memberships to be added to the new user. When you are ready to proceed, choose `Create user`.
 - Note down the following from the `Success` page
   + name of your IAM user
@@ -88,23 +88,23 @@ export ca="-----BEGIN CERTIFICATE-----...-----END CERTIFICATE-----,-----BEGIN CE
 # File example:
 # if using the 'cafile' variable, your certificate contents should not contain '\n'
 export cafile="/path/to/cafile.pem"
-# or multiple, comma separated
+# or multiple, comma-separated
 export cafile="/path/to/cafile1.pem,/path/to/cafile2.pem"
 
 
-# 'export' command is valid only for unix shells. In Windows - use 'set' instead of 'export'
+# 'export' command is valid only for Unix shells. In Windows - use 'set' instead of 'export'
 ```
 
 
 #### Using AWS Profiles
 
-For a more permanent solution you can also set up credentials through AWS profiles. Here are different methods you can use to do so.
+For a more permanent solution, you can also set up credentials through AWS profiles. Here are different methods you can use to do so.
 
 ##### Setup with `serverless config credentials` command
 
 Serverless provides a convenient way to configure AWS profiles with the help of the `serverless config credentials` command.
 
-Here's an example how you can configure the `default` AWS profile:
+Here's an example of how you can configure the `default` AWS profile:
 
 ```bash
 serverless config credentials --provider aws --key AKIAIOSFODNN7EXAMPLE --secret wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
