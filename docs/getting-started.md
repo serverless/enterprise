@@ -1,1 +1,1 @@
-**MOVED**: https://serverless.com/framework/docs/getting-started/
+**MOVED**: https://serverless.com/framework/docs/providers/aws/guide/quick-start/
